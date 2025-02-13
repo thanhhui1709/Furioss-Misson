@@ -4,6 +4,7 @@ public class ProjectileController : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField] private float speed;
+    public int damage;
 
     void Start()
     {
@@ -14,5 +15,17 @@ public class ProjectileController : MonoBehaviour
     void Update()
     {
      transform.Translate(Vector2.up*speed*Time.deltaTime);    
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            EnemyController enemy = collision.gameObject.GetComponent<EnemyController>();
+            if (enemy != null) { 
+              enemy.TakeDamage(damage);
+            }
+            Destroy(gameObject);
+        }
     }
 }

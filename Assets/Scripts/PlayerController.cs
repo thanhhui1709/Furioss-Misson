@@ -55,4 +55,11 @@ public class PlayerController : MonoBehaviour
         Instantiate(projectTile, transform.position + offsetBetweenProjectileAndHead, projectTile.transform.rotation);
 
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Destroy(gameObject);
+        }
+    }
 }
