@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 5931087272526760677}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.015353037, y: -0.94, z: 0}
+  m_LocalPosition: {x: -0.015353037, y: -0.17, z: 0}
   m_LocalScale: {x: 1, y: 0.92, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -106,9 +106,11 @@ MonoBehaviour:
   dropItems:
   - {fileID: 5525987367450180817, guid: 7e730620ba3335143be1f7e2cfe2fed9, type: 3}
   - {fileID: 6886384818452075395, guid: 58bc1e21f717e234bb98dc12fb84571a, type: 3}
-  chickenEgg:
-  - {fileID: 3826023462034851123, guid: 23093c595685964499e4ec9de3b2d2d9, type: 3}
-  - {fileID: 3081859933865514841, guid: 16e11f6042483b9458175ec6a850b61b, type: 3}
+  chickenEgg: {fileID: 3826023462034851123, guid: 23093c595685964499e4ec9de3b2d2d9, type: 3}
+  startPos: {x: 0, y: 0, z: 0}
+  speed: 5
+  verticalRange: 10
+  horizontalRange: 8
 --- !u!58 &9135385577258844856
 CircleCollider2D:
   m_ObjectHideFlags: 0
