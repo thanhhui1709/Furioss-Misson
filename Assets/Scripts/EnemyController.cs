@@ -16,14 +16,15 @@ public class EnemyController : MonoBehaviour
     public float horizontalRange;
     void Start()
     {
-        InvokeRepeating("SpawnEgg", 1f, 2f);
+        InvokeRepeating("SpawnEgg", 3f, 3f);
         startPos = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(startPos, transform.position) < Mathf.Sqrt(verticalRange*verticalRange + horizontalRange*horizontalRange)){
+        if (Vector3.Distance(startPos, transform.position) < Mathf.Sqrt(verticalRange * verticalRange + horizontalRange * horizontalRange))
+        {
             MovingVerticalThenHorizontal();
         }
     }
@@ -50,16 +51,32 @@ public class EnemyController : MonoBehaviour
     {
         Instantiate(chickenEgg, transform.position, Quaternion.identity);
     }
-   
+
     private void MovingVerticalThenHorizontal()
     {
         if (Vector3.Distance(startPos, transform.position) < verticalRange)
         {
-            transform.Translate(Vector3.up * speed * Time.deltaTime);
+            if (startPos.y <= 0)
+            {
+
+                transform.Translate(Vector3.up * speed * Time.deltaTime);
+            }
+            else
+            {
+                transform.Translate(Vector3.down * speed * Time.deltaTime);
+            }
         }
         else
         {
-            transform.Translate(Vector3.right * speed * Time.deltaTime);
+            if (startPos.x <= 0)
+            {
+
+                transform.Translate(Vector3.right * speed * Time.deltaTime);
+            }
+            else
+            {
+                transform.Translate(Vector3.left * speed * Time.deltaTime);
+            }
         }
     }
 }

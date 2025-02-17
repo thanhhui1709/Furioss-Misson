@@ -256,6 +256,56 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &418458908
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 418458910}
+  - component: {fileID: 418458909}
+  m_Layer: 0
+  m_Name: SpawnManager (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &418458909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 418458908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fa5615a1154bcb4a8d95bd2b28f182f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timePerChicken: 0.15
+  horizontalOffset: 0.3
+  verticalOffset: 0.5
+  chicken: {fileID: 5931087272526760677, guid: e01f0f2df3043b342b9b78253f288194, type: 3}
+  numberOfCol: 8
+  numberOfRow: 2
+--- !u!4 &418458910
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 418458908}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.09, y: -7.68, z: 373.02725}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &971357600
 GameObject:
   m_ObjectHideFlags: 0
@@ -373,11 +423,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timePerChicken: 0.15
-  horizontalOffset: 1
-  verticalOffset: 2
+  horizontalOffset: 0.5
+  verticalOffset: 0.5
   chicken: {fileID: 5931087272526760677, guid: e01f0f2df3043b342b9b78253f288194, type: 3}
-  numberOfCol: 4
-  numberOfRow: 1
+  numberOfCol: 8
+  numberOfRow: 2
 --- !u!4 &1911684611
 Transform:
   m_ObjectHideFlags: 0
@@ -497,7 +547,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2597221055061024512, guid: b2cd5e77e471edb408b2a1b923211a63, type: 3}
       propertyPath: mouseSpeed
-      value: 10
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 4651805754598463463, guid: b2cd5e77e471edb408b2a1b923211a63, type: 3}
       propertyPath: m_LocalPosition.x
@@ -553,3 +603,4 @@ SceneRoots:
   - {fileID: 6564283668109826587}
   - {fileID: 1989442781}
   - {fileID: 1911684611}
+  - {fileID: 418458910}
