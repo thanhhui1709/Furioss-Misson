@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -7,7 +8,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float verticalBound = 3.8f;
     [SerializeField] private float horizontalBound = 7.5f;
     [SerializeField] private Vector3 offsetBetweenProjectileAndHead;
-    public GameObject projectTile;
+    [SerializeField] private int projectTile_Level;
+    public List<GameObject> projectTile;
     void Start()
     {
 
@@ -51,8 +53,8 @@ public class PlayerController : MonoBehaviour
     {
 
 
-        
-        Instantiate(projectTile, transform.position + offsetBetweenProjectileAndHead, projectTile.transform.rotation);
+
+        Instantiate(projectTile[projectTile_Level], transform.position + offsetBetweenProjectileAndHead, projectTile[projectTile_Level].transform.rotation);
 
     }
     private void OnTriggerEnter2D(Collider2D collision)

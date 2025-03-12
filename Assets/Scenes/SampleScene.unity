@@ -461,8 +461,15 @@ MonoBehaviour:
   mouseSpeed: 10
   verticalBound: 3.8
   horizontalBound: 7.5
-  offsetBetweenProjectileAndHead: {x: 0, y: 1.1, z: 0}
-  projectTile: {fileID: 0}
+  offsetBetweenProjectileAndHead: {x: 0, y: 1, z: 0}
+  projectTile_Level: 4
+  projectTile:
+  - {fileID: 3298295552572775716, guid: 16eb3d4e2d09ce7478ff9b2dc63dcc20, type: 3}
+  - {fileID: 1152236082909556776, guid: 3212e9df814f599468bb2589a6176496, type: 3}
+  - {fileID: 5331735589886238288, guid: 8b911c08bc0b6b449bb4ce7182fcf8a2, type: 3}
+  - {fileID: 248515292459615723, guid: b50a249d3217611449e4a75ceca52d6c, type: 3}
+  - {fileID: 5578918809953068953, guid: d31c9ece2582a2048938fccf4433df7a, type: 3}
+  - {fileID: 110364785412648712, guid: 0579bd2f90b8f224f994513af76a5a2e, type: 3}
 --- !u!212 &1541423842
 SpriteRenderer:
   m_ObjectHideFlags: 0
