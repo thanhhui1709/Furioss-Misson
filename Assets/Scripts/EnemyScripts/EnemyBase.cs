@@ -26,8 +26,5 @@ public class EnemyBase : MonoBehaviour
             Instantiate(itemToDrop, transform.position, Quaternion.identity);
         }
     }
-    protected void SpawnEgg()
-    {
-        Instantiate(chickenEgg, transform.position, Quaternion.identity);
-    }
+    
 }

@@ -79,8 +79,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.8792453, g: 0.111149855, b: 0.111149855, a: 1}
+  m_Sprite: {fileID: -1334453462947265378, guid: 28d5be6644eaa70478dad212b4d1bb09, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -107,10 +107,13 @@ MonoBehaviour:
   - {fileID: 5525987367450180817, guid: 7e730620ba3335143be1f7e2cfe2fed9, type: 3}
   - {fileID: 6886384818452075395, guid: 58bc1e21f717e234bb98dc12fb84571a, type: 3}
   chickenEgg: {fileID: 3826023462034851123, guid: 23093c595685964499e4ec9de3b2d2d9, type: 3}
-  startPos: {x: 0, y: 0, z: 0}
   speed: 5
-  verticalRange: 10
-  horizontalRange: 8
+  startPos: {x: 0, y: 0, z: 0}
+  isSpawning: 0
+  verticalRange: 2.9
+  horizontalRange: 1.6000009
+  horizontalMoveDuration: 2
+  horizontalSpeed: 2
 --- !u!58 &9135385577258844856
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
         {
             Shooting();
         }
+  
     }
     private void MovePlayer()
     {
@@ -54,8 +55,9 @@ public class PlayerController : MonoBehaviour
 
 
 
-        Instantiate(projectTile[projectTile_Level], transform.position + offsetBetweenProjectileAndHead, projectTile[projectTile_Level].transform.rotation);
-
+        Vector3 spawnPosition = transform.position + offsetBetweenProjectileAndHead;
+        Instantiate(projectTile[projectTile_Level], spawnPosition, Quaternion.identity);
+    
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
