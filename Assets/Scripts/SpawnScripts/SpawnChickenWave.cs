@@ -25,28 +25,28 @@ public class SpawnChickenWave : MonoBehaviour
 
     }
 
-    IEnumerator SpawnChicken()
-    {
-        float originalHorizontalRange = enemyController.horizontalRange;
-        float originalVerticalRange = enemyController.verticalRange;
-        for (int i = 0; i < numberOfRow; i++)
-        {
-            for (int j = 0; j < numberOfCol; j++)
-            {
-                yield return SpawnChickenAfterTime();
-                enemyController.horizontalRange -= horizontalOffset;
-                Debug.Log(enemyController.horizontalRange);
-            }
-            enemyController.horizontalRange = originalHorizontalRange;
-            Debug.Log(enemyController.horizontalRange);
-            enemyController.verticalRange -= verticalOffset;
-        }
-        enemyController.verticalRange = originalVerticalRange;
+    //IEnumerator SpawnChicken()
+    //{
+    //    float originalHorizontalRange = enemyController.horizontalRange;
+    //    float originalVerticalRange = enemyController.verticalRange;
+    //    for (int i = 0; i < numberOfRow; i++)
+    //    {
+    //        for (int j = 0; j < numberOfCol; j++)
+    //        {
+    //            yield return SpawnChickenAfterTime();
+    //            enemyController.horizontalRange -= horizontalOffset;
+    //            Debug.Log(enemyController.horizontalRange);
+    //        }
+    //        enemyController.horizontalRange = originalHorizontalRange;
+    //        Debug.Log(enemyController.horizontalRange);
+    //        enemyController.verticalRange -= verticalOffset;
+    //    }
+    //    enemyController.verticalRange = originalVerticalRange;
 
-    }
-    IEnumerator SpawnChickenAfterTime()
-    {
-        yield return new WaitForSeconds(timePerChicken);
-        Instantiate(chicken, transform.position, Quaternion.identity);
-    }
+    //}
+    //IEnumerator SpawnChickenAfterTime()
+    //{
+    //    yield return new WaitForSeconds(timePerChicken);
+    //    Instantiate(chicken, transform.position, Quaternion.identity);
+    //}
 }

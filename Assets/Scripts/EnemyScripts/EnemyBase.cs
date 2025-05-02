@@ -5,7 +5,7 @@ public class EnemyBase : MonoBehaviour
 {
     [SerializeField] protected int health;
     public List<GameObject> dropItems;
-    public GameObject chickenEgg;
+    public GameObject projectTile;
     [SerializeField] protected float speed;
     public void TakeDamage(int damage)
     {

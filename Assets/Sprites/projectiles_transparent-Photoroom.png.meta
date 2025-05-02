@@ -1,0 +1,1352 @@
+fileFormatVersion: 2
+guid: f8eb4c7ffc062164c95dff96494e7b13
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3859799949010381791
+    second: projectiles_transparent-Photoroom_0
+  - first:
+      213: -3933169196106059252
+    second: projectiles_transparent-Photoroom_1
+  - first:
+      213: -8839950843838904725
+    second: projectiles_transparent-Photoroom_2
+  - first:
+      213: 9104418222830615895
+    second: projectiles_transparent-Photoroom_3
+  - first:
+      213: -8317850861025989024
+    second: projectiles_transparent-Photoroom_4
+  - first:
+      213: -8643332524874871653
+    second: projectiles_transparent-Photoroom_5
+  - first:
+      213: -2935606665963230613
+    second: projectiles_transparent-Photoroom_6
+  - first:
+      213: -1938753407077957921
+    second: projectiles_transparent-Photoroom_7
+  - first:
+      213: -8211561246442434783
+    second: projectiles_transparent-Photoroom_8
+  - first:
+      213: -987905113925779425
+    second: projectiles_transparent-Photoroom_9
+  - first:
+      213: -178222793060593845
+    second: projectiles_transparent-Photoroom_10
+  - first:
+      213: 6354661109998529517
+    second: projectiles_transparent-Photoroom_11
+  - first:
+      213: -2207334348927968370
+    second: projectiles_transparent-Photoroom_12
+  - first:
+      213: 4943799904452752101
+    second: projectiles_transparent-Photoroom_13
+  - first:
+      213: 7714923892410706545
+    second: projectiles_transparent-Photoroom_14
+  - first:
+      213: -6331079051208179412
+    second: projectiles_transparent-Photoroom_15
+  - first:
+      213: 4178901705042814951
+    second: projectiles_transparent-Photoroom_16
+  - first:
+      213: -7229259280600143177
+    second: projectiles_transparent-Photoroom_17
+  - first:
+      213: 2795742882890867253
+    second: projectiles_transparent-Photoroom_18
+  - first:
+      213: -1140450718464388526
+    second: projectiles_transparent-Photoroom_19
+  - first:
+      213: -6829243503225250302
+    second: projectiles_transparent-Photoroom_20
+  - first:
+      213: -6413498764135860402
+    second: projectiles_transparent-Photoroom_21
+  - first:
+      213: 1150738774963898444
+    second: projectiles_transparent-Photoroom_22
+  - first:
+      213: -3458485601840166533
+    second: projectiles_transparent-Photoroom_23
+  - first:
+      213: 7560116450643046026
+    second: projectiles_transparent-Photoroom_24
+  - first:
+      213: 7484028424861469743
+    second: projectiles_transparent-Photoroom_25
+  - first:
+      213: -404566452410215381
+    second: projectiles_transparent-Photoroom_26
+  - first:
+      213: -4573219957806619544
+    second: projectiles_transparent-Photoroom_27
+  - first:
+      213: -4033270124843998008
+    second: projectiles_transparent-Photoroom_28
+  - first:
+      213: -975119594724982031
+    second: projectiles_transparent-Photoroom_29
+  - first:
+      213: -3960492244155553510
+    second: projectiles_transparent-Photoroom_30
+  - first:
+      213: 3576418406738622024
+    second: projectiles_transparent-Photoroom_31
+  - first:
+      213: 6956919624494734364
+    second: projectiles_transparent-Photoroom_32
+  - first:
+      213: 1229335970998693859
+    second: projectiles_transparent-Photoroom_33
+  - first:
+      213: 5136752653612915040
+    second: projectiles_transparent-Photoroom_34
+  - first:
+      213: -6893025755382175192
+    second: projectiles_transparent-Photoroom_35
+  - first:
+      213: 1737088834145369587
+    second: projectiles_transparent-Photoroom_36
+  - first:
+      213: -7042087648808885545
+    second: projectiles_transparent-Photoroom_37
+  - first:
+      213: 30204569263186483
+    second: projectiles_transparent-Photoroom_38
+  - first:
+      213: -433682810353073567
+    second: projectiles_transparent-Photoroom_39
+  - first:
+      213: 8584336866078099280
+    second: projectiles_transparent-Photoroom_40
+  - first:
+      213: 8778735907480013302
+    second: projectiles_transparent-Photoroom_41
+  - first:
+      213: -6392734109688905339
+    second: projectiles_transparent-Photoroom_42
+  - first:
+      213: -4954168626671338691
+    second: projectiles_transparent-Photoroom_43
+  - first:
+      213: -5732171491845417803
+    second: projectiles_transparent-Photoroom_44
+  - first:
+      213: 4545346477088815308
+    second: projectiles_transparent-Photoroom_45
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: projectiles_transparent-Photoroom_0
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 786
+        width: 72
+        height: 183
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1245a2f756c3f6ac0800000000000000
+      internalID: -3859799949010381791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: projectiles_transparent-Photoroom_1
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 776
+        width: 63
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c02f69874739a69c0800000000000000
+      internalID: -3933169196106059252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: projectiles_transparent-Photoroom_2
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 781
+        width: 90
+        height: 203
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6641192b8f225580800000000000000
+      internalID: -8839950843838904725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: projectiles_transparent-Photoroom_3
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 778
+        width: 80
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75d796ae224695e70800000000000000
+      internalID: 9104418222830615895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: projectiles_transparent-Photoroom_4
+      rect:
+        serializedVersion: 2
+        x: 599
+        y: 764
+        width: 78
+        height: 209
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06e6ed536be019c80800000000000000
+      internalID: -8317850861025989024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: projectiles_transparent-Photoroom_5
+      rect:
+        serializedVersion: 2
+        x: 727
+        y: 863
+        width: 39
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9cc04becd6bc0880800000000000000
+      internalID: -8643332524874871653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: projectiles_transparent-Photoroom_6
+      rect:
+        serializedVersion: 2
+        x: 773
+        y: 865
+        width: 38
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6a2ef27a41a247d0800000000000000
+      internalID: -2935606665963230613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: projectiles_transparent-Photoroom_7
+      rect:
+        serializedVersion: 2
+        x: 849
+        y: 854
+        width: 108
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fde3a085c0a2815e0800000000000000
+      internalID: -1938753407077957921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: projectiles_transparent-Photoroom_8
+      rect:
+        serializedVersion: 2
+        x: 725
+        y: 774
+        width: 26
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12f4f669d8caa0e80800000000000000
+      internalID: -8211561246442434783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: projectiles_transparent-Photoroom_9
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 774
+        width: 25
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1089a478814a42f0800000000000000
+      internalID: -987905113925779425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: projectiles_transparent-Photoroom_10
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 774
+        width: 25
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4fceb06053d68df0800000000000000
+      internalID: -178222793060593845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: projectiles_transparent-Photoroom_11
+      rect:
+        serializedVersion: 2
+        x: 843
+        y: 506
+        width: 123
+        height: 306
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: deba3717c9a403850800000000000000
+      internalID: 6354661109998529517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: projectiles_transparent-Photoroom_12
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 454
+        width: 86
+        height: 305
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8b51a7ca19fd51e0800000000000000
+      internalID: -2207334348927968370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: projectiles_transparent-Photoroom_13
+      rect:
+        serializedVersion: 2
+        x: 187
+        y: 557
+        width: 55
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e23489d1d7eb9440800000000000000
+      internalID: 4943799904452752101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: projectiles_transparent-Photoroom_14
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 571
+        width: 102
+        height: 176
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17a605c976ae01b60800000000000000
+      internalID: 7714923892410706545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: projectiles_transparent-Photoroom_15
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 556
+        width: 55
+        height: 188
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c21c1db752d7328a0800000000000000
+      internalID: -6331079051208179412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: projectiles_transparent-Photoroom_16
+      rect:
+        serializedVersion: 2
+        x: 572
+        y: 580
+        width: 128
+        height: 153
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e7e950c5f07ef930800000000000000
+      internalID: 4178901705042814951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: projectiles_transparent-Photoroom_17
+      rect:
+        serializedVersion: 2
+        x: 731
+        y: 578
+        width: 79
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7bae1ae8cf28cab90800000000000000
+      internalID: -7229259280600143177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: projectiles_transparent-Photoroom_18
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 451
+        width: 61
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 532690ae6597cc620800000000000000
+      internalID: 2795742882890867253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: projectiles_transparent-Photoroom_19
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 422
+        width: 114
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 252571a2d1e4c20f0800000000000000
+      internalID: -1140450718464388526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: projectiles_transparent-Photoroom_20
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 371
+        width: 63
+        height: 157
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20e5d997737a931a0800000000000000
+      internalID: -6829243503225250302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: projectiles_transparent-Photoroom_21
+      rect:
+        serializedVersion: 2
+        x: 571
+        y: 467
+        width: 42
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e47764caadcaef6a0800000000000000
+      internalID: -6413498764135860402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: projectiles_transparent-Photoroom_22
+      rect:
+        serializedVersion: 2
+        x: 632
+        y: 466
+        width: 40
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c48cdf6a1de38ff00800000000000000
+      internalID: 1150738774963898444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: projectiles_transparent-Photoroom_23
+      rect:
+        serializedVersion: 2
+        x: 694
+        y: 467
+        width: 38
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7983814badf000d0800000000000000
+      internalID: -3458485601840166533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: projectiles_transparent-Photoroom_24
+      rect:
+        serializedVersion: 2
+        x: 757
+        y: 459
+        width: 200
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8e6a2d4bddeae860800000000000000
+      internalID: 7560116450643046026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: projectiles_transparent-Photoroom_25
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 218
+        width: 86
+        height: 212
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2c4bc8433c9cd760800000000000000
+      internalID: 7484028424861469743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: projectiles_transparent-Photoroom_26
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 236
+        width: 49
+        height: 181
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b249c0c74f0b26af0800000000000000
+      internalID: -404566452410215381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: projectiles_transparent-Photoroom_27
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 236
+        width: 50
+        height: 181
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 864a537ada8a880c0800000000000000
+      internalID: -4573219957806619544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: projectiles_transparent-Photoroom_28
+      rect:
+        serializedVersion: 2
+        x: 570
+        y: 394
+        width: 48
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c46a7dc032f608c0800000000000000
+      internalID: -4033270124843998008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: projectiles_transparent-Photoroom_29
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 395
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f205ee15eda772f0800000000000000
+      internalID: -975119594724982031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: projectiles_transparent-Photoroom_30
+      rect:
+        serializedVersion: 2
+        x: 685
+        y: 396
+        width: 47
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a192b6b99418909c0800000000000000
+      internalID: -3960492244155553510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: projectiles_transparent-Photoroom_31
+      rect:
+        serializedVersion: 2
+        x: 756
+        y: 403
+        width: 210
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 846f2dd979df1a130800000000000000
+      internalID: 3576418406738622024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: projectiles_transparent-Photoroom_32
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 211
+        width: 57
+        height: 176
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1cd3f40a81fb8060800000000000000
+      internalID: 6956919624494734364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: projectiles_transparent-Photoroom_33
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 231
+        width: 50
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3efacf46d8a7f0110800000000000000
+      internalID: 1229335970998693859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: projectiles_transparent-Photoroom_34
+      rect:
+        serializedVersion: 2
+        x: 507
+        y: 271
+        width: 40
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06994a1a259694740800000000000000
+      internalID: 5136752653612915040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: projectiles_transparent-Photoroom_35
+      rect:
+        serializedVersion: 2
+        x: 566
+        y: 311
+        width: 307
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82aa3d6a89d0750a0800000000000000
+      internalID: -6893025755382175192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: projectiles_transparent-Photoroom_36
+      rect:
+        serializedVersion: 2
+        x: 909
+        y: 227
+        width: 51
+        height: 165
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3fd388657116b1810800000000000000
+      internalID: 1737088834145369587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: projectiles_transparent-Photoroom_37
+      rect:
+        serializedVersion: 2
+        x: 566
+        y: 256
+        width: 304
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d2a49f089a754e90800000000000000
+      internalID: -7042087648808885545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: projectiles_transparent-Photoroom_38
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 70
+        width: 66
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 332a68d45ee4b6000800000000000000
+      internalID: 30204569263186483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: projectiles_transparent-Photoroom_39
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 133
+        width: 197
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16246bf18cf3bf9f0800000000000000
+      internalID: -433682810353073567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: projectiles_transparent-Photoroom_40
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 59
+        width: 135
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05700eed5e0b12770800000000000000
+      internalID: 8584336866078099280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: projectiles_transparent-Photoroom_41
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 58
+        width: 54
+        height: 159
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f9005ecbc554d970800000000000000
+      internalID: 8778735907480013302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: projectiles_transparent-Photoroom_42
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 59
+        width: 146
+        height: 173
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 581487882327847a0800000000000000
+      internalID: -6392734109688905339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: projectiles_transparent-Photoroom_43
+      rect:
+        serializedVersion: 2
+        x: 797
+        y: 78
+        width: 81
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3bbed1e1e14f3bb0800000000000000
+      internalID: -4954168626671338691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: projectiles_transparent-Photoroom_44
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 75
+        width: 71
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b4dee4066c3370b0800000000000000
+      internalID: -5732171491845417803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: projectiles_transparent-Photoroom_45
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 73
+        width: 198
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc8b3f3e980541f30800000000000000
+      internalID: 4545346477088815308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      projectiles_transparent-Photoroom_0: -3859799949010381791
+      projectiles_transparent-Photoroom_1: -3933169196106059252
+      projectiles_transparent-Photoroom_10: -178222793060593845
+      projectiles_transparent-Photoroom_11: 6354661109998529517
+      projectiles_transparent-Photoroom_12: -2207334348927968370
+      projectiles_transparent-Photoroom_13: 4943799904452752101
+      projectiles_transparent-Photoroom_14: 7714923892410706545
+      projectiles_transparent-Photoroom_15: -6331079051208179412
+      projectiles_transparent-Photoroom_16: 4178901705042814951
+      projectiles_transparent-Photoroom_17: -7229259280600143177
+      projectiles_transparent-Photoroom_18: 2795742882890867253
+      projectiles_transparent-Photoroom_19: -1140450718464388526
+      projectiles_transparent-Photoroom_2: -8839950843838904725
+      projectiles_transparent-Photoroom_20: -6829243503225250302
+      projectiles_transparent-Photoroom_21: -6413498764135860402
+      projectiles_transparent-Photoroom_22: 1150738774963898444
+      projectiles_transparent-Photoroom_23: -3458485601840166533
+      projectiles_transparent-Photoroom_24: 7560116450643046026
+      projectiles_transparent-Photoroom_25: 7484028424861469743
+      projectiles_transparent-Photoroom_26: -404566452410215381
+      projectiles_transparent-Photoroom_27: -4573219957806619544
+      projectiles_transparent-Photoroom_28: -4033270124843998008
+      projectiles_transparent-Photoroom_29: -975119594724982031
+      projectiles_transparent-Photoroom_3: 9104418222830615895
+      projectiles_transparent-Photoroom_30: -3960492244155553510
+      projectiles_transparent-Photoroom_31: 3576418406738622024
+      projectiles_transparent-Photoroom_32: 6956919624494734364
+      projectiles_transparent-Photoroom_33: 1229335970998693859
+      projectiles_transparent-Photoroom_34: 5136752653612915040
+      projectiles_transparent-Photoroom_35: -6893025755382175192
+      projectiles_transparent-Photoroom_36: 1737088834145369587
+      projectiles_transparent-Photoroom_37: -7042087648808885545
+      projectiles_transparent-Photoroom_38: 30204569263186483
+      projectiles_transparent-Photoroom_39: -433682810353073567
+      projectiles_transparent-Photoroom_4: -8317850861025989024
+      projectiles_transparent-Photoroom_40: 8584336866078099280
+      projectiles_transparent-Photoroom_41: 8778735907480013302
+      projectiles_transparent-Photoroom_42: -6392734109688905339
+      projectiles_transparent-Photoroom_43: -4954168626671338691
+      projectiles_transparent-Photoroom_44: -5732171491845417803
+      projectiles_transparent-Photoroom_45: 4545346477088815308
+      projectiles_transparent-Photoroom_5: -8643332524874871653
+      projectiles_transparent-Photoroom_6: -2935606665963230613
+      projectiles_transparent-Photoroom_7: -1938753407077957921
+      projectiles_transparent-Photoroom_8: -8211561246442434783
+      projectiles_transparent-Photoroom_9: -987905113925779425
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
