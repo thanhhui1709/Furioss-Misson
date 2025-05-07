@@ -14,7 +14,7 @@ public class ProjectileController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-     transform.Translate(Vector2.up*speed*Time.deltaTime);    
+     transform.Translate(transform.up*speed*Time.deltaTime,Space.World);    
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
