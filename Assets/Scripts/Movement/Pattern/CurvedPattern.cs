@@ -7,15 +7,16 @@ public class CurvedPattern : MovementPattern
     public float duration = 3f;
     public float amplitude = 2f;
     private float time;
-    private float startX;
-    public float xRange;
-
+    private float startY;
+    private float x;
+    private float y;
+    public float endY;
     public override bool isFinished => time >= duration;
 
     public override void Initialize(Transform transform)
     {
         time = 0f;
-        startX=transform.position.x;
+        y=startY;
 
     }
 
@@ -23,8 +24,9 @@ public class CurvedPattern : MovementPattern
     {
         time += deltaTime;
         float t = time / duration;
-        float x = startX>=0? math.lerp(startX,startX-xRange, t): math.lerp(startX,startX+xRange,t);
-        float y = -3 / x + 1;
+        
+        y=math.lerp(y, endY, t);
+        x = y * y + 1;
         transform.position = new Vector3(x, y, 0);
         if (time >= duration)
         {
