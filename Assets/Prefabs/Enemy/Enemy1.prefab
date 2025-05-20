@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 5572673178278086866}
   - component: {fileID: 7707331213779447011}
   - component: {fileID: 2798099753946074806}
+  - component: {fileID: 5186520534872241307}
+  - component: {fileID: 4559046325130127363}
   m_Layer: 0
   m_Name: Enemy1
   m_TagString: Enemy
@@ -150,7 +152,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -162,3 +164,34 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &5186520534872241307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2457692719626887776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b517f54b00572ce4894b4dd59487258e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MovementSequence: {fileID: 11400000, guid: 44ad62007a4040c4292f559bbb1f0775, type: 2}
+  delayTime: 3
+--- !u!114 &4559046325130127363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2457692719626887776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d744e9b029166c4cad5c8d9fb55c812, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 20
+  dropItems: []
+  projectTile: {fileID: 1926611614718380340, guid: 23983188bd1f8bf4c929816b7f564eee, type: 3}
+  speed: 10
+  timePerShot: 5

@@ -3,7 +3,8 @@
 public class EnemyMovementBySequence : MonoBehaviour
 {
     public MovementSequence MovementSequence;
-    private MovementPattern currentPattern;
+    [HideInInspector]
+    public MovementPattern currentPattern;
     private int currentPatternIndex = 0;
 
     private float timer = 0f;
@@ -28,6 +29,7 @@ public class EnemyMovementBySequence : MonoBehaviour
                 {
                     state = MovementState.Waiting;
                     timer = 0f;
+                    
                 }
                 break;
 

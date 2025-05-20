@@ -21,7 +21,7 @@ public class TopSwingPattern : MovementPattern
 
     public override void UpdateMovement(Transform transform, float deltaTime)
     {
-        float t = time / duration;
+        float t = time / (duration-offset);
         if (time <= duration)
         {
             timeScale = math.lerp(0.06f, duration*2, t);
