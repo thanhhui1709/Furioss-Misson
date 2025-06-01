@@ -5,5 +5,5 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "ScriptableObjects/MovementSequence")]
 public class MovementSequence : ScriptableObject
 {
-    public List<MovementPattern> sequences;
+    public List<IMovementPattern> sequences;
 }

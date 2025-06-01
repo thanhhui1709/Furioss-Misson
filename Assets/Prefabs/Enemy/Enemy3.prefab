@@ -176,7 +176,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b517f54b00572ce4894b4dd59487258e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovementSequence: {fileID: 11400000, guid: 273539b7485840c4dac844171df995a7, type: 2}
+  MovementSequence: {fileID: 11400000, guid: 4b213e08c33d20e4eb926e7f0e98b17c, type: 2}
+  currentPattern: {fileID: 0}
   delayTime: 3
 --- !u!114 &7596507228463753209
 MonoBehaviour:
@@ -195,3 +196,5 @@ MonoBehaviour:
   projectTile: {fileID: 1926611614718380340, guid: 23983188bd1f8bf4c929816b7f564eee, type: 3}
   speed: 10
   timePerShot: 5
+  damage: 5
+  shottingBehavior: {fileID: 11400000, guid: 32d018cb255b3b44084f065c17642e74, type: 2}

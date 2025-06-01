@@ -6,7 +6,7 @@ using UnityEngine;
 public class EnemyWave : ScriptableObject
 {
     public List<WaveData> waveData;
-    public float delayBetweenWaveData;
+    public float delayForTheNextWave;
     [HideInInspector]
     public bool isDoneSpawned=false;
 
@@ -18,6 +18,7 @@ public class EnemyWave : ScriptableObject
         public int numberPerWave;
         public float offset;
         public float delaySpawnPrefab;
+        public float delayForTheNextWaveData;
     }
 
 

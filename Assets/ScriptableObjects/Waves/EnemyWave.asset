@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: EnemyWave
   m_EditorClassIdentifier: 
   waveData:
-  - enemyPrefab: {fileID: 2457692719626887776, guid: 03e00899314f2204e8f86d1731746bfe, type: 3}
+  - enemyPrefab: {fileID: 2515924320314897692, guid: 82e4816fb93cd1143839758199f5c00a, type: 3}
     numberPerWave: 8
-    offset: 0.1
-    delaySpawnPrefab: 0.5
+    offset: 1.5
+    delaySpawnPrefab: 0
   delayBetweenWaveData: 5
   isDoneSpawned: 1

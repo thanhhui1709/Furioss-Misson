@@ -1,14 +1,16 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+     public int health = 10;
     [SerializeField] private float mouseSpeed = 5f;
     [SerializeField] private float verticalBound = 3.8f;
     [SerializeField] private float horizontalBound = 7.5f;
     [SerializeField] private Vector3 offsetBetweenProjectileAndHead;
     [SerializeField] private int projectTile_Level;
+    [SerializeField] private Image healthBar;
     public List<GameObject> projectTile;
 
     void Start()
@@ -16,7 +18,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         MovePlayer();
         if (Input.GetMouseButtonDown(0))
@@ -66,12 +68,24 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Destroy(gameObject);
+            EnemyBase enemyScript= collision.gameObject.GetComponent<EnemyBase>();
+            enemyScript.DoDamage(out health);
         }else if (collision.gameObject.CompareTag("PowerUp"))
         {
             projectTile_Level++;
             Destroy(collision.gameObject);
         }
         
+    }
+    private void TakeDamage(int health,int damage)
+    {
+        if (damage < health) { 
+         health-=damage;
+            healthBar.fillAmount = health/100f;    
+        }
+        else
+        {
+            Destroy(gameObject) ;
+        }
     }
 }

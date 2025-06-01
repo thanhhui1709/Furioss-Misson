@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class EnemyBase : MonoBehaviour
 {
     [SerializeField] protected int health;
@@ -9,7 +10,10 @@ public class EnemyBase : MonoBehaviour
     public GameObject projectTile;
     [SerializeField] protected float speed;
     [SerializeField] protected float timePerShot;
+    [SerializeField] protected int damage;
     protected Transform playerTransfrom;
+    [SerializeField]
+    private AShootingController shottingBehavior;
     public void TakeDamage(int damage)
     {
         health -= damage;
@@ -17,6 +21,16 @@ public class EnemyBase : MonoBehaviour
         {
             DropItem();
             Destroy(gameObject);
+        }
+    }
+    public void DoDamage(out int playerHealth)
+    {
+        GameObject player=GameObject.FindGameObjectWithTag("Player");
+        PlayerController playerScript= player.GetComponent<PlayerController>(); 
+        playerHealth = playerScript.health;
+        playerHealth-=damage;
+        if (playerHealth <= 0) { 
+           Destroy(player); 
         }
     }
     protected virtual void DropItem()
@@ -29,24 +43,15 @@ public class EnemyBase : MonoBehaviour
             Instantiate(itemToDrop, transform.position, Quaternion.identity);
         }
     }
-    protected void Shotting()
+    protected void Shooting()
     {
 
-        RotateTowardPlayer(playerTransfrom);
-        Instantiate(projectTile,transform.position,transform.rotation);
+        if (shottingBehavior != null) { 
+         shottingBehavior.Shoot(transform,playerTransfrom,projectTile);
+        
+        }
         
     }
-    private void RotateTowardPlayer(Transform playerTransform)
-    {
-        // Tính vector hướng từ enemy -> player
-        Vector2 direction = playerTransform.position - transform.position;
-        direction.Normalize(); // Đảm bảo độ dài = 1
-
-        // Tính góc giữa hướng lên (Vector2.up) và direction
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
-
-        // Xoay enemy
-        transform.rotation = Quaternion.Euler(0, 0, angle);
-    }
+   
 
 }

@@ -10,8 +10,11 @@ public class EnemyController : EnemyBase
 
         // Tìm player theo tag
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        playerTransfrom = player.transform;
-        InvokeRepeating("Shotting", timePerShot+3,timePerShot);
+       if(player != null)
+        {
+            playerTransfrom = player.transform;
+        }
+        InvokeRepeating("Shooting", timePerShot+3,timePerShot);
     }
 
     void Update()

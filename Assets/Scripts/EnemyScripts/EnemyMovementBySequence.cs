@@ -4,7 +4,7 @@ public class EnemyMovementBySequence : MonoBehaviour
 {
     public MovementSequence MovementSequence;
     [HideInInspector]
-    public MovementPattern currentPattern;
+    public IMovementPattern currentPattern;
     private int currentPatternIndex = 0;
 
     private float timer = 0f;
@@ -15,11 +15,15 @@ public class EnemyMovementBySequence : MonoBehaviour
 
     void Start()
     {
-        SetCurrentPattern(0);
+        if (currentPattern == null) {
+            SetCurrentPattern(0);
+        }
+       
+
         state = MovementState.Moving;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         switch (state)
         {
