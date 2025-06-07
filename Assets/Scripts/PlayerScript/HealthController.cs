@@ -3,10 +3,17 @@ using UnityEngine;
 
 public class HealthController : MonoBehaviour
 {
-    public Image healthBar;
-
-    void Start()
+    public int maxHealth;
+    private int currentHealth;
+    [SerializeField]private Slider healthBar;
+    [SerializeField] private Vector3 offset;
+    
+        
+    void Awake()
     {
+        currentHealth=maxHealth;
+        healthBar.transform.position=transform.position+offset;
+        UpdateHealthBar();
         
     }
 
@@ -14,5 +21,24 @@ public class HealthController : MonoBehaviour
     void Update()
     {
         
+    }
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        UpdateHealthBar();
+       
+
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+    private void Die()
+    {
+        Destroy(gameObject);
+    }
+    private void UpdateHealthBar()
+    {
+        healthBar.value = currentHealth/maxHealth;
     }
 }

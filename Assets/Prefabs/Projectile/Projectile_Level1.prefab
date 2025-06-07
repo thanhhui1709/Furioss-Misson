@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 5463780180787253182}
   - component: {fileID: 4922846129711231787}
   - component: {fileID: 3395777477582899962}
-  - component: {fileID: 50814785587588497}
   - component: {fileID: 2071999541052314978}
   - component: {fileID: 2617008625424759247}
+  - component: {fileID: 4832393657647624975}
   m_Layer: 0
   m_Name: Projectile_Level1
   m_TagString: Projectile
@@ -128,20 +128,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.99999994, y: 2}
   m_Direction: 0
---- !u!114 &50814785587588497
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3298295552572775716}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa0f944df1b731d4e89d9c238b581323, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 10
-  damage: 10
 --- !u!50 &2071999541052314978
 Rigidbody2D:
   serializedVersion: 5
@@ -183,3 +169,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horizontalBound: 10.5
   verticalBound: 6
+--- !u!114 &4832393657647624975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3298295552572775716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8955270d0a336c24084e8b8efc5dbf13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 20
+  damage: 10
+  maxEnemyHit: 1

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ProjectileController : MonoBehaviour
+public class EnemyProjectileController : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField] private float speed;
@@ -19,12 +19,13 @@ public class ProjectileController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            EnemyController enemy = collision.gameObject.GetComponent<EnemyController>();
-            if (enemy != null) { 
-              enemy.TakeDamage(damage);
-            }
+        HealthController heath=collision.gameObject.GetComponent<HealthController>();
+
+        if (collision.gameObject.CompareTag("Player"))
+        {      
+            // deal damage to player
+              heath.TakeDamage(damage);
+            
             Destroy(gameObject);
         }
     }

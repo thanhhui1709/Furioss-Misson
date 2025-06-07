@@ -4,13 +4,11 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-     public int health = 10;
     [SerializeField] private float mouseSpeed = 5f;
     [SerializeField] private float verticalBound = 3.8f;
     [SerializeField] private float horizontalBound = 7.5f;
     [SerializeField] private Vector3 offsetBetweenProjectileAndHead;
     [SerializeField] private int projectTile_Level;
-    [SerializeField] private Image healthBar;
     public List<GameObject> projectTile;
 
     void Start()
@@ -24,8 +22,8 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Shooting();
-           
-         
+
+
         }
 
     }
@@ -52,7 +50,7 @@ public class PlayerController : MonoBehaviour
             transform.position = new Vector3(transform.position.x, -verticalBound, 0);
         }
 
-        transform.Translate(direction * mouseSpeed * Time.deltaTime,Space.World);
+        transform.Translate(direction * mouseSpeed * Time.deltaTime, Space.World);
     }
     private void Shooting()
     {
@@ -61,31 +59,22 @@ public class PlayerController : MonoBehaviour
 
         Vector3 spawnPosition = transform.position + offsetBetweenProjectileAndHead;
         Instantiate(projectTile[projectTile_Level], spawnPosition, Quaternion.identity);
-       
-    
+
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            EnemyBase enemyScript= collision.gameObject.GetComponent<EnemyBase>();
-            enemyScript.DoDamage(out health);
-        }else if (collision.gameObject.CompareTag("PowerUp"))
-        {
-            projectTile_Level++;
-            Destroy(collision.gameObject);
+            EnemyController enemy = collision.gameObject.GetComponent<EnemyController>();
+            HealthController playerHealth = gameObject.GetComponent<HealthController>();
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(enemy.GetBodyDamage());
+
+            }
         }
-        
+      
     }
-    private void TakeDamage(int health,int damage)
-    {
-        if (damage < health) { 
-         health-=damage;
-            healthBar.fillAmount = health/100f;    
-        }
-        else
-        {
-            Destroy(gameObject) ;
-        }
-    }
+
 }

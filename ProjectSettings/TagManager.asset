@@ -8,6 +8,7 @@ TagManager:
   - Projectile
   - Sensor
   - PowerUp
+  - EnemyProjectile
   layers:
   - Default
   - TransparentFX

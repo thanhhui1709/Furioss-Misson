@@ -191,10 +191,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d744e9b029166c4cad5c8d9fb55c812, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 20
-  dropItems: []
-  projectTile: {fileID: 1926611614718380340, guid: 23983188bd1f8bf4c929816b7f564eee, type: 3}
-  speed: 10
-  timePerShot: 5
-  damage: 5
-  shottingBehavior: {fileID: 11400000, guid: 32d018cb255b3b44084f065c17642e74, type: 2}
+  enemyStat:
+    dropItems: []
+    projectTile: {fileID: 1926611614718380340, guid: 23983188bd1f8bf4c929816b7f564eee, type: 3}
+    timePerShot: 3
+    bodyDamage: 10
+    shottingBehavior: {fileID: 11400000, guid: 32d018cb255b3b44084f065c17642e74, type: 2}
