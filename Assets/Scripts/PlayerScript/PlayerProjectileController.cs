@@ -4,11 +4,11 @@ public class PlayerProjectileController : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private int damage;
-    [SerializeField] private int maxEnemyHit;
+    //[SerializeField] private int maxEnemyHit;
     private int remainHit;
     void Start()
     {
-        remainHit = maxEnemyHit;
+        //remainHit = maxEnemyHit;
 
     }
 
@@ -21,20 +21,28 @@ public class PlayerProjectileController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            HealthController health = collision.gameObject.GetComponent<HealthController>();
-            if (health != null)
+            EnemyController enemy = collision.gameObject.GetComponent<EnemyController>();
+            if (enemy != null)
             {
-                health.TakeDamage(damage);
-                CalculateRemainHit(remainHit);
+              
+                enemy.GetEnemyHealth().TakeDamage(damage);
+                //CalculateRemainHit(remainHit);
+            }
+        }else if (collision.gameObject.CompareTag("Boss"))
+        {
+            BossHealth bossHealth = collision.gameObject.GetComponent<BossHealth>();
+            if(bossHealth != null)
+            {
+                bossHealth.TakeDamage(damage);
             }
         }
     }
-    private void CalculateRemainHit(int remain)
-    {
-        remainHit--;
-        if (remainHit <= 0)
-        {
-            Destroy(gameObject);
-        }
-    }
+    //private void CalculateRemainHit(int remain)
+    //{
+    //    remainHit--;
+    //    if (remainHit <= 0)
+    //    {
+    //        Destroy(gameObject);
+    //    }
+    //}
 }

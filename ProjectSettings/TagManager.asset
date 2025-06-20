@@ -7,8 +7,10 @@ TagManager:
   - Enemy
   - Projectile
   - Sensor
-  - PowerUp
   - EnemyProjectile
+  - Boss
+  - Canvas
+  - BootItem
   layers:
   - Default
   - TransparentFX

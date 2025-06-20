@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 2798099753946074806}
   - component: {fileID: 5186520534872241307}
   - component: {fileID: 4559046325130127363}
-  - component: {fileID: 8574926855113064199}
+  - component: {fileID: 829987444800530350}
   m_Layer: 0
   m_Name: Enemy1_SwingLeft
   m_TagString: Enemy
@@ -305,12 +305,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyStat:
-    dropItems: []
     projectTile: {fileID: 1926611614718380340, guid: 23983188bd1f8bf4c929816b7f564eee, type: 3}
     timePerShot: 3
+    timeInitShot: 5
     bodyDamage: 10
     shottingBehavior: {fileID: 11400000, guid: 32d018cb255b3b44084f065c17642e74, type: 2}
---- !u!114 &8574926855113064199
+--- !u!114 &829987444800530350
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -319,12 +319,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 2457692719626887776}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01c529df20dabcd48959fe62cc442aa1, type: 3}
+  m_Script: {fileID: 11500000, guid: d6059b6bc1c37e0498f63844ecdf6e65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20
-  healthBar: {fileID: 5403974404865492031}
-  offset: {x: 0, y: 1, z: 0}
+  items:
+  - item: {fileID: 1396731594646046006, guid: 9c322bc1b61813d469afc9ac9424a51d, type: 3}
+    rate: 1.5
+  - item: {fileID: 282112012492073636, guid: 83a45d9d250337448a14cfbbbbbcb19f, type: 3}
+    rate: 18.9
+  - item: {fileID: 6687629543920029719, guid: f72f675ac525abc47ae54470130e4206, type: 3}
+    rate: 35.8
 --- !u!1 &5036475107661184765
 GameObject:
   m_ObjectHideFlags: 0
@@ -410,6 +414,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1838773018854870240}
   - component: {fileID: 5403974404865492031}
+  - component: {fileID: 2049117119230856873}
   m_Layer: 5
   m_Name: Health Bar
   m_TagString: Untagged
@@ -435,7 +440,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -1}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5403974404865492031
@@ -489,6 +494,23 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2049117119230856873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6080888489217077567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cc486be478dc704da794428d6b96b43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 20
+  healthBar: {fileID: 5403974404865492031}
+  offset: {x: 0, y: 1, z: 0}
+  displayTime: 1.5
+  items: {fileID: 829987444800530350}
 --- !u!1 &6562627655565837948
 GameObject:
   m_ObjectHideFlags: 0

@@ -27,7 +27,7 @@ public class CurvedPattern : IMovementPattern
         _rb = transform.GetComponent<Rigidbody2D>();
         if (_rb == null)
         {
-            Debug.LogWarning("Rigidbody2D not found on enemy.", transform.gameObject);
+          
             return;
         }
         float x = isPositiveSide ? (_currentY * _currentY) / 2 + 1f : -(_currentY * _currentY) / 2 + 1f;
@@ -77,6 +77,6 @@ public class CurvedPattern : IMovementPattern
         // Set position using Rigidbody2D
         Vector3 targetPosition = new Vector3(x, y, transform.position.z);
         _rb.MovePosition(targetPosition);
-        Debug.Log(transform.position);
+      
     }
 }

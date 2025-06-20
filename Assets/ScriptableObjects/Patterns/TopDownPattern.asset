@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57d3aea5492265e4da912b361c8a292b, type: 3}
   m_Name: TopDownPattern
   m_EditorClassIdentifier: 
-  spawnPos: {x: -8, y: 8, z: 0}
+  spawnPos: {x: -13, y: 13, z: 0}
   speed: 10
-  yRange: 5
+  yRange: 9

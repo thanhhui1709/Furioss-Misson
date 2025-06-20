@@ -1,6 +1,6 @@
 using UnityEngine;
 
-
+[CreateAssetMenu(menuName = "ScriptableObjects/ShootingBehavior/Straight") ]
 public class StraightShot : AShootingController
 {
     [SerializeField]

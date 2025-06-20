@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2597221055061024512}
   - component: {fileID: 8188521752932689466}
   - component: {fileID: 1396522152254375562}
+  - component: {fileID: 2849558557494869307}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -102,11 +103,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1197517262fdcdd4a863e7f4e30e6d2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSpeed: 30
+  mouseSpeed: 60
   verticalBound: 10
   horizontalBound: 20
   offsetBetweenProjectileAndHead: {x: 0, y: 1, z: 0}
-  projectTile_Level: 5
+  projectTile_Level: 1
   projectTile:
   - {fileID: 3298295552572775716, guid: 16eb3d4e2d09ce7478ff9b2dc63dcc20, type: 3}
   - {fileID: 1152236082909556776, guid: 3212e9df814f599468bb2589a6176496, type: 3}
@@ -114,6 +115,7 @@ MonoBehaviour:
   - {fileID: 248515292459615723, guid: b50a249d3217611449e4a75ceca52d6c, type: 3}
   - {fileID: 5578918809953068953, guid: d31c9ece2582a2048938fccf4433df7a, type: 3}
   - {fileID: 110364785412648712, guid: 0579bd2f90b8f224f994513af76a5a2e, type: 3}
+  fireRate: 10
 --- !u!61 &8188521752932689466
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -144,7 +146,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -186,4 +188,49 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
+--- !u!114 &2849558557494869307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1093040414831480640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b107a968d401cf6448f6bbdb35791ef3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  healthBar: {fileID: 0}
+  healthFill: {fileID: 0}
+  gradient:
+    serializedVersion: 2
+    key0: {r: 1, g: 0.04989811, b: 0, a: 1}
+    key1: {r: 0.2067834, g: 1, b: 0.0056602955, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_ColorSpace: -1
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2

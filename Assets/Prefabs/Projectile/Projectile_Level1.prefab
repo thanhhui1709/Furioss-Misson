@@ -167,8 +167,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2918266b2c5501a44a439a63acc3f313, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalBound: 10.5
-  verticalBound: 6
+  horizontalBound: 35
+  verticalBound: 12
 --- !u!114 &4832393657647624975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,4 +183,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 20
   damage: 10
-  maxEnemyHit: 1

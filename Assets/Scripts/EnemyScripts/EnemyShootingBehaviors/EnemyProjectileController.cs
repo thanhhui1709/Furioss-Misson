@@ -8,24 +8,24 @@ public class EnemyProjectileController : MonoBehaviour
 
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-     transform.Translate(transform.up*speed*Time.deltaTime,Space.World);    
+        transform.Translate(transform.up * speed * Time.deltaTime, Space.World);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        HealthController heath=collision.gameObject.GetComponent<HealthController>();
 
         if (collision.gameObject.CompareTag("Player"))
-        {      
-            // deal damage to player
-              heath.TakeDamage(damage);
-            
+        {
+
+            PlayerHealth heath = collision.gameObject.GetComponent<PlayerHealth>();
+            heath.TakeDamage(damage);
+
             Destroy(gameObject);
         }
     }

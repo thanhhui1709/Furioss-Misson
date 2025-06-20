@@ -7,24 +7,18 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float mouseSpeed = 5f;
     [SerializeField] private float verticalBound = 3.8f;
     [SerializeField] private float horizontalBound = 7.5f;
-    [SerializeField] private Vector3 offsetBetweenProjectileAndHead;
-    [SerializeField] private int projectTile_Level;
-    public List<GameObject> projectTile;
-
+   
     void Start()
     {
+   
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+       
         MovePlayer();
-        if (Input.GetMouseButtonDown(0))
-        {
-            Shooting();
-
-
-        }
+    
 
     }
     private void MovePlayer()
@@ -52,22 +46,13 @@ public class PlayerController : MonoBehaviour
 
         transform.Translate(direction * mouseSpeed * Time.deltaTime, Space.World);
     }
-    private void Shooting()
-    {
-
-
-
-        Vector3 spawnPosition = transform.position + offsetBetweenProjectileAndHead;
-        Instantiate(projectTile[projectTile_Level], spawnPosition, Quaternion.identity);
-
-
-    }
+   
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
             EnemyController enemy = collision.gameObject.GetComponent<EnemyController>();
-            HealthController playerHealth = gameObject.GetComponent<HealthController>();
+            EnemyHealth playerHealth = gameObject.GetComponent<EnemyHealth>();
             if (playerHealth != null)
             {
                 playerHealth.TakeDamage(enemy.GetBodyDamage());

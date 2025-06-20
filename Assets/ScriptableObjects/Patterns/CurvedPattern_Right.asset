@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startY: 8
   endY: -2
-  speed: 30
+  speed: 5
   isPositiveSide: 1

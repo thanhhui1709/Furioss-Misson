@@ -28,7 +28,7 @@ public class EnemyMovementBySequence : MonoBehaviour
         switch (state)
         {
             case MovementState.Moving:
-                currentPattern?.UpdateMovement(transform, Time.deltaTime);
+                currentPattern?.UpdateMovement(transform, Time.fixedDeltaTime);
                 if (currentPattern != null && currentPattern.isFinished)
                 {
                     state = MovementState.Waiting;
@@ -38,7 +38,7 @@ public class EnemyMovementBySequence : MonoBehaviour
                 break;
 
             case MovementState.Waiting:
-                timer += Time.deltaTime;
+                timer += Time.fixedDeltaTime;
                 if (timer >= delayTime)
                 {
                     if (currentPatternIndex < MovementSequence.sequences.Count - 1)

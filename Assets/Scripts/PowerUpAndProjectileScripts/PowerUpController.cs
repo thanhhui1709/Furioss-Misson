@@ -1,4 +1,5 @@
 using UnityEngine;
+using static PlayerWeapon;
 
 
 public class PowerUpController : MonoBehaviour
@@ -8,7 +9,7 @@ public class PowerUpController : MonoBehaviour
 
     void Start()
     {
-        player=GameObject.FindWithTag("Player");
+        player = GameObject.FindWithTag("Player");
     }
 
     // Update is called once per frame
@@ -22,16 +23,30 @@ public class PowerUpController : MonoBehaviour
         if (playerRotation == 0)
         {
             transform.Translate(Vector2.down * moveSpeed * Time.deltaTime);
-        }else if(playerRotation > 0 && playerRotation <= 90)
+        }
+        else if (playerRotation > 0 && playerRotation <= 90)
         {
             transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
         }
         else if (playerRotation < 0 && playerRotation >= -90)
         {
             transform.Translate(Vector2.left * moveSpeed * Time.deltaTime);
-        }else if (playerRotation == 180)
+        }
+        else if (playerRotation == 180)
         {
             transform.Translate(Vector2.up * moveSpeed * Time.deltaTime);
         }
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            PlayerWeapon wp = collision.gameObject.GetComponent<PlayerWeapon>();
+
+            wp.LevelUpCurrentWeapon();
+
+            Destroy(gameObject);
+        }
+    }
+
 }

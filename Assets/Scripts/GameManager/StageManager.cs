@@ -1,18 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using NUnit.Framework;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StageManager : MonoBehaviour
 {
+    [Header("Wave")]
     [SerializeField] private List<EnemyWave> enemyWaves;
+
+    [Header("Boss")]
+    public GameObject Boss;
+    [SerializeField] private Slider bossHealthBar;
+    [SerializeField] private Image bossHealthFill;
+    [SerializeField] private float spawnBossCountdown;
+    [SerializeField] private Vector3 spawnPos;
+
+
     private EnemyWave currentWave;
     private int currentWaveIndex = 0;
     void Start()
     {
         currentWave = enemyWaves[currentWaveIndex];
-        StartCoroutine(SpawnAllWave());
+        StartCoroutine(SpawnAllWaveAndBoss());
     }
 
     // Update is called once per frame
@@ -33,10 +45,10 @@ public class StageManager : MonoBehaviour
         {
 
             var enemy = Instantiate(wave.enemyPrefab);
-         
+
 
             EnemyMovementBySequence embs = enemy.GetComponent<EnemyMovementBySequence>();
-           
+
             IMovementPattern pattern = Instantiate(embs.MovementSequence.sequences[0]); // clone the pattern
             pattern.offset = i * wave.offset;
             pattern.Initialize(enemy.transform);
@@ -66,15 +78,37 @@ public class StageManager : MonoBehaviour
     }
 
     // instantiate all enemy wave
-    private IEnumerator SpawnAllWave()
+    private IEnumerator SpawnAllWaveAndBoss()
     {
         while (currentWaveIndex < enemyWaves.Count)
         {
             yield return StartCoroutine(SpawnWave(currentWave)); // Wait until the wave is done
+            yield return new WaitUntil(() => CheckWaveClear(currentWave));
             yield return new WaitForSeconds(currentWave.delayForTheNextWave);
             SetNextCurrentWave();
         }
+        if (CheckWaveClear(currentWave))
+        {
+            StartCoroutine(SpawnBoss());
+
+        }
     }
+    private bool CheckWaveClear(EnemyWave currentWave)
+    {
+        List<GameObject> enemy = GameObject.FindGameObjectsWithTag("Enemy").ToList();
+        return enemy.Count == 0 && currentWave.isDoneSpawned;
+    }
+    private IEnumerator SpawnBoss()
+    {
+        yield return new WaitForSeconds(spawnBossCountdown);
+        GameObject boss = Instantiate(Boss, spawnPos, Quaternion.identity);
+        BossHealth bossHealth = boss.GetComponent<BossHealth>();
+        if (bossHealth != null)
+        {
+            bossHealth.Initialize(bossHealthBar, bossHealthFill);
+        }
+    }
+
 
 
 }
