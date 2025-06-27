@@ -358,9 +358,9 @@ MonoBehaviour:
   - item: {fileID: 1396731594646046006, guid: 9c322bc1b61813d469afc9ac9424a51d, type: 3}
     rate: 1.5
   - item: {fileID: 282112012492073636, guid: 83a45d9d250337448a14cfbbbbbcb19f, type: 3}
-    rate: 18.9
+    rate: 0.5
   - item: {fileID: 6687629543920029719, guid: f72f675ac525abc47ae54470130e4206, type: 3}
-    rate: 35.8
+    rate: 0.5
 --- !u!1 &2824292653297022810
 GameObject:
   m_ObjectHideFlags: 0

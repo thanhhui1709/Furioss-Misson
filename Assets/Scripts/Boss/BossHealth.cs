@@ -4,7 +4,9 @@ using static UnityEngine.Rendering.DebugUI;
 
 public class BossHealth : MonoBehaviour
 {
-
+    //Event
+    private GameEvent gameEvent;
+    //health component
     [SerializeField]private float maxHealth;
     private Slider healthBar;
     private Image healthFill;
@@ -13,16 +15,15 @@ public class BossHealth : MonoBehaviour
 
     private float currentHealth;
 
-    public void Initialize(Slider externalHealthBar,Image externalHealthFill)
+    public void Initialize(Slider externalHealthBar,Image externalHealthFill,GameEvent gameEvent)
     {
         healthBar = externalHealthBar;
         healthFill= externalHealthFill;
         healthBar.gameObject.SetActive(true);
         currentHealth = maxHealth;
         UpdateHealthBar();
+        this.gameEvent = gameEvent;
     }
-
-    // Update is called once per frame
 
     public void TakeDamage(int damage)
     {
@@ -35,6 +36,7 @@ public class BossHealth : MonoBehaviour
     }
     private void Die()
     {
+        gameEvent.TriggerStageClearEvent();
         Destroy(transform.root.gameObject);
         healthFill.enabled = false;
     }

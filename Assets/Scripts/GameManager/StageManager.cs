@@ -13,6 +13,7 @@ public class StageManager : MonoBehaviour
 
     [Header("Boss")]
     public GameObject Boss;
+    public GameEvent GameEvent;
     [SerializeField] private Slider bossHealthBar;
     [SerializeField] private Image bossHealthFill;
     [SerializeField] private float spawnBossCountdown;
@@ -27,7 +28,6 @@ public class StageManager : MonoBehaviour
         StartCoroutine(SpawnAllWaveAndBoss());
     }
 
-    // Update is called once per frame
     private void SetNextCurrentWave()
     {
 
@@ -105,10 +105,10 @@ public class StageManager : MonoBehaviour
         BossHealth bossHealth = boss.GetComponent<BossHealth>();
         if (bossHealth != null)
         {
-            bossHealth.Initialize(bossHealthBar, bossHealthFill);
+            bossHealth.Initialize(bossHealthBar, bossHealthFill,GameEvent);
         }
     }
-
+   
 
 
 }
