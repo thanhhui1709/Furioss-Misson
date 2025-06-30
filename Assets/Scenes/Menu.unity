@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 324813118}
   - component: {fileID: 324813117}
   - component: {fileID: 324813116}
+  - component: {fileID: 324813120}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -223,6 +224,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &324813120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 324813115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de29f4285aac2f64da7ef3f596376478, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &348970866
 GameObject:
   m_ObjectHideFlags: 0
@@ -305,7 +318,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 348970869}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 324813120}
+        m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
+        m_MethodName: ExitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &348970869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -672,7 +697,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 869131071}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 324813120}
+        m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
+        m_MethodName: StartGameScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &869131071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -995,7 +1032,6 @@ GameObject:
   - component: {fileID: 1268778269}
   - component: {fileID: 1268778268}
   - component: {fileID: 1268778267}
-  - component: {fileID: 1268778266}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Canvas
@@ -1003,20 +1039,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1268778266
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1268778265}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b7833680c5556145bc4c66feedb86b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  heartPrefab: {fileID: 5889697342974056738, guid: c23d672a456d63b4995e1ba82252f67a, type: 3}
-  heartContainer: {fileID: 0}
 --- !u!114 &1268778267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1031,34 +1053,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onStageClear:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1268778268}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: ClearStage
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   onGameOver:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1268778268}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: GameOver
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   onWinGame:
     m_PersistentCalls:
       m_Calls: []
@@ -1068,18 +1066,6 @@ MonoBehaviour:
       - m_Target: {fileID: 1268778268}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: HandleRespawn
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1268778266}
-        m_TargetAssemblyTypeName: LivesUI, Assembly-CSharp
-        m_MethodName: RemoveHeart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1101,9 +1087,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84a2a90ba636dae4a9336b0aceb63f6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfLive: 3
+  numberOfLive: 1
   respawnTime: 3
-  UI: {fileID: 0}
+  GameEvent: {fileID: 1268778267}
 --- !u!4 &1268778269
 Transform:
   m_ObjectHideFlags: 0

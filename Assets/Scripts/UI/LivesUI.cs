@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class LivesUI : MonoBehaviour
@@ -13,6 +14,15 @@ public class LivesUI : MonoBehaviour
     {
         maxLives = GameManager.instance.numberOfLive;
         CreateHearts(maxLives); // Initial lives
+    }
+   
+    private void OnEnable()
+    {
+        GameManager.instance.GameEvent.onPlayerDie.AddListener(RemoveHeart);
+    }
+    private void OnDisable()
+    {
+        GameManager.instance.GameEvent.onPlayerDie.RemoveListener(RemoveHeart);
     }
 
     public void CreateHearts(int lives)

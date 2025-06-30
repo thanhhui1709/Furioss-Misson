@@ -10,8 +10,8 @@ public class GameManager : MonoBehaviour
     public int numberOfLive;
     public float respawnTime;
     public static GameManager instance;
-
-    public Canvas UI;
+    public GameEvent GameEvent;
+   
 
 
     public class Data
@@ -28,37 +28,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            ToogleMenu();
-
-
-        }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            ClearStage();
-
-
-        }
-
-    }
+   
     public void GameOver()
     {
-        if (numberOfLive == 0)
-        {
-            Transform UITransform = UI.transform.Find("UI");
-            if (UITransform != null)
-            {
-                Transform textTransform = UITransform.GetComponentInChildren<Transform>(true).Find("GameOverText");
-                GameObject text = textTransform.gameObject;
-                bool isActive = text.activeSelf;
-                text.SetActive(!isActive);
-            }
-            
-
-        }
+       
        
     }
     public void WinGame()
@@ -74,32 +47,10 @@ public class GameManager : MonoBehaviour
 
 
     }
-    public void ToogleMenu()
-    {
-
-        Transform UITransform = UI.transform.Find("UI");
-        if (UITransform != null)
-        {
-            Transform menuTransform = UITransform.GetComponentInChildren<Transform>(true).Find("Menu");
-            GameObject menu=menuTransform.gameObject;
-            bool isActive = menu.activeSelf;
-            menu.SetActive(!isActive);
-            Time.timeScale = isActive ? 1 : 0;
-
-        }
-
-
-    }
+   
     public void ClearStage()
     {
-        Transform UITransform = UI.transform.Find("UI");
-        if (UITransform != null)
-        {
-            Transform textTransform = UITransform.GetComponentInChildren<Transform>(true).Find("ClearStageText");
-            GameObject text=textTransform.gameObject;   
-            bool isActive=text.activeSelf;
-            text.SetActive(!isActive);
-        }
+        
     }
     public void HandleRespawn()
     {

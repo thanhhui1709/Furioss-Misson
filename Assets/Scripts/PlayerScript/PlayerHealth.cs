@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public GameEvent gameEvent;
+    private GameEvent gameEvent;
 
     [SerializeField] private float maxHealth;
     
@@ -26,7 +26,7 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth = maxHealth;
         UpdateHealthBar();
-       
+       gameEvent=GameManager.instance.GameEvent;
         
  
     }
