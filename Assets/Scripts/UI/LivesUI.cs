@@ -18,11 +18,11 @@ public class LivesUI : MonoBehaviour
    
     private void OnEnable()
     {
-        GameManager.instance.GameEvent.onPlayerDie.AddListener(RemoveHeart);
+        GameEvent.instance.onPlayerDie.AddListener(RemoveHeart);
     }
     private void OnDisable()
     {
-        GameManager.instance.GameEvent.onPlayerDie.RemoveListener(RemoveHeart);
+        GameEvent.instance.onPlayerDie.RemoveListener(RemoveHeart);
     }
 
     public void CreateHearts(int lives)

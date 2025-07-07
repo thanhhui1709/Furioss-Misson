@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    private GameEvent gameEvent;
+  
 
     [SerializeField] private float maxHealth;
     
@@ -24,9 +24,10 @@ public class PlayerHealth : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
+        GameManager.instance.PlayerHealth = this;
         currentHealth = maxHealth;
         UpdateHealthBar();
-       gameEvent=GameManager.instance.GameEvent;
+     
         
  
     }
@@ -54,12 +55,12 @@ public class PlayerHealth : MonoBehaviour
         if (GameManager.instance.numberOfLive<=0)
         {
 
-            gameEvent.TriggerGameOverEvent();
+            GameEvent.instance.TriggerGameOverEvent();
           
         }
         else
         {
-            gameEvent.TriggerPlayerDieEvent();
+            GameEvent.instance.TriggerPlayerDieEvent();
         }
         transform.gameObject.SetActive(false);
 
@@ -119,6 +120,25 @@ public class PlayerHealth : MonoBehaviour
         isDead=false;
       
 
+    }
+
+    public void Save(ref PlayerHealthSaveData saveData)
+    {
+        saveData.maxHealth = maxHealth;
+        saveData.cur=currentHealth;
+    }
+    public void Load(PlayerHealthSaveData saveData)
+    {
+        maxHealth=saveData.maxHealth;
+        currentHealth=saveData.cur;
+        UpdateHealthBar() ;
+    }
+
+    [System.Serializable]
+    public struct PlayerHealthSaveData
+    {
+        public float maxHealth;
+        public float cur;
     }
 
 }

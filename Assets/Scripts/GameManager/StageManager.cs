@@ -13,7 +13,6 @@ public class StageManager : MonoBehaviour
 
     [Header("Boss")]
     public GameObject Boss;
-    public GameEvent GameEvent;
     [SerializeField] private Slider bossHealthBar;
     [SerializeField] private Image bossHealthFill;
     [SerializeField] private float spawnBossCountdown;
@@ -24,6 +23,7 @@ public class StageManager : MonoBehaviour
     private int currentWaveIndex = 0;
     void Start()
     {
+        GameManager.instance.StageManager = this;
         currentWave = enemyWaves[currentWaveIndex];
         StartCoroutine(SpawnAllWaveAndBoss());
     }
@@ -105,10 +105,29 @@ public class StageManager : MonoBehaviour
         BossHealth bossHealth = boss.GetComponent<BossHealth>();
         if (bossHealth != null)
         {
-            bossHealth.Initialize(bossHealthBar, bossHealthFill,GameEvent);
+            bossHealth.Initialize(bossHealthBar, bossHealthFill);
         }
     }
-   
+
+    public void Save(ref StageData stageData)
+    {
+        stageData.currentWave = currentWave;
+        stageData.index=currentWaveIndex;
+    }
+    public void Load(StageData stageData)
+    {
+
+        currentWave = stageData.currentWave;    
+        currentWaveIndex = stageData.index; 
+    }
+        
+    
+    [System.Serializable]
+    public struct StageData
+    {
+        public EnemyWave currentWave;
+        public int index;
+    }
 
 
 }

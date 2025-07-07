@@ -15,10 +15,10 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Image
   - Water
   - UI
-  - 
+  - Panel
   - 
   - 
   - 
@@ -47,6 +47,15 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: UI
+    uniqueID: 1028429403
+    locked: 0
+  - name: Image
+    uniqueID: 3984542461
+    locked: 0
+  - name: Panel
+    uniqueID: 497819787
     locked: 0
   m_RenderingLayers:
   - Default

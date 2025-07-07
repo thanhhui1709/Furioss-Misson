@@ -11,14 +11,14 @@ public class InGameUiManager : MonoBehaviour
     }
     private void OnDisable()
     {
-        GameManager.instance.GameEvent.onStageClear.RemoveListener(DisplayClearStage);
-        GameManager.instance.GameEvent.onGameOver.RemoveListener(DisplayGameOver);
+        GameEvent.instance.onStageClear.RemoveListener(DisplayClearStage);
+        GameEvent.instance.onGameOver.RemoveListener(DisplayGameOver);
     }
     private IEnumerator WaitAndSubscribe()
     {
-        yield return new WaitUntil(() => GameManager.instance != null && GameManager.instance.GameEvent != null);
-        GameManager.instance.GameEvent.onStageClear.AddListener(DisplayClearStage);
-        GameManager.instance.GameEvent.onGameOver.AddListener(DisplayGameOver);
+        yield return new WaitUntil(() => GameManager.instance != null && GameEvent.instance != null);
+        GameEvent.instance.onStageClear.AddListener(DisplayClearStage);
+        GameEvent.instance.onGameOver.AddListener(DisplayGameOver);
     }
 
     // Update is called once per frame

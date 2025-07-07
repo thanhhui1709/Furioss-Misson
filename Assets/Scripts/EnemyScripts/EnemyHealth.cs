@@ -10,19 +10,26 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private Slider healthBar;
     [SerializeField] private Vector3 offset;
     [SerializeField] private float displayTime = 1.5f;
+    [SerializeField] private int exp;
     public DropItems items;
+    public GameObject deathEffect;
+    public AudioClip deathSound;
 
     private Camera mainCamera;
     private Coroutine hideBarCoroutine;
+    private AudioSource audioSource;
 
     void Awake()
     {
+        GameEvent.instance.onPlayerLevelUp.AddListener(LevelUpHealth);
         currentHealth = maxHealth;
         mainCamera = Camera.main;
 
 
         UpdateHealthBar();
         healthBar.gameObject.SetActive(false);
+        audioSource = GetComponent<AudioSource>();
+
 
     }
 
@@ -76,7 +83,24 @@ public class EnemyHealth : MonoBehaviour
 
     private void Die()
     {
-        Destroy(transform.root.gameObject);
+        GameEvent.instance.TriggerEnemyDieEvent(exp);   
         items.DropItem();
+        audioSource.clip = deathSound;
+        audioSource.Play();
+        Instantiate(deathEffect, transform.position, Quaternion.identity);
+        StartCoroutine(WaitThenDie());
+       
+    }
+    IEnumerator WaitThenDie()
+    {
+        yield return new WaitForSeconds(0.1f);
+        Destroy(transform.root.gameObject);
+    }
+
+    public void LevelUpHealth()
+    {
+        maxHealth += 10; // Increase max health by 10
+        currentHealth = maxHealth; // Reset current health to max
+
     }
 }

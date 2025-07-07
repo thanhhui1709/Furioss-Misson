@@ -3,15 +3,29 @@ using UnityEngine.Events;
 
 public class GameEvent : MonoBehaviour
 {
+    public static GameEvent instance;
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        DontDestroyOnLoad(gameObject);
+
+    }
     public UnityEvent onStageClear;
     public UnityEvent onGameOver;
     public UnityEvent onWinGame;
     public UnityEvent onPlayerDie;
+    public UnityEvent onPlayerLevelUp;
+    public UnityAction<int> onEnemyDie;
 
-    public void TriggerStageClearEvent()=> onStageClear?.Invoke();
-    public void TriggerWinGameEvent()=> onWinGame?.Invoke();
-    public void TriggerGameOverEvent()=> onGameOver?.Invoke();
-    public void TriggerPlayerDieEvent()=>onPlayerDie?.Invoke();
+    public void TriggerStageClearEvent() => onStageClear?.Invoke();
+    public void TriggerWinGameEvent() => onWinGame?.Invoke();
+    public void TriggerGameOverEvent() => onGameOver?.Invoke();
+    public void TriggerPlayerDieEvent() => onPlayerDie?.Invoke();
+    public void TriggerEnemyDieEvent(int exp) => onEnemyDie?.Invoke(exp);
+    public void TriggerPlayerLevelUpEvent() => onPlayerLevelUp?.Invoke();
 
 
 }

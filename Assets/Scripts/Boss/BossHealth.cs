@@ -1,28 +1,30 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using static UnityEngine.Rendering.DebugUI;
 
 public class BossHealth : MonoBehaviour
 {
-    //Event
-    private GameEvent gameEvent;
+   
     //health component
     [SerializeField]private float maxHealth;
     private Slider healthBar;
     private Image healthFill;
     public Gradient gradient;
+    public ParticleSystem explosion;
+    public AudioSource explosionSound;
 
 
     private float currentHealth;
 
-    public void Initialize(Slider externalHealthBar,Image externalHealthFill,GameEvent gameEvent)
+    public void Initialize(Slider externalHealthBar,Image externalHealthFill)
     {
         healthBar = externalHealthBar;
         healthFill= externalHealthFill;
         healthBar.gameObject.SetActive(true);
         currentHealth = maxHealth;
         UpdateHealthBar();
-        this.gameEvent = gameEvent;
+      
     }
 
     public void TakeDamage(int damage)
@@ -36,9 +38,12 @@ public class BossHealth : MonoBehaviour
     }
     private void Die()
     {
-        gameEvent.TriggerStageClearEvent();
-        Destroy(transform.root.gameObject);
+        GameEvent.instance.TriggerStageClearEvent();
+        explosion.Play();
+        explosionSound.Play();
         healthFill.enabled = false;
+        StartCoroutine(DieAfterDelay(1f));
+
     }
     private void UpdateHealthBar()
     {
@@ -46,4 +51,10 @@ public class BossHealth : MonoBehaviour
         healthBar.value=value;
         healthFill.color = gradient.Evaluate(value);
     }
+    private IEnumerator DieAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        Destroy(transform.root.gameObject);
+    }
+
 }

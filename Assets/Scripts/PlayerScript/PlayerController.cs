@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -27,26 +27,21 @@ public class PlayerController : MonoBehaviour
         Vector3 direction = (mousePos - transform.position).normalized;
         direction.z = 0;
 
-        if (transform.position.x >= horizontalBound)
-        {
-            transform.position = new Vector3(horizontalBound, transform.position.y, 0);
-        }
-        else if (transform.position.x <= -horizontalBound)
-        {
-            transform.position = new Vector3(-horizontalBound, transform.position.y, 0);
-        }
-        if (transform.position.y >= verticalBound)
-        {
-            transform.position = new Vector3(transform.position.x, verticalBound, 0);
-        }
-        else if (transform.transform.position.y <= -verticalBound)
-        {
-            transform.position = new Vector3(transform.position.x, -verticalBound, 0);
-        }
+        // Clamp position within bounds
+        float clampedX = Mathf.Clamp(transform.position.x, -horizontalBound, horizontalBound);
+        float clampedY = Mathf.Clamp(transform.position.y, -verticalBound, verticalBound);
+        transform.position = new Vector3(clampedX, clampedY, 0);
 
-        transform.Translate(direction * mouseSpeed * Time.deltaTime, Space.World);
+        // Move player
+        transform.Translate(direction * mouseSpeed * Time.fixedDeltaTime, Space.World);
+
+        //// 🔄 Rotate player based on horizontal direction
+        //float maxTiltAngle = 50f;
+        //float tilt = Mathf.Lerp(0, maxTiltAngle, Mathf.Abs(direction.x)) * Mathf.Sign(direction.x);
+        //transform.rotation = Quaternion.Euler(0, tilt, 0); // Negative to tilt visually left/right
     }
-   
+
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
