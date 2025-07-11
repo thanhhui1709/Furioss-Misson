@@ -19,6 +19,7 @@ public class GameEvent : MonoBehaviour
     public UnityEvent onPlayerDie;
     public UnityEvent onPlayerLevelUp;
     public UnityAction<int> onEnemyDie;
+    public UnityEvent onStageStart;
 
     public void TriggerStageClearEvent() => onStageClear?.Invoke();
     public void TriggerWinGameEvent() => onWinGame?.Invoke();
@@ -26,6 +27,7 @@ public class GameEvent : MonoBehaviour
     public void TriggerPlayerDieEvent() => onPlayerDie?.Invoke();
     public void TriggerEnemyDieEvent(int exp) => onEnemyDie?.Invoke(exp);
     public void TriggerPlayerLevelUpEvent() => onPlayerLevelUp?.Invoke();
+    public void TriggerStageStart()=> onStageStart?.Invoke();
 
 
 }

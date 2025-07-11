@@ -13,7 +13,7 @@ public class PlayerHealth : MonoBehaviour
     public Image healthFill;
     public Gradient gradient;
     public bool hasShield;
-    
+    public float healthPlusWhenLevelUp = 10f; // Amount of health to increase when leveling up
     private bool isDead = false;
     private float currentHealth;
 
@@ -24,6 +24,7 @@ public class PlayerHealth : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
+        GameEvent.instance.onPlayerLevelUp.AddListener(SetMaxHealth);
         GameManager.instance.PlayerHealth = this;
         currentHealth = maxHealth;
         UpdateHealthBar();
@@ -31,7 +32,15 @@ public class PlayerHealth : MonoBehaviour
         
  
     }
+    private void OnEnable()
+    {
+        currentHealth = maxHealth;
+        UpdateHealthBar();
+        healthFill.enabled = true;
+        isDead = false;
 
+
+    }
 
     public void TakeDamage(int damage)
     {
@@ -70,6 +79,12 @@ public class PlayerHealth : MonoBehaviour
         float value = currentHealth / maxHealth;
         healthBar.value = value;
         healthFill.color = gradient.Evaluate(value);
+    }
+    public void SetMaxHealth()
+    {
+        maxHealth += healthPlusWhenLevelUp;
+        currentHealth = maxHealth;
+        UpdateHealthBar();
     }
     public void Health(int amount)
     {
@@ -112,15 +127,7 @@ public class PlayerHealth : MonoBehaviour
         shieldIndicator.gameObject.SetActive(true);
         StartCoroutine(DisableShieldEffect());
     }
-    private void OnEnable()
-    {
-        currentHealth = maxHealth;
-        UpdateHealthBar();
-        healthFill.enabled = true;
-        isDead=false;
-      
-
-    }
+    
 
     public void Save(ref PlayerHealthSaveData saveData)
     {

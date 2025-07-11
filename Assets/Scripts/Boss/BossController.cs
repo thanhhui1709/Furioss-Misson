@@ -1,7 +1,6 @@
 
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
 
 public class BossController : MonoBehaviour
@@ -11,13 +10,15 @@ public class BossController : MonoBehaviour
     {
         public IMovementPattern movement;
         public AShootingController shootPattern;
+        public GameObject projectile;
         public float delayBetweenMoveAndShot;
-        public float restTime;
+        public float minRestTime;
+        public float maxRestTime;
     }
 
     public List<BossBehavior> behaviours;
-    public GameObject bossProjectiles;
-    [SerializeField] private float sequenceBehaviorCooldown = 2f;
+    [SerializeField] private float minSequenceBehaviorCooldown;
+    [SerializeField] private float maxSequenceBehaviorCooldown;
     [SerializeField] private float activeTime = 4f;
     [SerializeField] private float spawnDistance;
     [SerializeField] private float spawnSpeed;
@@ -40,15 +41,15 @@ public class BossController : MonoBehaviour
         yield return new WaitForSeconds(activeTime);
         while (true)
         {
-            for (int i = 0; i < behaviours.Count; i++)
-            {
-                var behavior = behaviours[i];
+           
+            
+             var behavior = behaviours[Random.Range(0,behaviours.Count-1)];
 
              yield return   StartCoroutine(ExecuteSingeBehavior(behavior));
 
 
-            yield return new WaitForSeconds(sequenceBehaviorCooldown);
-            }
+            yield return new WaitForSeconds(Random.Range(minSequenceBehaviorCooldown, maxSequenceBehaviorCooldown));
+            
            
             // Wait before starting next behavior loop
         }
@@ -77,9 +78,9 @@ public class BossController : MonoBehaviour
         // Shoot
         if (behavior.shootPattern != null)
         {
-            behavior.shootPattern.Shoot(transform, playerTransform, bossProjectiles);
+            behavior.shootPattern.Shoot(this,transform, playerTransform, behavior.projectile);
         }
-        yield return new WaitForSeconds(behavior.restTime);
+        yield return new WaitForSeconds(Random.Range(behavior.minRestTime, behavior.maxRestTime));
 
     }
     void Update()

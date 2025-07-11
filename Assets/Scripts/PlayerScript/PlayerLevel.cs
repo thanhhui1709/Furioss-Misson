@@ -13,6 +13,8 @@ public class PlayerLevel : MonoBehaviour
     public LevelData levelData;
     public TextMeshProUGUI levelText;
     public Slider experienceBar;
+    public AudioClip levelUpSound;
+    private AudioSource audioSource;
 
     void Awake()
     {
@@ -21,6 +23,7 @@ public class PlayerLevel : MonoBehaviour
         experienceToNextLevel = levelData.getExperienceForLevel(level);
         levelText.text = (level + 1).ToString();
         UpdateExperienceBar();
+        audioSource = GetComponent<AudioSource>();
     }
 
 
@@ -60,7 +63,8 @@ public class PlayerLevel : MonoBehaviour
         UpdateExperienceBar();
         //reset experience
         experience = 0;
-
+        //play audio
+        audioSource.PlayOneShot(levelUpSound);
 
     }
 

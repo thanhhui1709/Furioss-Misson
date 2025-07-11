@@ -57,7 +57,7 @@ public class PlayerWeapon : MonoBehaviour
         Weapon currentWp = guns[currentWeapon];
         GameObject projectile = currentWp.projectile[currentWp.currentLevel];
         Vector3 spawnPosition = transform.position + offsetBetweenProjectileAndHead;
-        Instantiate(projectile, spawnPosition, Quaternion.Euler(0, 0, 90));
+        ObjectPoolManager.SpawnObject(projectile, spawnPosition, Quaternion.identity,ObjectPoolManager.PoolType.PlayerProjectile);
         src.PlayOneShot(currentWp.gunSound);
         muzzleFlash.Play();
     }

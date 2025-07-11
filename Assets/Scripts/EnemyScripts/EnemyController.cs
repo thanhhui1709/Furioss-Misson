@@ -9,16 +9,18 @@ public class EnemyController : MonoBehaviour
     public class EnemyBase
     {
         public GameObject projectTile;
-        public float timePerShot;
-        public float timeInitShot = 7f;
+        public float minTimePerShot;
+        public float maxTimePerShot;
+        public float minTimeInitShot = 7f;
+        public float maxTimeInitShot = 10f;
         public int bodyDamage;
-
+        public AudioClip shootSound;
         public AShootingController shottingBehavior;
     }
     private Transform playerTransfrom;
     public EnemyBase enemyStat;
     private EnemyHealth enemyHealth;
- 
+    private AudioSource audioSource;
 
 
 
@@ -29,11 +31,11 @@ public class EnemyController : MonoBehaviour
         // Tìm player theo tag
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         enemyHealth = gameObject.GetComponentInChildren<EnemyHealth>(true);
-   
+        audioSource = GetComponent<AudioSource>();
         if (player != null)
         {
             playerTransfrom = player.transform;
-            InvokeRepeating("Shooting", enemyStat.timeInitShot, enemyStat.timePerShot);
+            InvokeRepeating("Shooting", Random.Range(enemyStat.minTimeInitShot,enemyStat.maxTimeInitShot), Random.Range(enemyStat.minTimePerShot, enemyStat.maxTimePerShot));
         }
     }
 
@@ -48,8 +50,11 @@ public class EnemyController : MonoBehaviour
 
         if (enemyStat.shottingBehavior != null)
         {
-            enemyStat.shottingBehavior.Shoot(transform, playerTransfrom, enemyStat.projectTile);
-
+            enemyStat.shottingBehavior.Shoot(this,transform, playerTransfrom, enemyStat.projectTile);
+            if (enemyStat.shootSound != null)
+            {
+                audioSource.PlayOneShot(enemyStat.shootSound);
+            }
         }
 
     }

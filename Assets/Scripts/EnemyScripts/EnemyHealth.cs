@@ -1,6 +1,7 @@
 using UnityEngine.UI;
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class EnemyHealth : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class EnemyHealth : MonoBehaviour
     private Coroutine hideBarCoroutine;
     private AudioSource audioSource;
 
+    private HashSet<int> processedAttackIDs = new HashSet<int>();
+
     void Awake()
     {
         GameEvent.instance.onPlayerLevelUp.AddListener(LevelUpHealth);
@@ -28,7 +31,7 @@ public class EnemyHealth : MonoBehaviour
 
         UpdateHealthBar();
         healthBar.gameObject.SetActive(false);
-        audioSource = GetComponent<AudioSource>();
+        audioSource = GetComponentInParent<AudioSource>(true);
 
 
     }
@@ -43,9 +46,18 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, int attackID)
     {
+        if(processedAttackIDs.Contains(attackID))
+        {
+            return; // Ignore if this attack ID has already been processed
+        }
         currentHealth -= damage;
+        processedAttackIDs.Add(attackID); 
+        if(processedAttackIDs.Count > 100)
+        {
+            processedAttackIDs.Clear(); // Clear the set to prevent memory overflow
+        }   
 
 
         if (healthBar != null)
@@ -87,7 +99,7 @@ public class EnemyHealth : MonoBehaviour
         items.DropItem();
         audioSource.clip = deathSound;
         audioSource.Play();
-        Instantiate(deathEffect, transform.position, Quaternion.identity);
+        ObjectPoolManager.SpawnObject(deathEffect, transform.position, Quaternion.identity,ObjectPoolManager.PoolType.Particle);
         StartCoroutine(WaitThenDie());
        
     }

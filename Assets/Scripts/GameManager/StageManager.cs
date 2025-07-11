@@ -24,8 +24,16 @@ public class StageManager : MonoBehaviour
     void Start()
     {
         GameManager.instance.StageManager = this;
-        currentWave = enemyWaves[currentWaveIndex];
-        StartCoroutine(SpawnAllWaveAndBoss());
+        GameEvent.instance.TriggerStageStart();
+        if (enemyWaves.Count != 0)
+        {
+            currentWave = enemyWaves[currentWaveIndex];
+            StartCoroutine(SpawnAllWaveAndBoss());
+        }
+        else
+        {
+            StartCoroutine(SpawnBoss());
+        }
     }
 
     private void SetNextCurrentWave()
@@ -112,16 +120,16 @@ public class StageManager : MonoBehaviour
     public void Save(ref StageData stageData)
     {
         stageData.currentWave = currentWave;
-        stageData.index=currentWaveIndex;
+        stageData.index = currentWaveIndex;
     }
     public void Load(StageData stageData)
     {
 
-        currentWave = stageData.currentWave;    
-        currentWaveIndex = stageData.index; 
+        currentWave = stageData.currentWave;
+        currentWaveIndex = stageData.index;
     }
-        
-    
+
+
     [System.Serializable]
     public struct StageData
     {

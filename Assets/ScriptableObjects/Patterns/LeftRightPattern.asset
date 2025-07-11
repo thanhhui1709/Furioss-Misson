@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   swingRange: 4
+  swingCooldown: 3.5
   isSwingLeft: 0
   maxSwingTimes: 99

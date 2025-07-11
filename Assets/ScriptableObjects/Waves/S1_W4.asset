@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f5c189040cacfd42a85aa2f6edcd767, type: 3}
+  m_Name: S1_W4
+  m_EditorClassIdentifier: 
+  waveData:
+  - enemyPrefab: {fileID: 541994470639020321, guid: 2c12682fe8052c1479131fc0b7201eaf, type: 3}
+    numberPerWave: 3
+    offset: 10
+    delaySpawnPrefab: 0
+    delayForTheNextWaveData: 1
+  - enemyPrefab: {fileID: 242305484210790470, guid: ca705693697b80e438580c0d1038e1d2, type: 3}
+    numberPerWave: 2
+    offset: 10
+    delaySpawnPrefab: 0
+    delayForTheNextWaveData: 0
+  delayForTheNextWave: 0
+  isDoneSpawned: 1

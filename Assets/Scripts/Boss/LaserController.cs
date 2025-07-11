@@ -9,11 +9,14 @@ public class LaserController : MonoBehaviour
     [SerializeField] private float dealDamageBetween = 0.25f;
 
     [SerializeField] private float accumulateTime = 3f;
+    public AudioClip accumulateSound;
     [SerializeField] private Vector3 scaleAccumulate;
     [SerializeField] private Vector3 scaleRealease;
+    public AudioClip releaseSound;
     [SerializeField] private float releaseDuration = 3f;
     [SerializeField] private float scaleTime = 0.5f;
     private float damageCooldown;
+    private AudioSource audioSource;
     private enum LaserState { Accumulate, Release };
     private LaserState state;
     private float timer;
@@ -24,6 +27,8 @@ public class LaserController : MonoBehaviour
         damageCooldown = int.MinValue;
         state= LaserState.Accumulate;
         timer = 0;
+        audioSource = GetComponent<AudioSource>();
+        audioSource.PlayOneShot(accumulateSound);
     }
 
     // Update is called once per frame
@@ -41,6 +46,7 @@ public class LaserController : MonoBehaviour
                 {
                     timer = 0;
                     state= LaserState.Release;
+                    audioSource.PlayOneShot(releaseSound);
                 }
 
                     break;

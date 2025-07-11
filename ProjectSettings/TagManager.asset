@@ -11,6 +11,7 @@ TagManager:
   - Boss
   - Canvas
   - BootItem
+  - Rocket
   layers:
   - Default
   - TransparentFX

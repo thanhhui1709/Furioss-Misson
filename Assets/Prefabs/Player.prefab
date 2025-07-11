@@ -247,12 +247,10 @@ MonoBehaviour:
   offsetBetweenProjectileAndHead: {x: 0, y: 1.5, z: 0}
   guns:
   - projectile:
-    - {fileID: 3298295552572775716, guid: 16eb3d4e2d09ce7478ff9b2dc63dcc20, type: 3}
-    - {fileID: 1152236082909556776, guid: 3212e9df814f599468bb2589a6176496, type: 3}
-    - {fileID: 5331735589886238288, guid: 8b911c08bc0b6b449bb4ce7182fcf8a2, type: 3}
-    - {fileID: 248515292459615723, guid: b50a249d3217611449e4a75ceca52d6c, type: 3}
-    - {fileID: 5578918809953068953, guid: d31c9ece2582a2048938fccf4433df7a, type: 3}
-    - {fileID: 110364785412648712, guid: 0579bd2f90b8f224f994513af76a5a2e, type: 3}
+    - {fileID: 1494573110181303559, guid: e1fb0b8a82b4c524885325b5aeb2b1a8, type: 3}
+    - {fileID: 5623145625892895862, guid: 5f66c29b42a1e394d94a5762815de28c, type: 3}
+    - {fileID: 1650767371795308466, guid: 31969031190386b4eb9fa428da30050f, type: 3}
+    - {fileID: 2242488125326411518, guid: 01ff946def5b3584bb0b7bd0032d3ad7, type: 3}
     damage: 5
     currentLevel: 0
     fireRate: 7

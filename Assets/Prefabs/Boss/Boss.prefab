@@ -171,10 +171,24 @@ MonoBehaviour:
   behaviours:
   - movement: {fileID: 0}
     shootPattern: {fileID: 11400000, guid: 07140d5c1ba7a1c4ab5a6c596003f8ad, type: 2}
+    projectile: {fileID: 7353483712703108750, guid: a9ef96cf16c3bdb46ae8d20fbcd12e3b, type: 3}
     delayBetweenMoveAndShot: 0
-    restTime: 8
-  bossProjectiles: {fileID: 7353483712703108750, guid: a9ef96cf16c3bdb46ae8d20fbcd12e3b, type: 3}
-  sequenceBehaviorCooldown: 1
+    minRestTime: 2
+    maxRestTime: 4
+  - movement: {fileID: 0}
+    shootPattern: {fileID: 11400000, guid: 82e10c06e6bd9764b81bc6732f6a9e6c, type: 2}
+    projectile: {fileID: 2087701196319124275, guid: d8283a0fdf90574418f92c2c378d35f2, type: 3}
+    delayBetweenMoveAndShot: 0
+    minRestTime: 2
+    maxRestTime: 4
+  - movement: {fileID: 0}
+    shootPattern: {fileID: 11400000, guid: 1959a863c13453a459a41f0ba64e6614, type: 2}
+    projectile: {fileID: 8021138323933753476, guid: 5642c69bd9ef5734f807c39e05cb467c, type: 3}
+    delayBetweenMoveAndShot: 0
+    minRestTime: 2
+    maxRestTime: 4
+  minSequenceBehaviorCooldown: 3
+  maxSequenceBehaviorCooldown: 5
   activeTime: 4
   spawnDistance: 12
   spawnSpeed: 12
@@ -191,6 +205,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 1000
+  healthBar: {fileID: 0}
+  healthFill: {fileID: 0}
   gradient:
     serializedVersion: 2
     key0: {r: 1, g: 0.04989811, b: 0, a: 1}
@@ -379,6 +395,10 @@ PrefabInstance:
     - target: {fileID: 5085700184500873002, guid: 6495bdf146632d84187a72880423e4a5, type: 3}
       propertyPath: m_Name
       value: Explosion2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7961866163572779141, guid: 6495bdf146632d84187a72880423e4a5, type: 3}
+      propertyPath: playOnAwake
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

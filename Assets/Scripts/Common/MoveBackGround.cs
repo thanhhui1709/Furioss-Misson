@@ -1,4 +1,7 @@
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections.Generic;
+using System.Collections;
+using Unity.Mathematics;
 
 public class MoveBackGround : MonoBehaviour
 {
@@ -6,11 +9,17 @@ public class MoveBackGround : MonoBehaviour
     public float backgroundHeight = 20f;
     private Vector3 initialPos;
 
+    public float increaseSpeedTime;
+
     
 
-    void Start()
+    void Awake()
     {
-      initialPos = transform.position;
+        GameEvent.instance.onStageStart.AddListener(() =>
+        {
+            StartCoroutine(IncreaseBackgroundSpeed(increaseSpeedTime));
+        });
+        initialPos = transform.position;
                 
     }
 
@@ -25,7 +34,27 @@ public class MoveBackGround : MonoBehaviour
            
 
         }
+     
+    }
+    IEnumerator IncreaseBackgroundSpeed(float increaseTime)
+    {
+        float elapsedTime = 0f;
+        float originalSpeed = scrollSpeed;
+        float boostedSpeed = originalSpeed * 20f;
+
+       
+        scrollSpeed = boostedSpeed;
+
+        while (elapsedTime < increaseTime)
+        {
+            elapsedTime += Time.deltaTime;
+            float t = elapsedTime / increaseTime;
+            scrollSpeed = Mathf.Lerp(boostedSpeed, originalSpeed, t);
+            yield return null;
+        }
+
+        scrollSpeed = originalSpeed;
     }
 
-   
+
 }

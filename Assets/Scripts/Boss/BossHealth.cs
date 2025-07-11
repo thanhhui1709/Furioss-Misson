@@ -8,8 +8,8 @@ public class BossHealth : MonoBehaviour
    
     //health component
     [SerializeField]private float maxHealth;
-    private Slider healthBar;
-    private Image healthFill;
+    public Slider healthBar;
+    public Image healthFill;
     public Gradient gradient;
     public ParticleSystem explosion;
     public AudioSource explosionSound;

@@ -30,7 +30,7 @@ public class CurvedPattern : IMovementPattern
           
             return;
         }
-        float x = isPositiveSide ? (_currentY * _currentY) / 2 + 1f : -(_currentY * _currentY) / 2 + 1f;
+        float x = isPositiveSide ? (_currentY * _currentY) / 2 + 1f : -((_currentY * _currentY) / 2 + 1f);
 
         // Adjust y based on isPositiveSide
         float y = _currentY;
@@ -41,12 +41,7 @@ public class CurvedPattern : IMovementPattern
 
     public override void UpdateMovement(Transform transform, float deltaTime)
     {
-        if (_rb == null || _isFinished)
-        {
-            if (_rb != null) _rb.linearVelocity = Vector2.zero;
-            return;
-        }
-
+     
         // Determine direction of movement (toward endY)
         float direction = startY < endY ? 1f : -1f;
 
@@ -54,14 +49,24 @@ public class CurvedPattern : IMovementPattern
         _currentY += direction * speed * Time.fixedDeltaTime;
 
         // Check if movement is finished
-        if ((direction > 0 && _currentY >= endY-offset) || (direction < 0 && _currentY <= endY+offset))
+        if ((direction > 0 && _currentY >= endY+offset) || (direction < 0 && _currentY <= endY+offset))
         {
-             // Clamp to endpoint
-            _isFinished = true;
+           Quaternion angle= Quaternion.Euler(0, 0, 180);
+           transform.rotation = Quaternion.RotateTowards(transform.rotation, angle, 10f);   
+            if(transform.rotation == angle)
+            {
+                _isFinished = true;
+                return;
+            }
+
+        }
+        else
+        {
+            UpdatePosition(transform);
         }
 
         // Update position based on current y
-        UpdatePosition(transform);
+       
     }
 
     private void UpdatePosition(Transform transform)
@@ -69,13 +74,16 @@ public class CurvedPattern : IMovementPattern
       
 
         // Calculate x based on y using x = y^2 + 1 + offset
-        float x = isPositiveSide ? (_currentY * _currentY)/2 + 1f: -(_currentY * _currentY) / 2 + 1f;
+        float x = isPositiveSide ? (_currentY * _currentY)/2 + 1f: -((_currentY * _currentY) / 2 + 1f);
 
         // Adjust y based on isPositiveSide
         float y =  _currentY ;
 
         // Set position using Rigidbody2D
-        Vector3 targetPosition = new Vector3(x, y, transform.position.z);
+        Vector3 targetPosition = new Vector3(x, y, 0);
+        Vector3 direction=(transform.position-targetPosition).normalized;
+        float angle= math.atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation= Quaternion.Euler(0, 0, angle); 
         _rb.MovePosition(targetPosition);
       
     }

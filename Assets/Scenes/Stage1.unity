@@ -344,6 +344,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fac02faf37d3a064a9fda8dfb0b79123, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Camera: {fileID: 135329810}
+  increaseTime: 3
+  initSize: 2
+  maxSize: 10
+  player: {fileID: 6564283668109826590}
 --- !u!1 &181102426
 GameObject:
   m_ObjectHideFlags: 0
@@ -1101,6 +1106,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 1000
+  healthBar: {fileID: 0}
+  healthFill: {fileID: 0}
   gradient:
     serializedVersion: 2
     key0: {r: 1, g: 0.04989811, b: 0, a: 1}
@@ -1204,6 +1211,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 550489398}
   m_CullTransparentMesh: 1
+--- !u!1 &632667441
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 632667443}
+  - component: {fileID: 632667442}
+  m_Layer: 0
+  m_Name: ObjectPoolManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &632667442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 632667441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7aba550e2e399704e97326c60e5cf7ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &632667443
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 632667441}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -12.3708, y: 2.20209, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &690454223
 GameObject:
   m_ObjectHideFlags: 0
@@ -1510,6 +1561,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyWaves:
   - {fileID: 11400000, guid: 5e7b6373a2245b042aa9faf4982bb346, type: 2}
+  - {fileID: 11400000, guid: 5455c10d8a15be64892a4d39652eddc2, type: 2}
+  - {fileID: 11400000, guid: 0f2a1e7fc62eeea4784a01e8d8f356e2, type: 2}
+  - {fileID: 11400000, guid: e89190f54e25b954392dc2e5f40a31a6, type: 2}
   Boss: {fileID: 1382627377064896508, guid: 326e41d987af3b140a01937e2f91beae, type: 3}
   bossHealthBar: {fileID: 507365863}
   bossHealthFill: {fileID: 1541050953}
@@ -3240,6 +3294,12 @@ MonoBehaviour:
   levelData: {fileID: 11400000, guid: 9fdcd6ecad6d4ca4d9a61dde4d255562, type: 2}
   levelText: {fileID: 1129965336}
   experienceBar: {fileID: 817801777}
+  levelUpSound: {fileID: 8300000, guid: 30142fc5dc7de9e448ae9bbebbdde18e, type: 3}
+--- !u!4 &6564283668109826590 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4651805754598463463, guid: b2cd5e77e471edb408b2a1b923211a63, type: 3}
+  m_PrefabInstance: {fileID: 6564283668109826587}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8980205612410669052
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3249,12 +3309,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1052908111370633873, guid: 91c7c1cafc57ffc45a2e735274d69f0b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1052908111370633873, guid: 91c7c1cafc57ffc45a2e735274d69f0b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1052908111370633873, guid: 91c7c1cafc57ffc45a2e735274d69f0b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1052908111370633873, guid: 91c7c1cafc57ffc45a2e735274d69f0b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1052908111370633873, guid: 91c7c1cafc57ffc45a2e735274d69f0b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3292,7 +3360,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'BackGround '
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8488650802528446640, guid: 91c7c1cafc57ffc45a2e735274d69f0b, type: 3}
+      propertyPath: increaseSpeedTime
+      value: 5
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3431955317596013826, guid: 91c7c1cafc57ffc45a2e735274d69f0b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3307,3 +3380,4 @@ SceneRoots:
   - {fileID: 1915705894}
   - {fileID: 1762522872}
   - {fileID: 860958723}
+  - {fileID: 632667443}

@@ -17,7 +17,7 @@ public class DestroyOutOfBound : MonoBehaviour
         Vector3 pos = transform.position;
         if(pos.y >= verticalBound || pos.y < -verticalBound || pos.x >= horizontalBound || pos.x < -horizontalBound)
         {
-            Destroy(gameObject);
+            ObjectPoolManager.ReturnObject(transform.root.gameObject);
         }
     }
 }

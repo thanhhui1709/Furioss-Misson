@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 461637e25414a514e88e7e474e6a5287, type: 3}
   m_Name: CurvedPattern_Right
   m_EditorClassIdentifier: 
-  startY: 8
-  endY: -2
-  speed: 5
+  startY: 15
+  endY: -4
+  speed: 4
   isPositiveSide: 1
