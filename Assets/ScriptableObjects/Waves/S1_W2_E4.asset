@@ -13,20 +13,26 @@ MonoBehaviour:
   m_Name: S1_W2_E4
   m_EditorClassIdentifier: 
   waveData:
-  - enemyPrefab: {fileID: 2997415971527481654, guid: b0ab05e8835bf1145b5bcfe67d798f2e, type: 3}
+  - dropItems: []
+    dropedTime: 0
+    enemyPrefab: {fileID: 2997415971527481654, guid: b0ab05e8835bf1145b5bcfe67d798f2e, type: 3}
     numberPerWave: 10
     offset: 2
     delaySpawnPrefab: 0.5
     delayForTheNextWaveData: 0
-  - enemyPrefab: {fileID: 2457692719626887776, guid: 03e00899314f2204e8f86d1731746bfe, type: 3}
+  - dropItems: []
+    dropedTime: 0
+    enemyPrefab: {fileID: 2457692719626887776, guid: 03e00899314f2204e8f86d1731746bfe, type: 3}
     numberPerWave: 7
     offset: 1.25
     delaySpawnPrefab: 0.5
     delayForTheNextWaveData: 0
-  - enemyPrefab: {fileID: 2457692719626887776, guid: 34a1da5c9856a1546b168cfb4c017fc4, type: 3}
+  - dropItems: []
+    dropedTime: 0
+    enemyPrefab: {fileID: 2457692719626887776, guid: 34a1da5c9856a1546b168cfb4c017fc4, type: 3}
     numberPerWave: 7
     offset: 1.25
     delaySpawnPrefab: 0.5
     delayForTheNextWaveData: 0
-  delayForTheNextWave: 5
+  delayForTheNextWave: 7
   isDoneSpawned: 1

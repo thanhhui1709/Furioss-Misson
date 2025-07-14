@@ -22,6 +22,10 @@ public class PlayerWeapon : MonoBehaviour
 
             damage += 5;
         }
+        public void IncreaseDamage(int amount)
+        {
+            damage += amount;
+        }
     }
 
     [SerializeField] private Vector3 offsetBetweenProjectileAndHead;
@@ -70,6 +74,10 @@ public class PlayerWeapon : MonoBehaviour
     public void LevelUpCurrentWeapon()
     {
         guns[currentWeapon].LevelUp();
+    }
+    public void IncreaseCurrentWeaponDamage(int amount)
+    {
+        guns[currentWeapon].IncreaseDamage(amount);
     }
 
     [System.Serializable]

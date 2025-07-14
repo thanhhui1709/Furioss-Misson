@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using static UnityEngine.Rendering.DebugUI;
@@ -16,6 +17,8 @@ public class BossHealth : MonoBehaviour
 
 
     private float currentHealth;
+    private Camera camera;
+    private HashSet<int> attackIDs= new HashSet<int>();
 
     public void Initialize(Slider externalHealthBar,Image externalHealthFill)
     {
@@ -24,12 +27,15 @@ public class BossHealth : MonoBehaviour
         healthBar.gameObject.SetActive(true);
         currentHealth = maxHealth;
         UpdateHealthBar();
-      
+        camera=GameObject.FindAnyObjectByType<Camera>();
+
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage,int attackID)
     {
-        currentHealth-=damage;
+        if (attackIDs.Contains(attackID)) return; // prevent duplicate damage from same attack ID
+        attackIDs.Add(attackID); // add attack ID to prevent duplicate damage
+        currentHealth -=damage;
         UpdateHealthBar() ;
         if (currentHealth <= 0) {
             Die();
@@ -41,6 +47,7 @@ public class BossHealth : MonoBehaviour
         GameEvent.instance.TriggerStageClearEvent();
         explosion.Play();
         explosionSound.Play();
+        camera.GetComponent<CameraController>().Shake();
         healthFill.enabled = false;
         StartCoroutine(DieAfterDelay(1f));
 

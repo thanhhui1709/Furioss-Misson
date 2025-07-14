@@ -43,7 +43,7 @@ public class PowerUpController : MonoBehaviour
         {
             PlayerWeapon wp = collision.gameObject.GetComponent<PlayerWeapon>();
 
-            wp.LevelUpCurrentWeapon();
+            wp.IncreaseCurrentWeaponDamage(3);
 
             Destroy(gameObject);
         }

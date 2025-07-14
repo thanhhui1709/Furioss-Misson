@@ -25,6 +25,7 @@ public class DropItems : MonoBehaviour
     public void DropItem()
     {
         float number = Random.Range(0, 100);
+        Debug.Log("Drop Item: " + number);
         float culmulative = 0;
         foreach (Item item in items)
         {

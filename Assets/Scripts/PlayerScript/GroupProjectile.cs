@@ -39,7 +39,7 @@ public class GroupProjectile : MonoBehaviour
     }
     public void DoDamage(BossHealth target)
     {
-        target.TakeDamage(damage);
+        target.TakeDamage(damage,attackID);
     }
     public void DoDamage(Rocket target)
     {

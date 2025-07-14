@@ -607,7 +607,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cc486be478dc704da794428d6b96b43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20
+  maxHealth: 40
   healthBar: {fileID: 5403974404865492031}
   offset: {x: 0, y: 1, z: 0}
   displayTime: 1.5

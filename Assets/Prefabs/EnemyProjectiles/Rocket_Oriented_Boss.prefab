@@ -174,7 +174,7 @@ MonoBehaviour:
   explosionRadius: 3
   explosionEffect: {fileID: 3512153588440623268, guid: 3fe7df3cf7d9dd740aeb06cc853de0e5, type: 3}
   explosionSound: {fileID: 8300000, guid: b517bb292fb2df049a9ed8d5cb54ba10, type: 3}
-  rocketSound: {fileID: 8300000, guid: e536eea434771a74d9a198c0e9761b34, type: 3}
+  rocketSound: {fileID: 8300000, guid: b0d6f90a29b2b5a4fba3ecebeacc11e9, type: 3}
   isOriented: 1
 --- !u!82 &1505983559225551704
 AudioSource:
@@ -189,7 +189,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.503
   m_Pitch: 1
   Loop: 0
   Mute: 0

@@ -43,7 +43,7 @@ public class BossController : MonoBehaviour
         {
            
             
-             var behavior = behaviours[Random.Range(0,behaviours.Count-1)];
+             var behavior = behaviours[Random.Range(0,behaviours.Count)];
 
              yield return   StartCoroutine(ExecuteSingeBehavior(behavior));
 

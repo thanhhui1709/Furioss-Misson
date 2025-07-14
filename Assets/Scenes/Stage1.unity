@@ -349,6 +349,8 @@ MonoBehaviour:
   initSize: 2
   maxSize: 10
   player: {fileID: 6564283668109826590}
+  shakeDuration: 0.5
+  shakeMagnitude: 0.3
 --- !u!1 &181102426
 GameObject:
   m_ObjectHideFlags: 0
@@ -1559,11 +1561,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d3c3408de75c4548a2096f6d5e8e2a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeTime: 7
   enemyWaves:
   - {fileID: 11400000, guid: 5e7b6373a2245b042aa9faf4982bb346, type: 2}
   - {fileID: 11400000, guid: 5455c10d8a15be64892a4d39652eddc2, type: 2}
   - {fileID: 11400000, guid: 0f2a1e7fc62eeea4784a01e8d8f356e2, type: 2}
   - {fileID: 11400000, guid: e89190f54e25b954392dc2e5f40a31a6, type: 2}
+  - {fileID: 11400000, guid: c9c45ffd60113a046a2ba71521d5df8e, type: 2}
   Boss: {fileID: 1382627377064896508, guid: 326e41d987af3b140a01937e2f91beae, type: 3}
   bossHealthBar: {fileID: 507365863}
   bossHealthFill: {fileID: 1541050953}
@@ -3310,11 +3314,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1052908111370633873, guid: 91c7c1cafc57ffc45a2e735274d69f0b, type: 3}
       propertyPath: m_LocalScale.x
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1052908111370633873, guid: 91c7c1cafc57ffc45a2e735274d69f0b, type: 3}
       propertyPath: m_LocalScale.y
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1052908111370633873, guid: 91c7c1cafc57ffc45a2e735274d69f0b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3322,7 +3326,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1052908111370633873, guid: 91c7c1cafc57ffc45a2e735274d69f0b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1052908111370633873, guid: 91c7c1cafc57ffc45a2e735274d69f0b, type: 3}
       propertyPath: m_LocalPosition.z

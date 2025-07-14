@@ -150,7 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   dealDamageBetween: 0.25
-  accumulateTime: 2
+  accumulateTime: 1
   accumulateSound: {fileID: 8300000, guid: 0a410b9da29bea4498060c003904e982, type: 3}
   scaleAccumulate: {x: 0.5, y: 0.1, z: 1}
   scaleRealease: {x: 1, y: 2.5, z: 1}

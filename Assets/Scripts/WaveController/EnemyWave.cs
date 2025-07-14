@@ -14,6 +14,8 @@ public class EnemyWave : ScriptableObject
     [System.Serializable]
     public class WaveData
     {
+        public List<GameObject> dropItems;
+        public float dropedTime;
         public GameObject enemyPrefab;
         public int numberPerWave;
         public float offset;

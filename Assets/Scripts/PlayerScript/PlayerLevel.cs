@@ -15,9 +15,11 @@ public class PlayerLevel : MonoBehaviour
     public Slider experienceBar;
     public AudioClip levelUpSound;
     private AudioSource audioSource;
+    private PlayerWeapon playerWeapon;
 
     void Awake()
     {
+        playerWeapon = GetComponent<PlayerWeapon>();
         GameEvent.instance.onPlayerLevelUp.AddListener(LevelUp);
         GameEvent.instance.onEnemyDie += GainExperience;
         experienceToNextLevel = levelData.getExperienceForLevel(level);
@@ -57,6 +59,26 @@ public class PlayerLevel : MonoBehaviour
             return;
         //Up level
         level++;
+        switch(level)
+        {
+           
+            case 3:
+                playerWeapon.LevelUpCurrentWeapon();
+                break;
+          
+            case 5:
+                playerWeapon.LevelUpCurrentWeapon();
+                break;
+            case 7:
+                playerWeapon.LevelUpCurrentWeapon();
+                break;
+           case 10:
+                playerWeapon.LevelUpCurrentWeapon();
+                break;
+            default:
+                playerWeapon.IncreaseCurrentWeaponDamage(5);
+                break;
+        }
         //update text and experience bar
         levelText.text = level.ToString();
         experienceToNextLevel = levelData.getExperienceForLevel(level);

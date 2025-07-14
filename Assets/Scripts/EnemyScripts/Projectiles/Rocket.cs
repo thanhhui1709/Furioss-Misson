@@ -31,6 +31,16 @@ public class Rocket : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         audioSource=GetComponent<AudioSource>();
     }
+    private void OnEnable()
+    {
+        cooldownTime = lifetime;
+        player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            playerPos = player.transform.position;
+        }
+        originalPos = transform.position;
+    }
 
     // Update is called once per frame
     void FixedUpdate()
@@ -64,7 +74,9 @@ public class Rocket : MonoBehaviour
             {
                 // Assuming the enemy has a method to take damage
                 collider.GetComponent<PlayerHealth>().TakeDamage(damage);
-                audioSource.PlayOneShot(explosionSound);
+               
+                audioSource.PlayOneShot(explosionSound,1.5f);
+
             }
         }
         ObjectPoolManager.SpawnObject(explosionEffect, transform.position, Quaternion.identity, ObjectPoolManager.PoolType.Particle);
@@ -75,11 +87,12 @@ public class Rocket : MonoBehaviour
     private void Moving()
     {
         rb.linearVelocity = transform.up * speed;
-        audioSource.PlayOneShot(rocketSound);
+        audioSource.PlayOneShot(rocketSound,0.1f);
     }
     private void Moving(Vector3 targetPos, Vector3 startPos)
     {
-        audioSource.PlayOneShot(rocketSound);
+       
+        audioSource.PlayOneShot(rocketSound,0.1f);
         float distanceTotal = Vector3.Distance(startPos, targetPos);
         float distanceTravelled = Vector3.Distance(transform.position, startPos);
         float remainingDistance = Vector3.Distance(transform.position, targetPos);

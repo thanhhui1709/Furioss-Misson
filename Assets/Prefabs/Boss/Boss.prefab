@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8895358559674780}
   - component: {fileID: 2060632250795180917}
   - component: {fileID: 3849836389134557052}
-  - component: {fileID: 3120650841315507871}
+  - component: {fileID: 469227250691397444}
   - component: {fileID: 1551024069938485893}
   - component: {fileID: 6473521473018306746}
   - component: {fileID: 8065197548591788512}
@@ -105,7 +105,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 100
+  m_Mass: 1000
   m_LinearDamping: 1
   m_AngularDamping: 0.05
   m_GravityScale: 0
@@ -120,8 +120,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &3120650841315507871
-CircleCollider2D:
+--- !u!60 &469227250691397444
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -154,8 +154,43 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.030457973, y: 0.39982882}
-  m_Radius: 3.4225376
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0.59, y: 0.12, z: 0.47, w: 1.5999999}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 7.69, y: 7.5}
+    newSize: {x: 6, y: 6}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -1.105, y: 1.87}
+      - {x: -1.265, y: 0.53}
+      - {x: -2.215, y: -0.06}
+      - {x: -2.175, y: -0.85999995}
+      - {x: -3.3049998, y: -1.66}
+      - {x: -3.0449998, y: -2.24}
+      - {x: -1.655, y: -1.62}
+      - {x: -1.105, y: -2.06}
+      - {x: -0.295, y: -1.68}
+      - {x: 0.125, y: -1.51}
+      - {x: 1.175, y: -2.01}
+      - {x: 1.795, y: -1.61}
+      - {x: 2.125, y: -1.78}
+      - {x: 3.155, y: -2.11}
+      - {x: 3.455, y: -1.74}
+      - {x: 2.245, y: -0.78}
+      - {x: 2.2749999, y: -0.08}
+      - {x: 1.2149999, y: 0.71999997}
+      - {x: 1.125, y: 1.8399999}
+      - {x: 0.465, y: 2.12}
+      - {x: 0.405, y: 2.62}
+      - {x: 0.255, y: 3.59}
+      - {x: -0.305, y: 3.6}
+      - {x: -0.445, y: 2.1399999}
+  m_UseDelaunayMesh: 0
 --- !u!114 &1551024069938485893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,8 +284,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 50c394142199a07478fb92c6c34faadb, type: 3}
-  m_Resource: {fileID: 8300000, guid: 50c394142199a07478fb92c6c34faadb, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 18ee4c1938ba6194a99ce9129c1e5181, type: 3}
+  m_Resource: {fileID: 8300000, guid: 18ee4c1938ba6194a99ce9129c1e5181, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

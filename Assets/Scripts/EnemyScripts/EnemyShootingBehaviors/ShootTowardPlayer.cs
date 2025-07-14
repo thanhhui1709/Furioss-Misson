@@ -12,7 +12,7 @@ public class ShootTowardPlayer : AShootingController
         shooterTransform.rotation = Quaternion.Euler(0, 0, angle);
         for (int i = 0; i < numberOfShot; i++)
         {
-            GameObject.Instantiate(projectilePrefab, shooterTransform.position, shooterTransform.rotation);
+            ObjectPoolManager.SpawnObject(projectilePrefab, shooterTransform.position, shooterTransform.rotation,ObjectPoolManager.PoolType.EnemyProjectile);
 
         }
 

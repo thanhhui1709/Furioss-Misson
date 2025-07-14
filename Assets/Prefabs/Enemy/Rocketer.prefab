@@ -624,14 +624,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cc486be478dc704da794428d6b96b43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 200
   healthBar: {fileID: 7472404802754156876}
   offset: {x: 0, y: 1, z: 0}
   displayTime: 1.5
   exp: 100
   items: {fileID: 3016372124481618335}
   deathEffect: {fileID: 8562486586392712937, guid: 445f3ab87082dbb4ab63343e2332384e, type: 3}
-  deathSound: {fileID: 8300000, guid: 31974b51c57379b4a8507dbac418b0a5, type: 3}
+  deathSound: {fileID: 8300000, guid: ab9be3234f3dfe9489b32b3fbbb653f1, type: 3}
 --- !u!1 &6749652723056657510
 GameObject:
   m_ObjectHideFlags: 0

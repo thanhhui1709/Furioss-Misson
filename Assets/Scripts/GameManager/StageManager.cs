@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class StageManager : MonoBehaviour
 {
     [Header("Wave")]
+    [SerializeField] private float activeTime=7f;
     [SerializeField] private List<EnemyWave> enemyWaves;
 
     [Header("Boss")]
@@ -65,6 +66,18 @@ public class StageManager : MonoBehaviour
 
             yield return new WaitForSeconds(wave.delaySpawnPrefab); // Delay between each enemy in wave
         }
+        StartCoroutine(SpawnDropItem(wave)); // Spawn drop items after all enemies are spawned
+    }
+    private IEnumerator SpawnDropItem(EnemyWave.WaveData wave)
+    {
+        if (wave.dropItems.Count == 0) yield break; // No items to drop
+        yield return new WaitForSeconds(wave.dropedTime);
+        foreach (var item in wave.dropItems)
+        {
+            GameObject dropItem = Instantiate(item, new Vector3(Random.Range(-20,20),15,0), Quaternion.identity);
+          
+        }
+
     }
     // instatiate all wave data(1 complete wave)
     private IEnumerator SpawnWave(EnemyWave currentWave)
@@ -88,6 +101,7 @@ public class StageManager : MonoBehaviour
     // instantiate all enemy wave
     private IEnumerator SpawnAllWaveAndBoss()
     {
+        yield return new WaitForSeconds(activeTime); // Wait for the active time before spawning the first wave
         while (currentWaveIndex < enemyWaves.Count)
         {
             yield return StartCoroutine(SpawnWave(currentWave)); // Wait until the wave is done
