@@ -1,39 +1,27 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using static PlayerWeapon;
 using System.IO;
-using UnityEditor.Overlays;
+using System.Threading.Tasks;
+
 
 public class GameManager : MonoBehaviour
 {
-   
+
+    public int currentSceneIndex;
     public int numberOfLive;
     public float respawnTime;
     public static GameManager instance;
-    public Data data;
 
     public PlayerHealth PlayerHealth { get; set; }
     public PlayerWeapon PlayerWeapon { get; set; }
     public StageManager StageManager { get; set; }
-
-
-
-    [System.Serializable]
-    public class Data
-    {
-        [Header("Wave data")]
-        public int StageIndex;
-        public int CurrentWave;
-        [Header("Player Data")]
-        public int numberOfLive;
-        public float MaxHealth;
-        public float CurrentHealth;
-        public List<Weapon> weapons;
-        public int currentWeapon;
-    }
+    public PlayerLevel PlayerLevel { get; set; }
+   
 
     private void Awake()
     {
@@ -42,17 +30,26 @@ public class GameManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
-    }
-    private void Update()
-      {
-        if (Input.GetKeyDown(KeyCode.Space)) {
-
-            SaveGame();
-        }
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (instance != null && instance != this)
         {
-            LoadGame(); 
+            Destroy(gameObject);
+            return;
         }
+    }
+    private void OnEnable()
+    {
+        GameEvent.instance.onStageClear.AddListener(ClearStage);
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        currentSceneIndex = scene.buildIndex;
+        Debug.Log("Scene loaded. Index updated to: " + currentSceneIndex);
     }
 
 
@@ -76,7 +73,16 @@ public class GameManager : MonoBehaviour
    
     public void ClearStage()
     {
-        
+        currentSceneIndex = SceneManager.GetActiveScene().buildIndex+1;
+        StageManager.ResetWaveAfterClearStage();
+        SaveGame();
+        StartCoroutine(GoToNextScene(SceneManager.GetActiveScene().buildIndex));   
+    }
+    IEnumerator GoToNextScene(int currentSceneIndex)
+    {
+        yield return new WaitForSeconds(5f);
+        LoadGame();
+       
     }
     public void HandleRespawn()
     {
@@ -95,6 +101,23 @@ public class GameManager : MonoBehaviour
         }
       
 
+    }
+    public void SaveSceneData(ref SceneData sceneData)
+    {    
+        sceneData.sceneIndex = currentSceneIndex;
+        sceneData.numberOfLives = numberOfLive;
+    }
+    public async Task LoadScene(SceneData sceneData)
+    {
+        await SceneManager.LoadSceneAsync(sceneData.sceneIndex);
+        numberOfLive = sceneData.numberOfLives;
+    }
+
+    [System.Serializable]
+    public struct SceneData
+    {
+        public int sceneIndex;
+        public int numberOfLives;
     }
 
 

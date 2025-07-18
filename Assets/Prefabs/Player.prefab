@@ -111,6 +111,7 @@ MonoBehaviour:
   mouseSpeed: 60
   verticalBound: 10
   horizontalBound: 24
+  disableMovement: 0
 --- !u!61 &8188521752932689466
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -230,6 +231,7 @@ MonoBehaviour:
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
   hasShield: 0
+  healthPlusWhenLevelUp: 10
   shieldIndicator: {fileID: 2995912549558838358}
   shieldDuration: 6
 --- !u!114 &2197722084409225055
@@ -245,6 +247,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offsetBetweenProjectileAndHead: {x: 0, y: 1.5, z: 0}
+  src: {fileID: 4867044546792319347}
+  muzzleFlash: {fileID: 497045588948710613}
   guns:
   - projectile:
     - {fileID: 1494573110181303559, guid: e1fb0b8a82b4c524885325b5aeb2b1a8, type: 3}
@@ -253,11 +257,10 @@ MonoBehaviour:
     - {fileID: 2242488125326411518, guid: 01ff946def5b3584bb0b7bd0032d3ad7, type: 3}
     damage: 5
     currentLevel: 0
-    fireRate: 7
+    fireRate: 10
+    lifeSteal: 0
     gunSound: {fileID: 8300000, guid: 8558be56a47f47b4ab9e94bb102fe8d8, type: 3}
-  src: {fileID: 4867044546792319347}
-  muzzleFlash: {fileID: 497045588948710613}
-  currentWeapon: 0
+  currentWeaponIndex: 0
 --- !u!82 &4867044546792319347
 AudioSource:
   m_ObjectHideFlags: 0

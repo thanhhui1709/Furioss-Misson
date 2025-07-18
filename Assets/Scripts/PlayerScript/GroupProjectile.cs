@@ -3,18 +3,20 @@ using UnityEngine;
 
 public class GroupProjectile : MonoBehaviour
 {
-    public int damage = 10;
+
     private int attackID;
 
     public float speed;
-
     [SerializeField] private float horizontalBound;
     [SerializeField] private float verticalBound;
+    private PlayerWeapon playerWeapon;
+    private PlayerHealth playerHealth;
 
-  
     private void OnEnable()
     {
         attackID = AttackIDGenerator.GetNextID();
+        playerWeapon = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerWeapon>();
+        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
         //find all children and set active for all  
         foreach (Transform child in transform)
         {
@@ -35,15 +37,31 @@ public class GroupProjectile : MonoBehaviour
 
     public void DoDamage(EnemyHealth target)
     {
-            target.TakeDamage(damage,attackID); 
+        float damage = playerWeapon.CurrentWeapon.damage;
+        float lifeSteal = playerWeapon.CurrentWeapon.lifeSteal;
+        target.TakeDamage(damage, attackID);
+        if (lifeSteal > 0) ApplyLifeStealEffect(damage, lifeSteal);
+
+
+
     }
     public void DoDamage(BossHealth target)
     {
-        target.TakeDamage(damage,attackID);
+        float damage = playerWeapon.CurrentWeapon.damage;
+        float lifeSteal = playerWeapon.CurrentWeapon.lifeSteal;
+        target.TakeDamage(damage, attackID);
+        if (lifeSteal > 0) ApplyLifeStealEffect(damage, lifeSteal);
     }
-    public void DoDamage(Rocket target)
+    public void DoDamage(OrientedRocket target)
     {
+        float damage = playerWeapon.CurrentWeapon.damage;
+        float lifeSteal = playerWeapon.CurrentWeapon.lifeSteal;
         target.TakeDamage(damage);
+        if (lifeSteal > 0) ApplyLifeStealEffect(damage, lifeSteal);
+    }
+    public void ApplyLifeStealEffect(float damage, float stealRate)
+    {
+        playerHealth.Health((int)(damage * stealRate));
     }
 }
 public static class AttackIDGenerator

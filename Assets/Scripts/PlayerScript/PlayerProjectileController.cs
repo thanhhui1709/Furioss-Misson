@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class PlayerProjectileController : MonoBehaviour
 {
-    [SerializeField] private int maxEnemyHit;
-
+    [SerializeField] private int maxEnemyHit; 
     private int remainHit;
     void OnEnable()
     {
@@ -18,12 +17,12 @@ public class PlayerProjectileController : MonoBehaviour
         GroupProjectile group = GetComponentInParent<GroupProjectile>();
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            EnemyController enemy = collision.gameObject.GetComponent<EnemyController>();
-            if (enemy != null)
-            {
-
-                group.DoDamage(enemy.GetEnemyHealth());
-                CalculateRemainHit(remainHit);
+                EnemyHealth enemyHealth = collision.gameObject.GetComponentInParent<EnemyHealth>(true);
+                if (enemyHealth != null)
+                {
+                    group.DoDamage(enemyHealth);
+                    CalculateRemainHit();
+                
             }
         }
         else if (collision.gameObject.CompareTag("Boss"))
@@ -37,15 +36,26 @@ public class PlayerProjectileController : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Rocket"))
         {
-            Rocket rocket = collision.gameObject.GetComponent<Rocket>();
+            OrientedRocket rocket = collision.gameObject.GetComponent<OrientedRocket>();
             if (rocket != null)
             {
                 group.DoDamage(rocket);
-                CalculateRemainHit(remainHit);
+                remainHit = 0;
+                CalculateRemainHit();
+            }
+        }
+        else if (collision.gameObject.CompareTag("Obstacle"))
+        {
+            EnemyHealth heath = collision.gameObject.GetComponentInChildren<EnemyHealth>(true);
+            if (heath != null)
+            {
+                group.DoDamage(heath);
+                remainHit = 0;
+                CalculateRemainHit();
             }
         }
     }
-    private void CalculateRemainHit(int remain)
+    private void CalculateRemainHit()
     {
         remainHit--;
         if (remainHit <= 0)

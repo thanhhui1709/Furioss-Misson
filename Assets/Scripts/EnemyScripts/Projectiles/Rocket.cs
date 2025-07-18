@@ -1,8 +1,9 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class Rocket : MonoBehaviour
 {
-    [SerializeField] private float health;
     [SerializeField] private float speed;
     [SerializeField] private float lifetime;
     [SerializeField] private int damage;
@@ -12,48 +13,36 @@ public class Rocket : MonoBehaviour
     public AudioClip rocketSound;
     private Rigidbody2D rb;
     private AudioSource audioSource;
-    private GameObject player;
-    private Vector3 playerPos;
 
 
-    [SerializeField] private bool isOriented;
+
     private float cooldownTime;
-    private Vector3 originalPos;
-    void Start()
+
+    void Awake()
     {
         cooldownTime = lifetime;
-        player = GameObject.FindGameObjectWithTag("Player");
-        if (player != null)
-        {
-            playerPos = player.transform.position;
-        }
-        originalPos = transform.position;
+     
         rb = GetComponent<Rigidbody2D>();
         audioSource=GetComponent<AudioSource>();
     }
     private void OnEnable()
     {
         cooldownTime = lifetime;
-        player = GameObject.FindGameObjectWithTag("Player");
-        if (player != null)
-        {
-            playerPos = player.transform.position;
-        }
-        originalPos = transform.position;
+     
+        rb.linearVelocity = Vector2.zero;
+   
+        audioSource.PlayOneShot(rocketSound, 0.5f);
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
         cooldownTime -= Time.fixedDeltaTime;
-        if (!isOriented)
-        {
+   
+        
             Moving();
-        }
-        else
-        {
-            Moving(playerPos, originalPos);
-        }
+        
+    
 
 
 
@@ -81,52 +70,24 @@ public class Rocket : MonoBehaviour
         }
         ObjectPoolManager.SpawnObject(explosionEffect, transform.position, Quaternion.identity, ObjectPoolManager.PoolType.Particle);
 
-        ObjectPoolManager.ReturnObject(gameObject);
+        StartCoroutine(DelayedReturn());
 
+    }
+    private IEnumerator DelayedReturn()
+    {
+        yield return new WaitForSeconds(0.3f); 
+        ObjectPoolManager.ReturnObject(gameObject);
     }
     private void Moving()
     {
         rb.linearVelocity = transform.up * speed;
-        audioSource.PlayOneShot(rocketSound,0.1f);
+      
     }
-    private void Moving(Vector3 targetPos, Vector3 startPos)
-    {
-       
-        audioSource.PlayOneShot(rocketSound,0.1f);
-        float distanceTotal = Vector3.Distance(startPos, targetPos);
-        float distanceTravelled = Vector3.Distance(transform.position, startPos);
-        float remainingDistance = Vector3.Distance(transform.position, targetPos);
-
-        Vector2 direction = (targetPos - transform.position).normalized;
-
-        float currentSpeed = Mathf.Lerp(speed/3, speed, distanceTravelled / distanceTotal);
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
-
-        rb.linearVelocity = direction * currentSpeed;
-
-        // When close enough to previous playerPos, update destination
-        if (remainingDistance < 0.1f) // you can tweak this threshold
-        {
-            originalPos = transform.position;
-            playerPos = player.transform.position;
-        }
-    }
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
             Explosion();
         }
-    }
-    public void TakeDamage(int damage)
-    {
-        health -= damage;
-        if (health <= 0)
-        {
-            Explosion();
-        }
-
     }
 }

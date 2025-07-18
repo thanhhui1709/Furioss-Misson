@@ -28,7 +28,6 @@ public class EnemyHealth : MonoBehaviour
         currentHealth = maxHealth;
         mainCamera = Camera.main;
 
-
         UpdateHealthBar();
         healthBar.gameObject.SetActive(false);
         audioSource = GetComponentInParent<AudioSource>(true);
@@ -46,7 +45,7 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damage, int attackID)
+    public void TakeDamage(float damage, int attackID)
     {
         if(processedAttackIDs.Contains(attackID))
         {
@@ -106,7 +105,7 @@ public class EnemyHealth : MonoBehaviour
     IEnumerator WaitThenDie()
     {
         yield return new WaitForSeconds(0.1f);
-        Destroy(transform.root.gameObject);
+        Destroy(gameObject);
     }
 
     public void LevelUpHealth()

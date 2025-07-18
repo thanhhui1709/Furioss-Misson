@@ -13,7 +13,7 @@ public class EnemyMovementBySequence : MonoBehaviour
     private enum MovementState { Moving, Waiting }
     private MovementState state;
 
-    void Start()
+    void Awake()
     {
         if (currentPattern == null) {
             SetCurrentPattern(0);

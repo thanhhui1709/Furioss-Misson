@@ -31,7 +31,7 @@ public class BossHealth : MonoBehaviour
 
     }
 
-    public void TakeDamage(int damage,int attackID)
+    public void TakeDamage(float damage,int attackID)
     {
         if (attackIDs.Contains(attackID)) return; // prevent duplicate damage from same attack ID
         attackIDs.Add(attackID); // add attack ID to prevent duplicate damage

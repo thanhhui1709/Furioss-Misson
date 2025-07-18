@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e6fedc2472449cead18ef23b5cb30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library:
+  - m_Name: Phase
+    m_Hash: 813496783
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Phase1
+      m_Hash: 142036079
+      m_Sprite: {fileID: 21300000, guid: a25298715e502bd44b7b5fe6314cc377, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 21300000, guid: a25298715e502bd44b7b5fe6314cc377, type: 3}
+    - m_Name: Phase2
+      m_Hash: 293477845
+      m_Sprite: {fileID: -4386136234491119251, guid: 1d107796010a6774599239f4a80ea34c, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -4386136234491119251, guid: 1d107796010a6774599239f4a80ea34c, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 2
+  m_PrimaryLibraryGUID: 
+  m_ModificationHash: 638884541828976620
+  m_Version: 1

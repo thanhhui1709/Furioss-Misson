@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class StageManager : MonoBehaviour
 {
     [Header("Wave")]
-    [SerializeField] private float activeTime=7f;
+    [SerializeField] private float activeTime = 7f;
     [SerializeField] private List<EnemyWave> enemyWaves;
 
     [Header("Boss")]
@@ -22,19 +22,31 @@ public class StageManager : MonoBehaviour
 
     private EnemyWave currentWave;
     private int currentWaveIndex = 0;
-    void Start()
+    void Awake()
     {
+      
         GameManager.instance.StageManager = this;
-        GameEvent.instance.TriggerStageStart();
-        if (enemyWaves.Count != 0)
+        
+        
+        if (currentWaveIndex < enemyWaves.Count)
         {
-            currentWave = enemyWaves[currentWaveIndex];
             StartCoroutine(SpawnAllWaveAndBoss());
         }
         else
         {
             StartCoroutine(SpawnBoss());
         }
+
+    }
+    private void Start()
+    {
+        GameEvent.instance.TriggerStageStart();
+        if(currentWave == null && currentWaveIndex <=0)
+        {
+            currentWaveIndex = 0;
+            currentWave = enemyWaves[currentWaveIndex];
+        }
+
     }
 
     private void SetNextCurrentWave()
@@ -54,6 +66,7 @@ public class StageManager : MonoBehaviour
         {
 
             var enemy = Instantiate(wave.enemyPrefab);
+          
 
 
             EnemyMovementBySequence embs = enemy.GetComponent<EnemyMovementBySequence>();
@@ -63,6 +76,7 @@ public class StageManager : MonoBehaviour
             pattern.Initialize(enemy.transform);
 
             embs.currentPattern = pattern;
+       
 
             yield return new WaitForSeconds(wave.delaySpawnPrefab); // Delay between each enemy in wave
         }
@@ -74,8 +88,8 @@ public class StageManager : MonoBehaviour
         yield return new WaitForSeconds(wave.dropedTime);
         foreach (var item in wave.dropItems)
         {
-            GameObject dropItem = Instantiate(item, new Vector3(Random.Range(-20,20),15,0), Quaternion.identity);
-          
+            GameObject dropItem = Instantiate(item, new Vector3(Random.Range(-20, 20), 15, 0), Quaternion.identity);
+
         }
 
     }
@@ -138,9 +152,21 @@ public class StageManager : MonoBehaviour
     }
     public void Load(StageData stageData)
     {
-
         currentWave = stageData.currentWave;
         currentWaveIndex = stageData.index;
+        if (currentWaveIndex < 0)
+        {
+            currentWaveIndex = 0;
+
+            currentWave = enemyWaves[currentWaveIndex];
+
+        }
+
+    }
+    public void ResetWaveAfterClearStage()
+    {
+        currentWaveIndex = -1;
+        currentWave = null;
     }
 
 

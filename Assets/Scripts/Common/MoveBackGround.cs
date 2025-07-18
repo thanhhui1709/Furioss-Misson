@@ -29,7 +29,7 @@ public class MoveBackGround : MonoBehaviour
        transform.Translate(Vector3.down * scrollSpeed*Time.fixedDeltaTime,Space.World); 
         if (distance >= backgroundHeight)
         {
-         
+            Debug.Log("changepos");
             transform.position = initialPos;
            
 

@@ -19,7 +19,6 @@ public class EnemyController : MonoBehaviour
     }
     private Transform playerTransfrom;
     public EnemyBase enemyStat;
-    private EnemyHealth enemyHealth;
     private AudioSource audioSource;
 
 
@@ -30,7 +29,7 @@ public class EnemyController : MonoBehaviour
 
         // Tìm player theo tag
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        enemyHealth = gameObject.GetComponentInChildren<EnemyHealth>(true);
+     
         audioSource = GetComponent<AudioSource>();
         if (player != null)
         {
@@ -53,13 +52,12 @@ public class EnemyController : MonoBehaviour
             enemyStat.shottingBehavior.Shoot(this,transform, playerTransfrom, enemyStat.projectTile);
             if (enemyStat.shootSound != null)
             {
-                audioSource.PlayOneShot(enemyStat.shootSound);
+                ObjectPoolManager.PlayAudio(enemyStat.shootSound,1f);
             }
         }
 
     }
     public int GetBodyDamage() => enemyStat.bodyDamage;
-    public EnemyHealth GetEnemyHealth() => enemyHealth;
    
 
 }

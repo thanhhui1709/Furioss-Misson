@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3368535969661162409}
   - component: {fileID: 7839122195635845430}
-  - component: {fileID: 7357053613086111942}
   m_Layer: 5
   m_Name: Health Bar
   m_TagString: Untagged
@@ -90,26 +89,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &7357053613086111942
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1824285034558492195}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cc486be478dc704da794428d6b96b43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 40
-  healthBar: {fileID: 7839122195635845430}
-  offset: {x: 0, y: 1, z: 0}
-  displayTime: 1.5
-  exp: 100
-  items: {fileID: -3034378560755499749}
-  deathEffect: {fileID: 8562486586392712937, guid: 445f3ab87082dbb4ab63343e2332384e, type: 3}
-  deathSound: {fileID: 8300000, guid: 91b443543f216574e9f4c45491aa71c0, type: 3}
 --- !u!1 &2002885368199803932
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,7 +141,8 @@ GameObject:
   - component: {fileID: 4559046325130127363}
   - component: {fileID: -3034378560755499749}
   - component: {fileID: 4735516154344781768}
-  m_Layer: 0
+  - component: {fileID: 11450395130919634}
+  m_Layer: 7
   m_Name: Enemy1_SwingRight
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -465,6 +445,26 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &11450395130919634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2457692719626887776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cc486be478dc704da794428d6b96b43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 40
+  healthBar: {fileID: 7839122195635845430}
+  offset: {x: 0, y: 1, z: 0}
+  displayTime: 1.5
+  exp: 100
+  items: {fileID: -3034378560755499749}
+  deathEffect: {fileID: 8562486586392712937, guid: 445f3ab87082dbb4ab63343e2332384e, type: 3}
+  deathSound: {fileID: 8300000, guid: 31974b51c57379b4a8507dbac418b0a5, type: 3}
 --- !u!1 &2824292653297022810
 GameObject:
   m_ObjectHideFlags: 0

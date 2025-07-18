@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f5c189040cacfd42a85aa2f6edcd767, type: 3}
+  m_Name: S2_W3
+  m_EditorClassIdentifier: 
+  waveData:
+  - dropItems: []
+    dropedTime: 0
+    enemyPrefab: {fileID: 4744445119164237737, guid: 21cda3ce2cdf1484eac7b4cc7712cabe, type: 3}
+    numberPerWave: 1
+    offset: 0
+    delaySpawnPrefab: 0
+    delayForTheNextWaveData: 0
+  - dropItems: []
+    dropedTime: 0
+    enemyPrefab: {fileID: 4744445119164237737, guid: de7c1d7db5fb19641a63273b40c354d1, type: 3}
+    numberPerWave: 1
+    offset: 0
+    delaySpawnPrefab: 0
+    delayForTheNextWaveData: 6
+  - dropItems: []
+    dropedTime: 0
+    enemyPrefab: {fileID: 1581072370635313977, guid: 08977e4b911aafe40b46bd4869a93f64, type: 3}
+    numberPerWave: 3
+    offset: 10
+    delaySpawnPrefab: 0
+    delayForTheNextWaveData: 1
+  - dropItems: []
+    dropedTime: 0
+    enemyPrefab: {fileID: 5920156113680888890, guid: 32cf1cd348217904d9dc842981cc22a0, type: 3}
+    numberPerWave: 2
+    offset: 20
+    delaySpawnPrefab: 0
+    delayForTheNextWaveData: 1
+  - dropItems: []
+    dropedTime: 0
+    enemyPrefab: {fileID: 5435832484958148964, guid: b3743395cd1b7ba40b2689961fc7c204, type: 3}
+    numberPerWave: 1
+    offset: 0
+    delaySpawnPrefab: 0
+    delayForTheNextWaveData: 1
+  delayForTheNextWave: 0
+  isDoneSpawned: 1

@@ -7,9 +7,10 @@ public class PlayerWeapon : MonoBehaviour
     public class Weapon
     {
         public List<GameObject> projectile;
-        public int damage;
+        public float damage;
         public int currentLevel;
-        public int fireRate;
+        public float fireRate;
+        public float lifeSteal = 0;
         public AudioClip gunSound;
 
         public void LevelUp()
@@ -17,67 +18,16 @@ public class PlayerWeapon : MonoBehaviour
             if (currentLevel < projectile.Count - 1)
             {
                 currentLevel++;
-
             }
 
             damage += 5;
         }
+
         public void IncreaseDamage(int amount)
         {
             damage += amount;
         }
-    }
-
-    [SerializeField] private Vector3 offsetBetweenProjectileAndHead;
-    public List<Weapon> guns;
-    public AudioSource src;
-    public ParticleSystem muzzleFlash;
- 
-
-    private float fireCooldown;  // Time between shots
-    private float cooldown;
-    public int currentWeapon;
-
-    void Awake()
-    {
-        GameManager.instance.PlayerWeapon = this;
-        SetCurrentGun(0);
-        fireCooldown = int.MinValue;
-        cooldown = (float)1 / guns[currentWeapon].fireRate;
-    }
-
-    void Update()
-    {
-        fireCooldown -= Time.deltaTime;
-        if (Input.GetMouseButton(0) && fireCooldown <= 0)
-        {
-            Shooting();
-            fireCooldown = cooldown;
-        }
-    }
-
-    private void Shooting()
-    {
-        Weapon currentWp = guns[currentWeapon];
-        GameObject projectile = currentWp.projectile[currentWp.currentLevel];
-        Vector3 spawnPosition = transform.position + offsetBetweenProjectileAndHead;
-        ObjectPoolManager.SpawnObject(projectile, spawnPosition, Quaternion.identity,ObjectPoolManager.PoolType.PlayerProjectile);
-        src.PlayOneShot(currentWp.gunSound);
-        muzzleFlash.Play();
-    }
-    private void SetCurrentGun(int index)
-    {
-        currentWeapon = index;
-        src.clip = guns[index].gunSound;
-    }
-
-    public void LevelUpCurrentWeapon()
-    {
-        guns[currentWeapon].LevelUp();
-    }
-    public void IncreaseCurrentWeaponDamage(int amount)
-    {
-        guns[currentWeapon].IncreaseDamage(amount);
+      
     }
 
     [System.Serializable]
@@ -87,15 +37,74 @@ public class PlayerWeapon : MonoBehaviour
         public int currentWeapon;
     }
 
+    [SerializeField] private Vector3 offsetBetweenProjectileAndHead;
+    [SerializeField] private AudioSource src;
+    [SerializeField] private ParticleSystem muzzleFlash;
+
+    public List<Weapon> guns;
+    public int currentWeaponIndex;
+
+    private float fireCooldown;
+
+    public Weapon CurrentWeapon => guns[currentWeaponIndex];
+
+    private void Awake()
+    {
+        GameManager.instance.PlayerWeapon = this;
+        SetCurrentGun(0);
+    }
+
+    private void Update()
+    {
+        fireCooldown -= Time.deltaTime;
+
+        if (Input.GetMouseButton(0) && fireCooldown <= 0f)
+        {
+            Shoot();
+            fireCooldown = 1 / CurrentWeapon.fireRate;
+        }
+    }
+
+    private void SetCurrentGun(int index)
+    {
+        currentWeaponIndex = Mathf.Clamp(index, 0, guns.Count - 1);
+        src.clip = guns[currentWeaponIndex].gunSound;
+    }
+
+    private void Shoot()
+    {
+        var weapon = CurrentWeapon;
+
+        if (weapon.projectile == null || weapon.projectile.Count == 0)
+            return;
+
+        GameObject projectile = weapon.projectile[weapon.currentLevel];
+        Vector3 spawnPos = transform.position + offsetBetweenProjectileAndHead;
+
+        ObjectPoolManager.SpawnObject(projectile, spawnPos, Quaternion.identity, ObjectPoolManager.PoolType.PlayerProjectile);
+        src.PlayOneShot(weapon.gunSound);
+        muzzleFlash.Play();
+    }
+
+    public void LevelUpCurrentWeapon()
+    {
+        CurrentWeapon.LevelUp();
+    }
+
+    public void IncreaseCurrentWeaponDamage(int amount)
+    {
+        CurrentWeapon.IncreaseDamage(amount);
+    }
 
     public void Save(ref PlayerWeaponData data)
     {
         data.weapons = guns;
-        data.currentWeapon = this.currentWeapon;
+        data.currentWeapon = currentWeaponIndex;
     }
+
     public void Load(PlayerWeaponData data)
     {
         guns = data.weapons;
-        currentWeapon = data.currentWeapon;
+        SetCurrentGun(data.currentWeapon);
     }
 }

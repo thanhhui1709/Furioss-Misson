@@ -50,7 +50,7 @@ public class CameraController : MonoBehaviour
         StartCoroutine(ShakeCoroutine(duration, magnitude));
     }
 
-    public void Shake() // overload mặc định
+    public void Shake()  
     {
         Shake(shakeDuration, shakeMagnitude);
     }

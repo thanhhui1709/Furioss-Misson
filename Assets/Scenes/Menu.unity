@@ -527,7 +527,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 439703283}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1268778268}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: LoadGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &439703283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1137,16 +1149,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84a2a90ba636dae4a9336b0aceb63f6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentSceneIndex: 0
   numberOfLive: 2
   respawnTime: 3
-  data:
-    StageIndex: 0
-    CurrentWave: 0
-    numberOfLive: 0
-    MaxHealth: 0
-    CurrentHealth: 0
-    weapons: []
-    currentWeapon: 0
 --- !u!4 &1268778269
 Transform:
   m_ObjectHideFlags: 0

@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f5c189040cacfd42a85aa2f6edcd767, type: 3}
+  m_Name: S2_W1
+  m_EditorClassIdentifier: 
+  waveData:
+  - dropItems: []
+    dropedTime: 0
+    enemyPrefab: {fileID: 2585137035831509932, guid: ec4eb4ea279a86f44a91bdf7383d97ae, type: 3}
+    numberPerWave: 5
+    offset: 6
+    delaySpawnPrefab: 0
+    delayForTheNextWaveData: 1
+  - dropItems: []
+    dropedTime: 0
+    enemyPrefab: {fileID: 3118361467655501759, guid: cf3eaf7e6ccb94049ad11f952b386460, type: 3}
+    numberPerWave: 4
+    offset: 6
+    delaySpawnPrefab: 0
+    delayForTheNextWaveData: 1
+  delayForTheNextWave: 5
+  isDoneSpawned: 1

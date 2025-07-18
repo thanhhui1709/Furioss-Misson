@@ -12,17 +12,20 @@ public class ObjectPoolManager : MonoBehaviour
     private GameObject _objectPoolEmptyHolder;
     private static GameObject playerProjectilePool;
     private static GameObject enemyProjectilePool;
-    private static GameObject particle;  
+    private static GameObject particle;
+    private static GameObject audioPool;
     public enum PoolType
     {
         PlayerProjectile,
         EnemyProjectile,
         Particle,
+        Audio,
         None,
     }
     private void Awake()
     {
         SetUpEmpty();
+        CreateAudioObject();
     }
 
     private void SetUpEmpty()
@@ -37,6 +40,24 @@ public class ObjectPoolManager : MonoBehaviour
 
         particle=new GameObject("ParticlePool");
         particle.transform.SetParent(_objectPoolEmptyHolder.transform); 
+        
+        audioPool=new GameObject("AudioPool");
+        audioPool.transform.SetParent(_objectPoolEmptyHolder.transform);
+    }
+    private GameObject CreateAudioObject()
+    {
+        GameObject audioClipGO=new GameObject("AudioClip");
+        audioClipGO.AddComponent<PoolAudioPlayer>();
+        audioClipGO.transform.SetParent(audioPool.transform);
+        objectPools.Add(new PoolObjectInfo { poolName = audioClipGO.name, poolObjects = new List<GameObject>() { audioClipGO} });
+        return audioClipGO;
+    } private static GameObject CreateAudioObjectStatic()
+    {
+        GameObject audioClipGO=new GameObject("AudioClip");
+        audioClipGO.AddComponent<PoolAudioPlayer>();
+        audioClipGO.transform.SetParent(audioPool.transform);
+        objectPools.Add(new PoolObjectInfo { poolName = audioClipGO.name, poolObjects = new List<GameObject>() { audioClipGO} });
+        return audioClipGO;
     }
 
     public static GameObject SpawnObject(GameObject gameObject, Vector3 spawnPos, Quaternion rotation,PoolType poolType=PoolType.None)
@@ -68,10 +89,38 @@ public class ObjectPoolManager : MonoBehaviour
         }
         return obj;
     }
+    public static GameObject PlayAudio(AudioClip audioClip,float volume)
+    {
+        PoolObjectInfo pool = objectPools.Find(x => x.poolName.Equals("AudioClip"));
+        if (pool == null)
+        {
+            pool = new PoolObjectInfo();
+            pool.poolName = "AudioClip";
+            objectPools.Add(pool);
+
+        }
+        GameObject obj = pool.poolObjects.FirstOrDefault();
+        if (obj == null)
+        {
+            obj = CreateAudioObjectStatic();
+
+
+        }
+        else { 
+          
+            obj.SetActive(true);
+         
+           
+        }
+        PoolAudioPlayer player = obj.GetComponent<PoolAudioPlayer>();
+        player.PlayAudioClip(audioClip, volume);
+        pool.poolObjects.Remove(obj);
+        return obj;
+    }
     public static void ReturnObject(GameObject gameObject)
     {
         string name = gameObject.name.Substring(0, gameObject.name.Length - 7); // Remove "(Clone)" from the name
-        PoolObjectInfo pool = objectPools.Find(x => x.poolName == name);
+        PoolObjectInfo pool = objectPools.Find(x => x.poolName.Equals( name)||x.poolName.Equals(gameObject.name));
         if (pool != null)
         {
             gameObject.SetActive(false);
@@ -92,7 +141,9 @@ public class ObjectPoolManager : MonoBehaviour
             case PoolType.EnemyProjectile:
                 return enemyProjectilePool;
             case PoolType.Particle:
-                return particle;    
+                return particle;
+            case PoolType.Audio:
+                return audioPool;
             case PoolType.None:
                 return null;
             default:

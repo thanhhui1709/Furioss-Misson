@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 2161460898671912515}
   - component: {fileID: 597088862244564087}
   - component: {fileID: 8655518310407273269}
-  - component: {fileID: 2050538345972936815}
   - component: {fileID: 6295676711812186686}
+  - component: {fileID: -8865018974805280235}
   m_Layer: 0
   m_Name: Rocket_Oriented
   m_TagString: Rocket
@@ -155,27 +155,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &2050538345972936815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2087701196319124275}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d2dd3bdff7b20e4580ffcbe97a6ffbd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 30
-  speed: 15
-  lifetime: 3
-  damage: 20
-  explosionRadius: 2
-  explosionEffect: {fileID: 3512153588440623268, guid: 3fe7df3cf7d9dd740aeb06cc853de0e5, type: 3}
-  explosionSound: {fileID: 8300000, guid: b517bb292fb2df049a9ed8d5cb54ba10, type: 3}
-  rocketSound: {fileID: 8300000, guid: b0d6f90a29b2b5a4fba3ecebeacc11e9, type: 3}
-  isOriented: 1
 --- !u!82 &6295676711812186686
 AudioSource:
   m_ObjectHideFlags: 0
@@ -273,3 +252,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-8865018974805280235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2087701196319124275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 621c258af1f795d48a501937b70cd063, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  rotationSpeed: 200
+  lifetime: 5
+  damage: 10
+  explosionRadius: 2
+  explosionEffect: {fileID: 3512153588440623268, guid: 3fe7df3cf7d9dd740aeb06cc853de0e5, type: 3}
+  rocketSound: {fileID: 8300000, guid: e536eea434771a74d9a198c0e9761b34, type: 3}
+  explosionSound: {fileID: 8300000, guid: b517bb292fb2df049a9ed8d5cb54ba10, type: 3}

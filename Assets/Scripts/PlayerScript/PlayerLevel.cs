@@ -19,6 +19,7 @@ public class PlayerLevel : MonoBehaviour
 
     void Awake()
     {
+        GameManager.instance.PlayerLevel = this;
         playerWeapon = GetComponent<PlayerWeapon>();
         GameEvent.instance.onPlayerLevelUp.AddListener(LevelUp);
         GameEvent.instance.onEnemyDie += GainExperience;
@@ -97,4 +98,25 @@ public class PlayerLevel : MonoBehaviour
             experienceBar.value = (float)experience / experienceToNextLevel;
         }
     }
+    public void Save(ref PlayerLevelData data)
+    {
+        data.level = level;
+        data.experience = experience;
+    }
+    public void Load(PlayerLevelData data)
+    {
+        level = data.level;
+        experience = data.experience;
+        experienceToNextLevel = levelData.getExperienceForLevel(level);
+        UpdateExperienceBar();
+        levelText.text = level.ToString();
+    }
+    [System.Serializable]
+    public struct PlayerLevelData
+    {
+        public int level;
+        public int experience;
+    }
+
 }
+
