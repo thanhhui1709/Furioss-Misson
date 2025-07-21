@@ -26,12 +26,14 @@ public class BossController : MonoBehaviour
     private Transform playerTransform;
     private Rigidbody2D rb;
     private Vector3 startPos;
+    private bool isDoneSpawned;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         startPos = transform.position;
         playerTransform = GameObject.FindGameObjectWithTag("Player")?.transform;
         StartCoroutine(ExecuteBehaviorLoop());
+        isDoneSpawned = false;
 
     }
 
@@ -76,7 +78,7 @@ public class BossController : MonoBehaviour
 
 
         // Shoot
-        if (behavior.shootPattern != null)
+        if (behavior.shootPattern != null&& behavior.projectile!=null)
         {
             behavior.shootPattern.Shoot(this,transform, playerTransform, behavior.projectile);
         }
@@ -85,7 +87,7 @@ public class BossController : MonoBehaviour
     }
     void Update()
     {
-        Spawn();
+        if (!isDoneSpawned) { Spawn(); };
 
     }
     private bool Spawn()
@@ -98,12 +100,16 @@ public class BossController : MonoBehaviour
             float currentSpeed=spawnSpeed*remain;
             rb.linearVelocity = Vector2.down * currentSpeed;
             return true;
+         
         }
         else
         {
             rb.linearVelocity = Vector2.zero;
+            isDoneSpawned = true;
+            return false;
+         
         }
-        return false;
+        
 
     }
 

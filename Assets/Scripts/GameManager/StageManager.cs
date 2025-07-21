@@ -27,24 +27,19 @@ public class StageManager : MonoBehaviour
       
         GameManager.instance.StageManager = this;
         
-        
-        if (currentWaveIndex < enemyWaves.Count)
-        {
-            StartCoroutine(SpawnAllWaveAndBoss());
-        }
-        else
-        {
-            StartCoroutine(SpawnBoss());
-        }
-
     }
     private void Start()
     {
         GameEvent.instance.TriggerStageStart();
-        if(currentWave == null && currentWaveIndex <=0)
+        if((currentWave == null || currentWaveIndex <=0) && enemyWaves.Count>0)
         {
             currentWaveIndex = 0;
             currentWave = enemyWaves[currentWaveIndex];
+            StartCoroutine(SpawnAllWaveAndBoss());
+        }
+        if (enemyWaves.Count==0)
+        {
+            StartCoroutine(SpawnBoss());
         }
 
     }
