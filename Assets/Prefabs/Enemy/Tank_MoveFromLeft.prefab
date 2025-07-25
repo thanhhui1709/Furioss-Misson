@@ -266,7 +266,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1000
+  m_Mass: 10000
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 0
@@ -357,6 +357,7 @@ MonoBehaviour:
   triggerRadius: 10
   shootCooldown: 3
   projectilePrefab: {fileID: 2833501234260990444, guid: 278793c20c4fa764c9f7d8989e6a10fc, type: 3}
+  shootSound: {fileID: 8300000, guid: c7378aba4d34b6340b532462f4e4ab7e, type: 3}
   damage: 40
   shootBehavior: {fileID: 11400000, guid: 32d018cb255b3b44084f065c17642e74, type: 2}
 --- !u!114 &4768589872327488542

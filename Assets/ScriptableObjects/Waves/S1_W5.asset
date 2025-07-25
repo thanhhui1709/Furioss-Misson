@@ -41,8 +41,9 @@ MonoBehaviour:
     offset: 2
     delaySpawnPrefab: 0.5
     delayForTheNextWaveData: 4
-  - dropItems: []
-    dropedTime: 0
+  - dropItems:
+    - {fileID: 6687629543920029719, guid: f72f675ac525abc47ae54470130e4206, type: 3}
+    dropedTime: 3
     enemyPrefab: {fileID: 3118361467655501759, guid: cf3eaf7e6ccb94049ad11f952b386460, type: 3}
     numberPerWave: 3
     offset: 10
@@ -51,12 +52,13 @@ MonoBehaviour:
   - dropItems: []
     dropedTime: 0
     enemyPrefab: {fileID: 541994470639020321, guid: 2c12682fe8052c1479131fc0b7201eaf, type: 3}
-    numberPerWave: 4
+    numberPerWave: 3
     offset: 10
     delaySpawnPrefab: 0
     delayForTheNextWaveData: 4
-  - dropItems: []
-    dropedTime: 0
+  - dropItems:
+    - {fileID: 282112012492073636, guid: 83a45d9d250337448a14cfbbbbbcb19f, type: 3}
+    dropedTime: 5
     enemyPrefab: {fileID: 242305484210790470, guid: ca705693697b80e438580c0d1038e1d2, type: 3}
     numberPerWave: 4
     offset: 6

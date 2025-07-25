@@ -10,7 +10,12 @@ public class GameEvent : MonoBehaviour
         {
             instance = this;
         }
-        DontDestroyOnLoad(gameObject);
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+            DontDestroyOnLoad(gameObject);
 
     }
     public UnityEvent onStageClear;
@@ -27,7 +32,7 @@ public class GameEvent : MonoBehaviour
     public void TriggerPlayerDieEvent() => onPlayerDie?.Invoke();
     public void TriggerEnemyDieEvent(int exp) => onEnemyDie?.Invoke(exp);
     public void TriggerPlayerLevelUpEvent() => onPlayerLevelUp?.Invoke();
-    public void TriggerStageStart()=> onStageStart?.Invoke();
+    public void TriggerStageStart() => onStageStart?.Invoke();
 
 
 }

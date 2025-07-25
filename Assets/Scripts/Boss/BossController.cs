@@ -15,21 +15,31 @@ public class BossController : MonoBehaviour
         public float minRestTime;
         public float maxRestTime;
     }
-
-    public List<BossBehavior> behaviours;
-    [SerializeField] private float minSequenceBehaviorCooldown;
-    [SerializeField] private float maxSequenceBehaviorCooldown;
-    [SerializeField] private float activeTime = 4f;
+    [System.Serializable]
+    public class Phase
+    {
+        public List<BossBehavior> behaviors;
+        public float minSequenceBehaviorCooldown;
+        public float maxSequenceBehaviorCooldown;
+        public float activeTime = 4f;
+    }  
+    public List<Phase> bossPhases;
+    public float timeBetweenPhases = 5f;
     [SerializeField] private float spawnDistance;
     [SerializeField] private float spawnSpeed;
 
+    private Phase currentPhase;
+    private int currentPhaseIndex;
     private Transform playerTransform;
     private Rigidbody2D rb;
     private Vector3 startPos;
     private bool isDoneSpawned;
+    private BossBehavior currentBehavior;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        currentPhaseIndex = 0;
+        currentPhase = bossPhases[currentPhaseIndex];
         startPos = transform.position;
         playerTransform = GameObject.FindGameObjectWithTag("Player")?.transform;
         StartCoroutine(ExecuteBehaviorLoop());
@@ -40,19 +50,18 @@ public class BossController : MonoBehaviour
     private IEnumerator ExecuteBehaviorLoop()
     {
         yield return new WaitUntil(() => !Spawn());
-        yield return new WaitForSeconds(activeTime);
+        yield return new WaitForSeconds(currentPhase.activeTime);
         while (true)
         {
-           
-            
-             var behavior = behaviours[Random.Range(0,behaviours.Count)];
+            foreach(var behavior in currentPhase.behaviors)
+            {
+                currentBehavior = behavior;
 
-             yield return   StartCoroutine(ExecuteSingeBehavior(behavior));
+                yield return StartCoroutine(ExecuteSingeBehavior(behavior));
+            }
+            yield return new WaitForSeconds(Random.Range( currentPhase. minSequenceBehaviorCooldown, currentPhase.maxSequenceBehaviorCooldown));
 
 
-            yield return new WaitForSeconds(Random.Range(minSequenceBehaviorCooldown, maxSequenceBehaviorCooldown));
-            
-           
             // Wait before starting next behavior loop
         }
     }
@@ -78,16 +87,16 @@ public class BossController : MonoBehaviour
 
 
         // Shoot
-        if (behavior.shootPattern != null&& behavior.projectile!=null)
+        if (behavior.shootPattern != null && behavior.projectile != null)
         {
-            behavior.shootPattern.Shoot(this,transform, playerTransform, behavior.projectile);
+            behavior.shootPattern.Shoot(this, transform, playerTransform, behavior.projectile);
         }
         yield return new WaitForSeconds(Random.Range(behavior.minRestTime, behavior.maxRestTime));
 
     }
     void Update()
     {
-        if (!isDoneSpawned) { Spawn(); };
+        if (!isDoneSpawned) { Spawn(); } 
 
     }
     private bool Spawn()
@@ -97,22 +106,62 @@ public class BossController : MonoBehaviour
         if (distanceTravelled < spawnDistance)
         {
             float remain = Mathf.Clamp01(spawnDistance - (distanceTravelled + 0.1f) / spawnDistance);
-            float currentSpeed=spawnSpeed*remain;
+            float currentSpeed = spawnSpeed * remain;
             rb.linearVelocity = Vector2.down * currentSpeed;
             return true;
-         
+
         }
         else
         {
             rb.linearVelocity = Vector2.zero;
             isDoneSpawned = true;
             return false;
-         
+
         }
-        
+
 
     }
+    public bool checkFinalPhase()
+    {
+        return bossPhases.IndexOf(currentPhase) == bossPhases.Count - 1;
+    }
+    public void ReSpawn()
+    {
+        isDoneSpawned = false;
+        transform.position = startPos;
+        currentPhase = bossPhases[++currentPhaseIndex];
+        StartCoroutine(ExecuteBehaviorLoop());
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            if (currentBehavior != null)
+            {
+                var pattern = currentBehavior.movement;
+                // check pattern is maphite pattern
+                if (pattern is MaphitePattern maphitePattern)
+                {
+                    PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
+                    if (playerHealth != null && !maphitePattern.hasDealDamage)
+                    {
+                        playerHealth.TakeDamage(maphitePattern.damage);
+                        maphitePattern.hasDealDamage = true;
+                        Debug.Log("Boss collided with player and dealt damage: " + maphitePattern.damage);
+                    }
+
+                }
+
+            }
+            else
+            {
+                return;
+            }
+
+
+        }
 
 
 
+    }
 }

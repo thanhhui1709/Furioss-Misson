@@ -26,8 +26,9 @@ public class LevelData : ScriptableObject
         }
         return 0; // Return 0 if the level is not found
     }
-    public bool checkMaxLevel(int level)
+    public int GetMaxLevel()
     {
-       return level == lv[lv.Count-1].level;  
+      
+       return lv[lv.Count - 1].level;
     }
 }

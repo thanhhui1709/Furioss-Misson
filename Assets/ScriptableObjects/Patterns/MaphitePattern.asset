@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e78e52f4b76d0a14a84b11b798407485, type: 3}
   m_Name: MaphitePattern
   m_EditorClassIdentifier: 
-  movementSpeed: 30
+  damage: 80
+  movementSpeed: 40
   xBoundary: 30
   yBoundary: 20
   holdingTime: 2
-  numberOfMovement: 99
+  numberOfMovement: 4
+  skillIndicator: {fileID: 3647695038274328260, guid: 11959fd710673424dbe1acedc8e3eae8, type: 3}
+  hasDealDamage: 1
+  clip: {fileID: 8300000, guid: 086339bb674f0324fbeb8115ddeb1344, type: 3}

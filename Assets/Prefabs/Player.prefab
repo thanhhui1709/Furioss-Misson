@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2849558557494869307}
   - component: {fileID: 2197722084409225055}
   - component: {fileID: 4867044546792319347}
+  - component: {fileID: 6227537147519507583}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -257,7 +258,7 @@ MonoBehaviour:
     - {fileID: 2242488125326411518, guid: 01ff946def5b3584bb0b7bd0032d3ad7, type: 3}
     damage: 5
     currentLevel: 0
-    fireRate: 10
+    fireRate: 7
     lifeSteal: 0
     gunSound: {fileID: 8300000, guid: 8558be56a47f47b4ab9e94bb102fe8d8, type: 3}
   currentWeaponIndex: 0
@@ -358,6 +359,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6227537147519507583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1093040414831480640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2134b529f2150248992bdb2c95f7c6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: 0
+  experience: 1
+  experienceToNextLevel: 100
+  levelData: {fileID: 11400000, guid: 9fdcd6ecad6d4ca4d9a61dde4d255562, type: 2}
+  levelText: {fileID: 0}
+  experienceBar: {fileID: 0}
+  levelUpSound: {fileID: 8300000, guid: 30142fc5dc7de9e448ae9bbebbdde18e, type: 3}
 --- !u!1 &1507039291681694007
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,27 +15,22 @@ public class EnemyController : MonoBehaviour
         public float maxTimeInitShot = 10f;
         public int bodyDamage;
         public AudioClip shootSound;
-        public AShootingController shottingBehavior;
+        public AShootingController shootingBehavior;
     }
-    private Transform playerTransfrom;
-    public EnemyBase enemyStat;
-    private AudioSource audioSource;
-
-
-
-
-    void Start()
+    private Transform playerTransform;
+    public EnemyBase enemyStat;  
+    private void OnEnable()
     {
-
-        // Tìm player theo tag
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-     
-        audioSource = GetComponent<AudioSource>();
         if (player != null)
         {
-            playerTransfrom = player.transform;
-            InvokeRepeating("Shooting", Random.Range(enemyStat.minTimeInitShot,enemyStat.maxTimeInitShot), Random.Range(enemyStat.minTimePerShot, enemyStat.maxTimePerShot));
+            playerTransform = player.transform;
+            InvokeRepeating("Shooting", Random.Range(enemyStat.minTimeInitShot, enemyStat.maxTimeInitShot), Random.Range(enemyStat.minTimePerShot, enemyStat.maxTimePerShot));
         }
+    }
+    private void OnDisable()
+    {
+        CancelInvoke("Shooting");
     }
 
     void Update()
@@ -47,9 +42,9 @@ public class EnemyController : MonoBehaviour
     private void Shooting()
     {
 
-        if (enemyStat.shottingBehavior != null)
+        if (enemyStat.shootingBehavior != null)
         {
-            enemyStat.shottingBehavior.Shoot(this,transform, playerTransfrom, enemyStat.projectTile);
+            enemyStat.shootingBehavior.Shoot(this,transform, playerTransform, enemyStat.projectTile);
             if (enemyStat.shootSound != null)
             {
                 ObjectPoolManager.PlayAudio(enemyStat.shootSound,1f);

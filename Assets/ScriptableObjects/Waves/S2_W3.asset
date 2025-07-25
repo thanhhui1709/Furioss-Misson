@@ -13,15 +13,17 @@ MonoBehaviour:
   m_Name: S2_W3
   m_EditorClassIdentifier: 
   waveData:
-  - dropItems: []
-    dropedTime: 0
+  - dropItems:
+    - {fileID: 6687629543920029719, guid: f72f675ac525abc47ae54470130e4206, type: 3}
+    dropedTime: 5
     enemyPrefab: {fileID: 4744445119164237737, guid: 21cda3ce2cdf1484eac7b4cc7712cabe, type: 3}
     numberPerWave: 1
     offset: 0
     delaySpawnPrefab: 0
     delayForTheNextWaveData: 0
-  - dropItems: []
-    dropedTime: 0
+  - dropItems:
+    - {fileID: 282112012492073636, guid: 83a45d9d250337448a14cfbbbbbcb19f, type: 3}
+    dropedTime: 5
     enemyPrefab: {fileID: 4744445119164237737, guid: de7c1d7db5fb19641a63273b40c354d1, type: 3}
     numberPerWave: 1
     offset: 0
@@ -34,15 +36,17 @@ MonoBehaviour:
     offset: 10
     delaySpawnPrefab: 0
     delayForTheNextWaveData: 1
-  - dropItems: []
-    dropedTime: 0
+  - dropItems:
+    - {fileID: 6687629543920029719, guid: f72f675ac525abc47ae54470130e4206, type: 3}
+    dropedTime: 3
     enemyPrefab: {fileID: 5920156113680888890, guid: 32cf1cd348217904d9dc842981cc22a0, type: 3}
     numberPerWave: 2
     offset: 20
     delaySpawnPrefab: 0
     delayForTheNextWaveData: 1
-  - dropItems: []
-    dropedTime: 0
+  - dropItems:
+    - {fileID: 282112012492073636, guid: 83a45d9d250337448a14cfbbbbbcb19f, type: 3}
+    dropedTime: 7
     enemyPrefab: {fileID: 5435832484958148964, guid: b3743395cd1b7ba40b2689961fc7c204, type: 3}
     numberPerWave: 1
     offset: 0

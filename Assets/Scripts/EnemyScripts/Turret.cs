@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections;
 using NUnit.Framework;
 using UnityEngine;
 
@@ -13,6 +14,7 @@ public class Turret : MonoBehaviour
     public float shootIdleCooldownMin = 1f;
     public float shootIdleCooldownMax = 3f;
     [Header("Common")]
+    public AudioClip shootSound;
     public AShootingController[] shootBehavior = new AShootingController[2];
     public GameObject projectilePrefab;
     public float damage = 40f;
@@ -21,6 +23,7 @@ public class Turret : MonoBehaviour
     private TurretState state;
     private float cooldownTimer = 0f;
     private Transform player;
+    private Rigidbody2D rb;
 
     private enum TurretState
     {
@@ -29,7 +32,7 @@ public class Turret : MonoBehaviour
     }
     void Start()
     {
-
+        rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
         state = TurretState.Idle;
     }
@@ -39,6 +42,7 @@ public class Turret : MonoBehaviour
     {
        
         if (player == null) player = GameObject.FindGameObjectWithTag("Player")?.transform;
+        RotateToPlayer(90f);
         cooldownTimer -= Time.deltaTime;
         if (CheckPlayerInRange())
         {
@@ -52,16 +56,20 @@ public class Turret : MonoBehaviour
         switch (state)
         {
             case TurretState.Idle:
+             
                 if (cooldownTimer <= 0f)
                 {
+
                     ShootIdle(player);
                     cooldownTimer = Random.Range(shootIdleCooldownMin, shootIdleCooldownMax);
                 }
 
                 break;
             case TurretState.InRange:
+
                 if (cooldownTimer <= 0f)
                 {
+                   
                     ShootWhenPlayerInRange(player);
                     cooldownTimer = shootCooldown;
                 }
@@ -71,16 +79,22 @@ public class Turret : MonoBehaviour
     private void ShootIdle(Transform playerTransform)
     {
         if (shootBehavior.Length == 0) return;
-        Vector3 direction = (playerTransform.position - transform.position).normalized;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
-        transform.rotation = Quaternion.Euler(0, 0, angle);
         shootBehavior[0].Shoot(this, transform, playerTransform, projectilePrefab);
+        ObjectPoolManager.PlayAudio(shootSound, 1f);
 
 
     }
     private void ShootWhenPlayerInRange(Transform playerTransform)
     {
+        StartCoroutine(PlayAudioMultipleTimes(5, shootSound));
         shootBehavior[1].Shoot(this, transform, playerTransform, projectilePrefab);
+    }
+    private void RotateToPlayer(float speed = 180f)
+    {
+        if (player == null) return;
+        Vector3 direction = (player.position - transform.position).normalized;
+        Quaternion angle = Quaternion.LookRotation(Vector3.forward, direction);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, angle, speed * Time.deltaTime);
     }
     private bool CheckPlayerInRange()
     {
@@ -92,6 +106,17 @@ public class Turret : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, triggerRadius);
+    }
+    IEnumerator PlayAudioMultipleTimes(int times,AudioClip clip)
+    {
+        int i = 0;
+        while (i < times)
+        {
+            ObjectPoolManager.PlayAudio(clip, 1f);
+            yield return new WaitForSeconds(clip.length); 
+            i++;
+        }
+        
     }
   
 }

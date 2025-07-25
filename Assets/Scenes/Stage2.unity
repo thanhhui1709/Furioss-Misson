@@ -817,7 +817,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 246965708}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1513201837}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: SaveGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1915705896}
+        m_TargetAssemblyTypeName: InGameUiManager, Assembly-CSharp
+        m_MethodName: ExitToMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &246965708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1702,7 +1726,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bfc4efdb9432a324dae3f6e2a978e7e4, type: 2}
   - {fileID: 11400000, guid: efeca910db4198d4ba2729dc57743432, type: 2}
   - {fileID: 11400000, guid: ae25e707dbf4c9548a29fb30b63a7d6f, type: 2}
-  Boss: {fileID: 1382627377064896508, guid: 326e41d987af3b140a01937e2f91beae, type: 3}
+  Boss: {fileID: 2803871152613498149, guid: 97504e25eb52a0040bd3660b5334c5b8, type: 3}
   bossHealthBar: {fileID: 507365863}
   bossHealthFill: {fileID: 1541050953}
   spawnBossCountdown: 6
@@ -3206,6 +3230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UI: {fileID: 1915705893}
+  levelFill: {fileID: 0}
 --- !u!1 &1923275729
 GameObject:
   m_ObjectHideFlags: 0
@@ -3811,7 +3836,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6227537147519507583, guid: b2cd5e77e471edb408b2a1b923211a63, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -3841,7 +3867,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 1
   experience: 0
-  experienceToNextLevel: 100
   levelData: {fileID: 11400000, guid: 9fdcd6ecad6d4ca4d9a61dde4d255562, type: 2}
   levelText: {fileID: 1129965336}
   experienceBar: {fileID: 817801777}
@@ -3949,6 +3974,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -6311352213680616822, guid: 4baf2c4af757f9b4286347460c802b46, type: 3}
+    - target: {fileID: 8488650802528446640, guid: 91c7c1cafc57ffc45a2e735274d69f0b, type: 3}
+      propertyPath: flySound
+      value: 
+      objectReference: {fileID: 8300000, guid: 4c6378d09efe1a24689c3bd6c2a1f34a, type: 3}
     - target: {fileID: 8488650802528446640, guid: 91c7c1cafc57ffc45a2e735274d69f0b, type: 3}
       propertyPath: backgroundHeight
       value: 20

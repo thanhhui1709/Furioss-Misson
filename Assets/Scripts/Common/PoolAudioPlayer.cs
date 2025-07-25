@@ -10,6 +10,7 @@ public class PoolAudioPlayer: MonoBehaviour
     private void Awake()
     {
         audioSource = gameObject.AddComponent<AudioSource>();
+        AdjustAudioSource();
     }
 
     public void PlayAudioClip(AudioClip clip, float volume)
@@ -24,5 +25,12 @@ public class PoolAudioPlayer: MonoBehaviour
     {
         yield return new WaitForSeconds(duration);
         ObjectPoolManager.ReturnObject(gameObject);
+    }
+    private void AdjustAudioSource()
+    {   if (audioSource == null) return;
+        audioSource.spatialBlend = 1f;
+        audioSource.rolloffMode = AudioRolloffMode.Linear;
+        audioSource.maxDistance = 20f;
+        audioSource.dopplerLevel = 0.5f;
     }
 }

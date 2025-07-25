@@ -35,11 +35,14 @@ public class StageManager : MonoBehaviour
         {
             currentWaveIndex = 0;
             currentWave = enemyWaves[currentWaveIndex];
-            StartCoroutine(SpawnAllWaveAndBoss());
         }
         if (enemyWaves.Count==0)
         {
             StartCoroutine(SpawnBoss());
+        }
+        else
+        {
+            StartCoroutine(SpawnAllWaveAndBoss());
         }
 
     }
@@ -60,9 +63,9 @@ public class StageManager : MonoBehaviour
         for (int i = 0; i < wave.numberPerWave; i++)
         {
 
-            var enemy = Instantiate(wave.enemyPrefab);
+            var enemy = ObjectPoolManager.SpawnObject(wave.enemyPrefab,ObjectPoolManager.PoolType.Enemy);
           
-
+            enemy.SetActive(false); // Set enemy inactive first, then activate it later
 
             EnemyMovementBySequence embs = enemy.GetComponent<EnemyMovementBySequence>();
 
@@ -72,7 +75,7 @@ public class StageManager : MonoBehaviour
 
             embs.currentPattern = pattern;
        
-
+            enemy.SetActive(true); // Activate the enemy after setting up its movement pattern
             yield return new WaitForSeconds(wave.delaySpawnPrefab); // Delay between each enemy in wave
         }
         StartCoroutine(SpawnDropItem(wave)); // Spawn drop items after all enemies are spawned
@@ -115,8 +118,8 @@ public class StageManager : MonoBehaviour
         {
             yield return StartCoroutine(SpawnWave(currentWave)); // Wait until the wave is done
             yield return new WaitUntil(() => CheckWaveClear(currentWave));
-            yield return new WaitForSeconds(currentWave.delayForTheNextWave);
             SetNextCurrentWave();
+            yield return new WaitForSeconds(currentWave.delayForTheNextWave);
         }
         if (CheckWaveClear(currentWave))
         {
@@ -127,6 +130,7 @@ public class StageManager : MonoBehaviour
     private bool CheckWaveClear(EnemyWave currentWave)
     {
         List<GameObject> enemy = GameObject.FindGameObjectsWithTag("Enemy").ToList();
+        enemy.AddRange(GameObject.FindGameObjectsWithTag("Obstacle").ToList());
         return enemy.Count == 0 && currentWave.isDoneSpawned;
     }
     private IEnumerator SpawnBoss()

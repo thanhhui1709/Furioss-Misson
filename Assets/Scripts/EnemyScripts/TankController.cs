@@ -10,6 +10,7 @@ public class TankController : MonoBehaviour
     public float triggerRadius = 8f;
     public float shootCooldown = 3f;
     public GameObject projectilePrefab;
+    public AudioClip shootSound;
     public float damage = 40f;
     private Transform weapon;
     public AShootingController shootBehavior;
@@ -52,6 +53,7 @@ public class TankController : MonoBehaviour
     IEnumerator ShootAtPlayer(Transform playerTransform)
     {
         shootBehavior.Shoot(this, weapon, playerTransform, projectilePrefab);
+        ObjectPoolManager.PlayAudio(shootSound, 1f);
         cooldownTimer = shootCooldown;
         yield return null;
     }

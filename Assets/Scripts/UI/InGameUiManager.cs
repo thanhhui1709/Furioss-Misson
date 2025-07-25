@@ -1,14 +1,22 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class InGameUiManager : MonoBehaviour
 {
+    public static InGameUiManager instance;
     public Canvas UI;
-    
+
+    public Image levelFill;
+  
     private void OnEnable()
     {
         StartCoroutine(WaitAndSubscribe());
+    
+       
     }
+     
     private void OnDisable()
     {
         GameEvent.instance.onStageClear.RemoveListener(DisplayClearStage);
@@ -30,7 +38,7 @@ public class InGameUiManager : MonoBehaviour
 
 
         }
-        
+
 
     }
     public void ToogleMenu()
@@ -51,7 +59,7 @@ public class InGameUiManager : MonoBehaviour
     }
     public void DisplayGameOver()
     {
-       
+
         {
             Transform UITransform = UI.transform.Find("UI");
             if (UITransform != null)
@@ -65,6 +73,12 @@ public class InGameUiManager : MonoBehaviour
 
         }
 
+    }
+    public void ExitToMenu()
+    {
+        GameManager.instance.SaveGame();
+        SceneManager.LoadScene(0);
+        Time.timeScale = 1; // Reset time scale to normal when exiting to menu
     }
     public void DisplayClearStage()
     {

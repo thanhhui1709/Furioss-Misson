@@ -305,7 +305,7 @@ MonoBehaviour:
     maxTimeInitShot: 8
     bodyDamage: 10
     shootSound: {fileID: 8300000, guid: 3f3780e6a6981cb48aec043e57751530, type: 3}
-    shottingBehavior: {fileID: 11400000, guid: 32d018cb255b3b44084f065c17642e74, type: 2}
+    shootingBehavior: {fileID: 11400000, guid: 32d018cb255b3b44084f065c17642e74, type: 2}
 --- !u!114 &-7239810865081742510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -438,7 +438,7 @@ MonoBehaviour:
   healthBar: {fileID: 1801612120685940103}
   offset: {x: 0, y: 2, z: 0}
   displayTime: 1.5
-  exp: 100
+  exp: 30
   items: {fileID: -7239810865081742510}
   deathEffect: {fileID: 8562486586392712937, guid: 445f3ab87082dbb4ab63343e2332384e, type: 3}
   deathSound: {fileID: 8300000, guid: 91b443543f216574e9f4c45491aa71c0, type: 3}

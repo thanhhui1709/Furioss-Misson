@@ -14,8 +14,10 @@ public class ObjectPoolManager : MonoBehaviour
     private static GameObject enemyProjectilePool;
     private static GameObject particle;
     private static GameObject audioPool;
+    private static GameObject enemyPool;
     public enum PoolType
     {
+        Enemy,
         PlayerProjectile,
         EnemyProjectile,
         Particle,
@@ -25,12 +27,15 @@ public class ObjectPoolManager : MonoBehaviour
     private void Awake()
     {
         SetUpEmpty();
-        CreateAudioObject();
+        CreateDefaultAudioObject();
     }
 
     private void SetUpEmpty()
     {
         _objectPoolEmptyHolder = new GameObject("PoolObjects");
+
+        enemyPool=new GameObject("EnemyPool");
+        enemyPool.transform.SetParent(_objectPoolEmptyHolder.transform);
 
         playerProjectilePool = new GameObject("PlayerProjectilePool");
         playerProjectilePool.transform.SetParent(_objectPoolEmptyHolder.transform);
@@ -44,19 +49,28 @@ public class ObjectPoolManager : MonoBehaviour
         audioPool=new GameObject("AudioPool");
         audioPool.transform.SetParent(_objectPoolEmptyHolder.transform);
     }
-    private GameObject CreateAudioObject()
+    private GameObject CreateDefaultAudioObject()
     {
         GameObject audioClipGO=new GameObject("AudioClip");
         audioClipGO.AddComponent<PoolAudioPlayer>();
         audioClipGO.transform.SetParent(audioPool.transform);
         objectPools.Add(new PoolObjectInfo { poolName = audioClipGO.name, poolObjects = new List<GameObject>() { audioClipGO} });
         return audioClipGO;
-    } private static GameObject CreateAudioObjectStatic()
+    } 
+    private static GameObject CreateAudioObjectStatic()
     {
         GameObject audioClipGO=new GameObject("AudioClip");
         audioClipGO.AddComponent<PoolAudioPlayer>();
         audioClipGO.transform.SetParent(audioPool.transform);
         objectPools.Add(new PoolObjectInfo { poolName = audioClipGO.name, poolObjects = new List<GameObject>() { audioClipGO} });
+        return audioClipGO;
+    }
+    private static GameObject CreateAudioObjectStatic(GameObject parent)
+    {
+        GameObject audioClipGO = new GameObject("AudioClip");
+        audioClipGO.AddComponent<PoolAudioPlayer>();
+        audioClipGO.transform.SetParent(parent.transform);
+        objectPools.Add(new PoolObjectInfo { poolName = audioClipGO.name, poolObjects = new List<GameObject>() { audioClipGO } });
         return audioClipGO;
     }
 
@@ -89,7 +103,34 @@ public class ObjectPoolManager : MonoBehaviour
         }
         return obj;
     }
-    public static GameObject PlayAudio(AudioClip audioClip,float volume)
+    public static GameObject SpawnObject(GameObject gameObject, PoolType poolType = PoolType.None)
+    {
+        PoolObjectInfo pool = objectPools.Find(x => x.poolName == gameObject.name);
+        if (pool == null)
+        {
+            pool = new PoolObjectInfo();
+            pool.poolName = gameObject.name;
+            objectPools.Add(pool);
+
+        }
+        GameObject obj = pool.poolObjects.FirstOrDefault();
+        if (obj == null)
+        {
+            GameObject parent = SetParentGameObject(poolType);
+            obj = Instantiate(gameObject);
+            if (parent != null)
+            {
+                obj.transform.SetParent(parent.transform);
+            }
+        }
+        else
+        {
+            obj.SetActive(true);
+            pool.poolObjects.Remove(obj);
+        }
+        return obj;
+    }
+    public static GameObject PlayAudio(AudioClip audioClip,float volume,GameObject parent=null)
     {
         PoolObjectInfo pool = objectPools.Find(x => x.poolName.Equals("AudioClip"));
         if (pool == null)
@@ -102,7 +143,15 @@ public class ObjectPoolManager : MonoBehaviour
         GameObject obj = pool.poolObjects.FirstOrDefault();
         if (obj == null)
         {
-            obj = CreateAudioObjectStatic();
+            if (parent != null)
+            {
+                obj = CreateAudioObjectStatic(parent);
+            }
+            else
+            {
+
+                obj = CreateAudioObjectStatic();
+            }
 
 
         }
@@ -110,7 +159,8 @@ public class ObjectPoolManager : MonoBehaviour
           
             obj.SetActive(true);
          
-           
+
+
         }
         PoolAudioPlayer player = obj.GetComponent<PoolAudioPlayer>();
         player.PlayAudioClip(audioClip, volume);
@@ -123,6 +173,16 @@ public class ObjectPoolManager : MonoBehaviour
         PoolObjectInfo pool = objectPools.Find(x => x.poolName.Equals( name)||x.poolName.Equals(gameObject.name));
         if (pool != null)
         {
+            if (gameObject.name.Equals("AudioClip"))
+            {
+                if (gameObject.transform.parent != null)
+                {
+                    gameObject.transform.parent = null;
+                    gameObject.transform.SetParent(SetParentGameObject(PoolType.Audio).transform);
+                    gameObject.transform.position=audioPool.transform.position;
+
+                }
+            }
             gameObject.SetActive(false);
             pool.poolObjects.Add(gameObject);
         }
@@ -131,13 +191,14 @@ public class ObjectPoolManager : MonoBehaviour
             Debug.LogWarning("Pool not found for " + gameObject.name);
         }
     }
-    private static GameObject SetParentGameObject(PoolType type)
+    public static GameObject SetParentGameObject(PoolType type)
     {
         switch (type)
         {
             case PoolType.PlayerProjectile:
                 return playerProjectilePool;
-
+            case PoolType.Enemy:
+                return enemyPool;
             case PoolType.EnemyProjectile:
                 return enemyProjectilePool;
             case PoolType.Particle:

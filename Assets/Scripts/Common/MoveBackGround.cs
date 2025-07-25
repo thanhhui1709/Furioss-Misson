@@ -10,7 +10,7 @@ public class MoveBackGround : MonoBehaviour
     private Vector3 initialPos;
 
     public float increaseSpeedTime;
-
+    public AudioClip flySound;
     
 
     void Awake()
@@ -38,6 +38,7 @@ public class MoveBackGround : MonoBehaviour
     }
     IEnumerator IncreaseBackgroundSpeed(float increaseTime)
     {
+        ObjectPoolManager.PlayAudio(flySound, 0.8f);
         float elapsedTime = 0f;
         float originalSpeed = scrollSpeed;
         float boostedSpeed = originalSpeed * 20f;

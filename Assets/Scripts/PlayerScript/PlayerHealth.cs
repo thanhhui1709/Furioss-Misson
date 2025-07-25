@@ -83,7 +83,7 @@ public class PlayerHealth : MonoBehaviour
     public void SetMaxHealth()
     {
         maxHealth += healthPlusWhenLevelUp;
-        currentHealth = maxHealth;
+        Health((int)healthPlusWhenLevelUp); // Increase current health by the same amount
         UpdateHealthBar();
     }
     public void Health(int amount)

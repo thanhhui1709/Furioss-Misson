@@ -26,6 +26,7 @@ public class TopSwingPattern : IMovementPattern
     public override void Initialize(Transform transform)
     {
         rb = transform.GetComponent<Rigidbody2D>();
+        transform.rotation =Quaternion.Euler(0,0 ,180);
         goingRight = startX >= 0;
 
         currentX = startX;

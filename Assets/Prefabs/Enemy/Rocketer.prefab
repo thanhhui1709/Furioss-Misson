@@ -153,7 +153,7 @@ CircleCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0.0018137693}
@@ -193,7 +193,7 @@ MonoBehaviour:
     maxTimeInitShot: 6
     bodyDamage: 10
     shootSound: {fileID: 0}
-    shottingBehavior: {fileID: 11400000, guid: 82e10c06e6bd9764b81bc6732f6a9e6c, type: 2}
+    shootingBehavior: {fileID: 11400000, guid: 82e10c06e6bd9764b81bc6732f6a9e6c, type: 2}
 --- !u!114 &3016372124481618335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -326,7 +326,7 @@ MonoBehaviour:
   healthBar: {fileID: 7472404802754156876}
   offset: {x: 0, y: 1, z: 0}
   displayTime: 1.5
-  exp: 100
+  exp: 150
   items: {fileID: 3016372124481618335}
   deathEffect: {fileID: 8562486586392712937, guid: 445f3ab87082dbb4ab63343e2332384e, type: 3}
   deathSound: {fileID: 8300000, guid: ab9be3234f3dfe9489b32b3fbbb653f1, type: 3}

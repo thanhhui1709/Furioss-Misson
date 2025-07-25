@@ -18,21 +18,31 @@ public class EnemyHealth : MonoBehaviour
 
     private Camera mainCamera;
     private Coroutine hideBarCoroutine;
-    private AudioSource audioSource;
-
-    private HashSet<int> processedAttackIDs = new HashSet<int>();
+    private Queue<int> processedAttackIDs = new Queue<int>();
+    private const int MaxAttackIDs = 100;
+    private bool hasDied;
 
     void Awake()
     {
-        GameEvent.instance.onPlayerLevelUp.AddListener(LevelUpHealth);
-        currentHealth = maxHealth;
         mainCamera = Camera.main;
-
+    }
+    private void OnEnable()
+    {
+        hasDied = false;
+        currentHealth = maxHealth; // Reset health when enemy is enabled
         UpdateHealthBar();
-        healthBar.gameObject.SetActive(false);
-        audioSource = GetComponentInParent<AudioSource>(true);
+        if (healthBar != null)
+            healthBar.gameObject.SetActive(false); // Hide health bar initially
+        processedAttackIDs.Clear(); // Clear processed attack IDs when enemy is enabled
+    }
 
-
+    private void OnDisable()
+    {
+        if (hideBarCoroutine != null)
+        {
+            StopCoroutine(hideBarCoroutine);
+            hideBarCoroutine = null;
+        }
     }
 
     void LateUpdate()
@@ -41,23 +51,23 @@ public class EnemyHealth : MonoBehaviour
         if (healthBar != null && mainCamera != null)
         {
             healthBar.transform.rotation = mainCamera.transform.rotation;
-            healthBar.transform.position = transform.root.position + offset;
+            healthBar.transform.position = transform.position + offset;
         }
     }
 
     public void TakeDamage(float damage, int attackID)
     {
-        if(processedAttackIDs.Contains(attackID))
+        if (hasDied) return; // Ignore if already dead
+        if (processedAttackIDs.Contains(attackID))
         {
             return; // Ignore if this attack ID has already been processed
         }
         currentHealth -= damage;
-        processedAttackIDs.Add(attackID); 
-        if(processedAttackIDs.Count > 100)
+        processedAttackIDs.Enqueue(attackID);
+        if (processedAttackIDs.Count > MaxAttackIDs)
         {
-            processedAttackIDs.Clear(); // Clear the set to prevent memory overflow
-        }   
-
+            processedAttackIDs.Dequeue(); // Remove oldest
+        }
 
         if (healthBar != null)
         {
@@ -67,7 +77,6 @@ public class EnemyHealth : MonoBehaviour
             // Restart the timer if already showing
             if (hideBarCoroutine != null)
             {
-
                 StopCoroutine(hideBarCoroutine);
             }
 
@@ -77,12 +86,14 @@ public class EnemyHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             Die();
+            
         }
     }
 
     private void UpdateHealthBar()
     {
-        healthBar.value = (float)currentHealth / maxHealth;
+        if (healthBar != null)
+            healthBar.value = (float)currentHealth / maxHealth;
     }
 
     IEnumerator HideHealthBarAfterTime()
@@ -94,24 +105,19 @@ public class EnemyHealth : MonoBehaviour
 
     private void Die()
     {
-        GameEvent.instance.TriggerEnemyDieEvent(exp);   
+        hasDied=true;
+        GameEvent.instance.TriggerEnemyDieEvent(exp);
         items.DropItem();
-        audioSource.clip = deathSound;
-        audioSource.Play();
-        ObjectPoolManager.SpawnObject(deathEffect, transform.position, Quaternion.identity,ObjectPoolManager.PoolType.Particle);
-        StartCoroutine(WaitThenDie());
+        ObjectPoolManager.PlayAudio(deathSound, 1f);
+        ObjectPoolManager.SpawnObject(deathEffect, transform.position, Quaternion.identity, ObjectPoolManager.PoolType.Particle);
+        if (gameObject.transform.parent != null)
+        {
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            ObjectPoolManager.ReturnObject(gameObject);
+        }
        
-    }
-    IEnumerator WaitThenDie()
-    {
-        yield return new WaitForSeconds(0.1f);
-        Destroy(gameObject);
-    }
-
-    public void LevelUpHealth()
-    {
-        maxHealth += 10; // Increase max health by 10
-        currentHealth = maxHealth; // Reset current health to max
-
     }
 }

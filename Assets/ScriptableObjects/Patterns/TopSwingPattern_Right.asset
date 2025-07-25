@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aad7c6b25cf344f43a580f0ec77ef3af, type: 3}
   m_Name: TopSwingPattern_Right
   m_EditorClassIdentifier: 
-  initialSpeed: 2
-  maxSpeed: 8
+  initialSpeed: 5
+  maxSpeed: 15
   startX: 0.1
   xRange: 6
   _offset: 3

@@ -105,7 +105,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1000
+  m_Mass: 3000
   m_LinearDamping: 1
   m_AngularDamping: 0.05
   m_GravityScale: 0
@@ -203,28 +203,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a2d89ccf2a8d1741b8dfc77521abc9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  behaviours:
-  - movement: {fileID: 0}
-    shootPattern: {fileID: 11400000, guid: 07140d5c1ba7a1c4ab5a6c596003f8ad, type: 2}
-    projectile: {fileID: 7353483712703108750, guid: a9ef96cf16c3bdb46ae8d20fbcd12e3b, type: 3}
-    delayBetweenMoveAndShot: 0
-    minRestTime: 2
-    maxRestTime: 4
-  - movement: {fileID: 0}
-    shootPattern: {fileID: 11400000, guid: 82e10c06e6bd9764b81bc6732f6a9e6c, type: 2}
-    projectile: {fileID: 2087701196319124275, guid: d8283a0fdf90574418f92c2c378d35f2, type: 3}
-    delayBetweenMoveAndShot: 0
-    minRestTime: 2
-    maxRestTime: 4
-  - movement: {fileID: 0}
-    shootPattern: {fileID: 11400000, guid: 1959a863c13453a459a41f0ba64e6614, type: 2}
-    projectile: {fileID: 8021138323933753476, guid: 5642c69bd9ef5734f807c39e05cb467c, type: 3}
-    delayBetweenMoveAndShot: 0
-    minRestTime: 2
-    maxRestTime: 4
-  minSequenceBehaviorCooldown: 3
-  maxSequenceBehaviorCooldown: 5
-  activeTime: 4
+  bossPhases:
+  - behaviors:
+    - movement: {fileID: 0}
+      shootPattern: {fileID: 11400000, guid: 07140d5c1ba7a1c4ab5a6c596003f8ad, type: 2}
+      projectile: {fileID: 7353483712703108750, guid: a9ef96cf16c3bdb46ae8d20fbcd12e3b, type: 3}
+      delayBetweenMoveAndShot: 0
+      minRestTime: 2
+      maxRestTime: 4
+    - movement: {fileID: 0}
+      shootPattern: {fileID: 11400000, guid: 1959a863c13453a459a41f0ba64e6614, type: 2}
+      projectile: {fileID: 8021138323933753476, guid: 5642c69bd9ef5734f807c39e05cb467c, type: 3}
+      delayBetweenMoveAndShot: 0
+      minRestTime: 2
+      maxRestTime: 4
+    minSequenceBehaviorCooldown: 2
+    maxSequenceBehaviorCooldown: 5
+    activeTime: 3
+  timeBetweenPhases: 5
   spawnDistance: 12
   spawnSpeed: 12
 --- !u!114 &6473521473018306746
@@ -273,7 +269,7 @@ MonoBehaviour:
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
   explosion: {fileID: 0}
-  explosionSound: {fileID: 8065197548591788512}
+  explosionSound: {fileID: 8300000, guid: 18ee4c1938ba6194a99ce9129c1e5181, type: 3}
 --- !u!82 &8065197548591788512
 AudioSource:
   m_ObjectHideFlags: 0
@@ -379,10 +375,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8895358559674780}
     m_Modifications:
-    - target: {fileID: 7961866163572779141, guid: 6495bdf146632d84187a72880423e4a5, type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3109718745229432225, guid: 613495f7f3aa78c4aabe45252444b28b, type: 3}
       propertyPath: m_LocalScale.x
       value: 3
@@ -434,6 +426,10 @@ PrefabInstance:
     - target: {fileID: 5085700184500873002, guid: 613495f7f3aa78c4aabe45252444b28b, type: 3}
       propertyPath: m_Name
       value: Explosion2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7961866163572779141, guid: 6495bdf146632d84187a72880423e4a5, type: 3}
+      propertyPath: playOnAwake
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -27,7 +27,11 @@ public class PlayerWeapon : MonoBehaviour
         {
             damage += amount;
         }
-      
+        public void IncreaseFireRate(float amount)
+        {
+            fireRate += amount;
+        }
+
     }
 
     [System.Serializable]
@@ -94,6 +98,10 @@ public class PlayerWeapon : MonoBehaviour
     public void IncreaseCurrentWeaponDamage(int amount)
     {
         CurrentWeapon.IncreaseDamage(amount);
+    }
+    public void IncreaseCurrentWeaponFireRate(float amount)
+    {
+        CurrentWeapon.IncreaseFireRate(amount);
     }
 
     public void Save(ref PlayerWeaponData data)

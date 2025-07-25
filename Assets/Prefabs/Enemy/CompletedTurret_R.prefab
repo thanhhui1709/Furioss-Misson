@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 4931979894777596962}
   m_Layer: 7
   m_Name: Turret
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -162,7 +162,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 808925636502436189}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: -0, z: 0.9304176, w: -0.36650118}
   m_LocalPosition: {x: -0.22018051, y: -1.21, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
@@ -171,7 +171,7 @@ Transform:
   - {fileID: 2756512838595936875}
   - {fileID: 5239729678673831431}
   m_Father: {fileID: 5939421469039583110}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 223}
 --- !u!114 &3271525189580860532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,6 +207,7 @@ MonoBehaviour:
   shootCooldown: 3
   shootIdleCooldownMin: 3
   shootIdleCooldownMax: 5
+  shootSound: {fileID: 8300000, guid: 40d75edebc1fdb84486ce63a5a1c80c4, type: 3}
   shootBehavior:
   - {fileID: 11400000, guid: 6bb6b8ce5cbeaa9488c2d29bfc200369, type: 2}
   - {fileID: 11400000, guid: b1e8f685d9d2b3d459e1927bf72a7d6a, type: 2}
@@ -415,6 +416,7 @@ GameObject:
   - component: {fileID: 5939421469039583110}
   - component: {fileID: 7924101338337485239}
   - component: {fileID: 4690667637262122007}
+  - component: {fileID: 4793213123684522103}
   m_Layer: 7
   m_Name: CompletedTurret_R
   m_TagString: Untagged
@@ -451,7 +453,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1000
+  m_Mass: 100000
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 0
@@ -481,6 +483,18 @@ MonoBehaviour:
   MovementSequence: {fileID: 11400000, guid: 21633578097a56f448253bf7f7b7f5d9, type: 2}
   currentPattern: {fileID: 0}
   delayTime: 0
+--- !u!114 &4793213123684522103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4744445119164237737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fcd1197d7047b748a41f8a8e7b866ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4810981538350096115
 GameObject:
   m_ObjectHideFlags: 0

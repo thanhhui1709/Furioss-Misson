@@ -188,7 +188,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -239,7 +239,7 @@ MonoBehaviour:
     maxTimeInitShot: 5
     bodyDamage: 0
     shootSound: {fileID: 8300000, guid: 73b44e7c0bd75bf42a25fb8cba0c3172, type: 3}
-    shottingBehavior: {fileID: 11400000, guid: 3033a71a943a6ef4db25e0a4d780bb9b, type: 2}
+    shootingBehavior: {fileID: 11400000, guid: 3033a71a943a6ef4db25e0a4d780bb9b, type: 2}
 --- !u!114 &1107495322053459892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -372,7 +372,7 @@ MonoBehaviour:
   healthBar: {fileID: 5059707066041326954}
   offset: {x: 0, y: 1, z: 0}
   displayTime: 1.5
-  exp: 300
+  exp: 150
   items: {fileID: 1107495322053459892}
   deathEffect: {fileID: 8562486586392712937, guid: 445f3ab87082dbb4ab63343e2332384e, type: 3}
   deathSound: {fileID: 8300000, guid: 91b443543f216574e9f4c45491aa71c0, type: 3}

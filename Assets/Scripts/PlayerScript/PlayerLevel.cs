@@ -7,26 +7,38 @@ using UnityEngine.UI;
 
 public class PlayerLevel : MonoBehaviour
 {
+    [Header("Level Data")]
     public int level = 0;
     public int experience = 0;
-    public int experienceToNextLevel;
+    private int experienceToNextLevel;
     public LevelData levelData;
+    [Header("UI Elements")]
     public TextMeshProUGUI levelText;
     public Slider experienceBar;
     public AudioClip levelUpSound;
-    private AudioSource audioSource;
     private PlayerWeapon playerWeapon;
 
     void Awake()
     {
         GameManager.instance.PlayerLevel = this;
         playerWeapon = GetComponent<PlayerWeapon>();
+       
+    }
+    private void OnEnable()
+    {
         GameEvent.instance.onPlayerLevelUp.AddListener(LevelUp);
         GameEvent.instance.onEnemyDie += GainExperience;
+    }
+    private void OnDisable()
+    {
+        GameEvent.instance.onPlayerLevelUp.RemoveListener(LevelUp);
+        GameEvent.instance.onEnemyDie -= GainExperience;
+    }
+    private void Start()
+    {
         experienceToNextLevel = levelData.getExperienceForLevel(level);
-        levelText.text = (level + 1).ToString();
+        levelText.text = (level).ToString();
         UpdateExperienceBar();
-        audioSource = GetComponent<AudioSource>();
     }
 
 
@@ -37,6 +49,8 @@ public class PlayerLevel : MonoBehaviour
     }
     public void GainExperience(int amount)
     {
+        if (level == levelData.GetMaxLevel()) return;
+        
         int remainExpToLevelUp = experienceToNextLevel - experience;
         int excessExp = amount - remainExpToLevelUp;
         experience += amount;
@@ -54,11 +68,6 @@ public class PlayerLevel : MonoBehaviour
 
     private void LevelUp()
     {
-
-        bool isMaxLevel = levelData.checkMaxLevel(level);
-        if (isMaxLevel)
-            return;
-        //Up level
         level++;
         switch(level)
         {
@@ -72,12 +81,13 @@ public class PlayerLevel : MonoBehaviour
                 break;
             case 7:
                 playerWeapon.LevelUpCurrentWeapon();
+                playerWeapon.IncreaseCurrentWeaponFireRate(3f);
                 break;
            case 10:
                 playerWeapon.LevelUpCurrentWeapon();
                 break;
             default:
-                playerWeapon.IncreaseCurrentWeaponDamage(5);
+                playerWeapon.IncreaseCurrentWeaponDamage(2);
                 break;
         }
         //update text and experience bar
@@ -87,7 +97,7 @@ public class PlayerLevel : MonoBehaviour
         //reset experience
         experience = 0;
         //play audio
-        audioSource.PlayOneShot(levelUpSound);
+        ObjectPoolManager.PlayAudio(levelUpSound,1f);
 
     }
 

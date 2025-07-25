@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2190504172902104598}
-  - component: {fileID: 7573003417564002315}
   - component: {fileID: 1114367902266403541}
   - component: {fileID: 1652123554201228213}
+  - component: {fileID: 7573003417564002315}
   m_Layer: 0
   m_Name: ElectricRing
   m_TagString: Untagged
@@ -34,23 +34,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7573003417564002315
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8021138323933753476}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 115eb11dbb470f44281e586c3db93ec7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  expandSpeed: 7
-  maxRadius: 24
-  damage: 10
-  electricRingPrefab: {fileID: 7481304292482149382, guid: 02eba39d834d36e47b9f59cdc5b07b6f, type: 3}
-  electricSound: {fileID: 8300000, guid: 251af33fd16cb4847b524bce4ffdc0ca, type: 3}
 --- !u!58 &1114367902266403541
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -184,3 +167,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7573003417564002315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8021138323933753476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 115eb11dbb470f44281e586c3db93ec7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandSpeed: 16
+  maxRadius: 24
+  damage: 10
+  electricRingPrefab: {fileID: 7481304292482149382, guid: 02eba39d834d36e47b9f59cdc5b07b6f, type: 3}
+  electricSound: {fileID: 8300000, guid: 251af33fd16cb4847b524bce4ffdc0ca, type: 3}

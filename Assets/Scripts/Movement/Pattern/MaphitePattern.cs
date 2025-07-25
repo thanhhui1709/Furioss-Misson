@@ -1,18 +1,36 @@
-﻿
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "ScriptableObjects/MovementPattern/MaphitePattern")]
 public class MaphitePattern : IMovementPattern
 {
-    public float movementSpeed = 5f;
+    // === Configuration ===
+    public int damage = 80;
+    public float movementSpeed = 35f;
     public float xBoundary = 30f;
     public float yBoundary = 20f;
-    public float holdingTime = 2f; // Time to hold position before moving
-
+    public float holdingTime = 2.5f;
     public int numberOfMovement = 4;
+    public GameObject skillIndicator;
+    public bool hasDealDamage = false;
+    public AudioClip clip;
+
+    // === Runtime State ===
     private BehaviorState state;
+    private bool hasMovedToNewPosition = false;
+    private bool hasRotated = false;
+    private bool _isFinished = false;
+    private int count = 0;
+    private float timer = 0f;
+    private float currentSpeed;
+    private float maxDistance = 20f;
+    private Vector3 originalPosition;
+    private GameObject indicatorInstance;
+
+    // === Components ===
+    private Rigidbody2D rb;
+    private GameObject player;
 
     public enum BehaviorState
     {
@@ -20,162 +38,167 @@ public class MaphitePattern : IMovementPattern
         Moving,
         ReturningToCenter
     }
-    private int count;
-    private Vector3 originalPosition;
-    private float maxDistance;
-    private Rigidbody2D rb;
-    private GameObject player;
-    private float timer;
-    private bool _isFinished = false;
-    private bool hasMovedToNewPosition;
-    public override bool isFinished => _isFinished;
 
+    public override bool isFinished => _isFinished;
     public override float offset { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 
+    // === Initialize Pattern ===
     public override void Initialize(Transform transform)
     {
-        maxDistance = 20f;
-        hasMovedToNewPosition = false;
-        _isFinished = false;
-        player = GameObject.FindGameObjectWithTag("Player");
         rb = transform.GetComponent<Rigidbody2D>();
-        float x = transform.position.x;
-        float y = transform.position.y;
+        player = GameObject.FindGameObjectWithTag("Player");
+
+        state = IsOutOfBounds(transform.position) ? BehaviorState.HoldingPosition : BehaviorState.Moving;
+        currentSpeed = movementSpeed / 2;
         count = 0;
-        state = (x == xBoundary || x == -xBoundary) || (y == yBoundary || y == -yBoundary) ? BehaviorState.HoldingPosition : BehaviorState.Moving;
         timer = 0f;
-        if (player != null) RotateTowardPlayer(transform);
+        _isFinished = false;
+        hasDealDamage = false;
+        hasRotated = false;
+        hasMovedToNewPosition = false;
+
+        if (player != null)
+        {
+            RotateTowardPlayer(transform);
+        }
     }
 
+    // === Update Loop ===
     public override void UpdateMovement(Transform transform, float deltaTime)
     {
         switch (state)
         {
             case BehaviorState.HoldingPosition:
-   
-                timer += deltaTime;
-                hasMovedToNewPosition = false;
-                if (timer >= holdingTime)
-                {
-                 
-                    RotateTowardPlayer(transform);
-                    maxDistance=CalculateMaxDistance(transform);
-                    state = BehaviorState.Moving;
-                    timer = 0f;
-
-                }
+                HandleHolding(transform, deltaTime);
                 break;
+
             case BehaviorState.Moving:
-                MoveStraight(transform, originalPosition);
+                HandleMoving(transform);
                 break;
+
             case BehaviorState.ReturningToCenter:
-                ReturnToCenterScreen(transform);
-      
+                HandleReturn(transform, deltaTime);
                 break;
         }
     }
 
-    private void RotateTowardPlayer(Transform transform)
+    // === Movement Phases ===
+
+    private void HandleHolding(Transform transform, float deltaTime)
     {
-        if (player != null)
+        timer += deltaTime;
+        hasMovedToNewPosition = false;
+
+        if (timer > holdingTime)
         {
-            Vector2 dir = (player.transform.position - transform.position).normalized;
-            float angle = Vector2.SignedAngle(transform.up, dir);
+            state = BehaviorState.Moving;
+            ObjectPoolManager.PlayAudio(clip, 1f);
+            timer = 0f;
+            currentSpeed = movementSpeed / 2;
+        }
+        else if (timer > 0.5f && !hasRotated)
+        {
+            RotateTowardPlayer(transform);
+            Debug.Log("Rotating towards player " + count);
+            hasRotated = true;
 
-            //rotate towards the player instatly
-            rb.rotation += angle;
-
-
-
+            indicatorInstance = ObjectPoolManager.SpawnObject(
+                skillIndicator,
+                transform.position + transform.up * 5,
+                transform.rotation
+            );
+            indicatorInstance.transform.SetParent(transform);
+            indicatorInstance.transform.rotation = transform.rotation;
+            indicatorInstance.SetActive(true);
         }
     }
-    private void MoveStraight(Transform transform, Vector3 originalPos)
+
+    private void HandleMoving(Transform transform)
     {
-    
-
-
-        float distanceTravelled = Vector3.Distance(originalPos, transform.position);
-        float currentSpeed = Mathf.Lerp(movementSpeed / 2, movementSpeed, distanceTravelled / maxDistance);
+        float distanceTravelled = Vector3.Distance(originalPosition, transform.position);
+        currentSpeed = Mathf.MoveTowards(currentSpeed, movementSpeed, 10 * Time.fixedDeltaTime);
         rb.linearVelocity = transform.up * currentSpeed;
-        Debug.Log("Speed:" + rb.linearVelocity.magnitude);
-        float x = transform.position.x;
-        float y = transform.position.y;
 
-        if (!hasMovedToNewPosition && (x >= xBoundary || x <= -xBoundary || y >= yBoundary || y <= -yBoundary) && distanceTravelled > 10f)
+        Vector2 pos = transform.position;
+
+        if (!hasMovedToNewPosition && IsOutOfBounds(pos) && distanceTravelled > 10f)
         {
-  
             rb.linearVelocity = Vector2.zero;
-            state = BehaviorState.HoldingPosition;
+
             if (count < numberOfMovement)
             {
                 MoveToRandomPosition(transform);
                 state = BehaviorState.HoldingPosition;
+                timer = 0f;
+                hasDealDamage = false;
+                hasRotated = false;
             }
             else
             {
-                state = BehaviorState.ReturningToCenter;
-                rb.position = new Vector2(0, 20f);
+                rb.position = new Vector2(0f, 20f);
                 rb.rotation = 180f;
-
+                state = BehaviorState.ReturningToCenter;
+                timer = 0f;
             }
-            timer = 0f;
         }
     }
+
+    private void HandleReturn(Transform transform, float deltaTime)
+    {
+        timer += deltaTime;
+        rb.linearVelocity = transform.up * movementSpeed;
+
+        if (rb.position.y <= 5f)
+        {
+            rb.linearVelocity = Vector2.zero;
+            _isFinished = true;
+        }
+    }
+
+    // === Helper Methods ===
+
+    private void RotateTowardPlayer(Transform transform)
+    {
+        if (player == null) return;
+
+        Vector2 dir = (player.transform.position - transform.position).normalized;
+        float angle = Vector2.SignedAngle(transform.up, dir);
+        rb.rotation += angle;
+    }
+
     private void MoveToRandomPosition(Transform transform)
     {
-        int num = Random.Range(0, 3);
         float x, y;
-        if (num == 0)
-        {
-            x = xBoundary;
-            y = Random.Range(-yBoundary, yBoundary);
-        }
-        else if (num == 1)
-        {
-            x = -xBoundary;
-            y = Random.Range(-yBoundary, yBoundary);
-        }
-        else if (num == 2)
-        {
-            y = yBoundary;
-            x = Random.Range(-xBoundary, xBoundary);
+        int num = Random.Range(0, 4);
 
-
-        }
-        else
+        switch (num)
         {
-            y = -yBoundary;
-            x = Random.Range(-xBoundary, xBoundary);
+            case 0:
+                x = xBoundary;
+                y = Random.Range(-yBoundary, yBoundary);
+                break;
+            case 1:
+                x = -xBoundary;
+                y = Random.Range(-yBoundary, yBoundary);
+                break;
+            case 2:
+                y = yBoundary;
+                x = Random.Range(-xBoundary, xBoundary);
+                break;
+            default:
+                y = -yBoundary;
+                x = Random.Range(-xBoundary, xBoundary);
+                break;
         }
-      
+
         Vector2 randomPos = new Vector2(x, y);
-        hasMovedToNewPosition = true;
         rb.position = randomPos;
         originalPosition = randomPos;
+        hasMovedToNewPosition = true;
         count++;
     }
-    private void ReturnToCenterScreen(Transform transform)
+    private bool IsOutOfBounds(Vector2 pos)
     {
-
-        rb.linearVelocity = transform.up * movementSpeed;
-        if (rb.position.y >= 0)
-        {
-            _isFinished = true;
-            return;
-        }
-
-    }
-    private float CalculateMaxDistance(Transform transform)
-    {
-        float angleBetweenRotaionAndXAxis = Mathf.Abs(Vector2.SignedAngle(transform.up, Vector2.right));
-       
-        if (angleBetweenRotaionAndXAxis > 90f)
-        {
-            angleBetweenRotaionAndXAxis = 180f - angleBetweenRotaionAndXAxis;
-        }
-        
-        float distanceToMove = xBoundary / Mathf.Sin(Mathf.Deg2Rad*angleBetweenRotaionAndXAxis);
-        Debug.Log("distance:"+distanceToMove);
-        return distanceToMove;
+        return pos.x >= xBoundary || pos.x <= -xBoundary || pos.y >= yBoundary || pos.y <= -yBoundary;
     }
 }

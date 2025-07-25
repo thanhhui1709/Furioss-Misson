@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
-using System.Diagnostics;
+
 using System.Collections;
 
 public class LaserController : MonoBehaviour
@@ -8,27 +8,33 @@ public class LaserController : MonoBehaviour
     [SerializeField] private int damage = 10;
     [SerializeField] private float dealDamageBetween = 0.25f;
 
-    [SerializeField] private float accumulateTime = 3f;
+    public float accumulateTime = 3f;
     public AudioClip accumulateSound;
     [SerializeField] private Vector3 scaleAccumulate;
-    [SerializeField] private Vector3 scaleRealease;
+    [SerializeField] private Vector3 scaleRelease;
     public AudioClip releaseSound;
-    [SerializeField] private float releaseDuration = 3f;
+    public float releaseDuration = 3f;
     [SerializeField] private float scaleTime = 0.5f;
     private float damageCooldown;
-    private AudioSource audioSource;
     private enum LaserState { Accumulate, Release };
     private LaserState state;
     private float timer;
+    private Vector3 initScale;
 
     // Store last time damage was applied to each object
-    void Start()
+    private void Start()
+    {
+        initScale = transform.localScale;
+       
+    }
+    private void OnEnable()
     {
         damageCooldown = int.MinValue;
-        state= LaserState.Accumulate;
+        transform.localScale = initScale;
+        state = LaserState.Accumulate;
         timer = 0;
-        audioSource = GetComponent<AudioSource>();
-        audioSource.PlayOneShot(accumulateSound);
+
+        ObjectPoolManager.PlayAudio(accumulateSound, 1f);
     }
 
     // Update is called once per frame
@@ -40,13 +46,13 @@ public class LaserController : MonoBehaviour
             case LaserState.Accumulate:
                 if (timer <= accumulateTime)
                 {
-                    transform.localScale = Vector3.Lerp(transform.localScale, scaleAccumulate, timer/accumulateTime);
+                    transform.localScale = Vector3.Lerp(initScale, scaleAccumulate, timer/accumulateTime);
                 }
                 else
                 {
                     timer = 0;
                     state= LaserState.Release;
-                    audioSource.PlayOneShot(releaseSound);
+                    ObjectPoolManager.PlayAudio(releaseSound, 1f);
                 }
 
                     break;
@@ -55,12 +61,18 @@ public class LaserController : MonoBehaviour
 
             case LaserState.Release:
                 if (timer <= scaleTime) {
-                    transform.localScale = Vector3.Lerp(transform.localScale, scaleRealease, timer / scaleTime);
+                    transform.localScale = Vector3.Lerp(scaleAccumulate, scaleRelease, timer / scaleTime);
 
                 }
                 else if(timer>= releaseDuration)
-                {
-                    Destroy(gameObject);
+                {   
+                    if(transform.parent != null)
+                    {
+                        transform.SetParent(null);
+                        GameObject parent=ObjectPoolManager.SetParentGameObject(ObjectPoolManager.PoolType.EnemyProjectile);
+                        transform.SetParent(parent.transform);
+                    }
+                    ObjectPoolManager.ReturnObject(gameObject);
                     return;
                 }
 
@@ -76,6 +88,7 @@ public class LaserController : MonoBehaviour
     {
         if (collision.CompareTag("Player")&&state.Equals(LaserState.Release))
         {
+            Debug.Log("Laser hit player");
             PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
             if (damageCooldown <= 0)
             {

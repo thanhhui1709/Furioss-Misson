@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -5463936284959722549}
   m_Layer: 0
   m_Name: Rocket_Nor
-  m_TagString: Untagged
+  m_TagString: Rocket
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -167,15 +167,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d2dd3bdff7b20e4580ffcbe97a6ffbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 20
   speed: 7
   lifetime: 3
   damage: 20
   explosionRadius: 2
   explosionEffect: {fileID: 3512153588440623268, guid: 3fe7df3cf7d9dd740aeb06cc853de0e5, type: 3}
+  indicator: {fileID: 0}
   explosionSound: {fileID: 8300000, guid: b517bb292fb2df049a9ed8d5cb54ba10, type: 3}
-  rocketSound: {fileID: 8300000, guid: b0d6f90a29b2b5a4fba3ecebeacc11e9, type: 3}
-  isOriented: 0
+  rocketSound: {fileID: 0}
 --- !u!82 &-5463936284959722549
 AudioSource:
   m_ObjectHideFlags: 0

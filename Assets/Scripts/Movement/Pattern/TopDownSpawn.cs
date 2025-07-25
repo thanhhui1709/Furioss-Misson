@@ -16,6 +16,11 @@ public class TopDownSpawn : IMovementPattern
 
     public override void Initialize(Transform transform)
     {
+        if (transform.gameObject.name.Equals("Tank"))
+        {
+
+            Debug.Log("Tank Pos" + transform.position);
+        }
         spawnPos.x += offset;
         startPos = spawnPos;
         transform.position = spawnPos;
@@ -24,7 +29,7 @@ public class TopDownSpawn : IMovementPattern
 
     public override void UpdateMovement(Transform transform, float deltaTime)
     {
-       
+
         if (rb == null)
         {
             Debug.LogWarning("No Rigidbody2D attached to enemy!");
@@ -35,7 +40,7 @@ public class TopDownSpawn : IMovementPattern
 
         if (!isFinished)
         {
-            float remaining = Mathf.Clamp01((yRange - distanceTravelled+0.5f) / yRange);
+            float remaining = Mathf.Clamp01((yRange - distanceTravelled + 0.5f) / yRange);
             float currentSpeed = speed * remaining; // Gradually reduce speed
             rb.linearVelocity = Vector2.down * currentSpeed;
         }

@@ -443,7 +443,7 @@ GameObject:
   - component: {fileID: 8760301260844621810}
   m_Layer: 7
   m_Name: Turret
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -478,7 +478,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1000
+  m_Mass: 10000
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 0
@@ -528,6 +528,7 @@ MonoBehaviour:
   shootCooldown: 3
   shootIdleCooldownMin: 3
   shootIdleCooldownMax: 5
+  shootSound: {fileID: 8300000, guid: 40d75edebc1fdb84486ce63a5a1c80c4, type: 3}
   shootBehavior:
   - {fileID: 11400000, guid: 6bb6b8ce5cbeaa9488c2d29bfc200369, type: 2}
   - {fileID: 11400000, guid: b1e8f685d9d2b3d459e1927bf72a7d6a, type: 2}

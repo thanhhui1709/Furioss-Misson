@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     public PlayerWeapon PlayerWeapon { get; set; }
     public StageManager StageManager { get; set; }
     public PlayerLevel PlayerLevel { get; set; }
-   
+
 
     private void Awake()
     {
@@ -30,10 +30,9 @@ public class GameManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        if (instance != null && instance != this)
+        else if (instance != this)
         {
             Destroy(gameObject);
-            return;
         }
     }
     private void OnEnable()
@@ -45,6 +44,7 @@ public class GameManager : MonoBehaviour
     private void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
+        GameEvent.instance.onStageClear.RemoveListener(ClearStage);
     }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {

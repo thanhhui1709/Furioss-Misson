@@ -236,6 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de29f4285aac2f64da7ef3f596376478, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LoadGameButton: {fileID: 439703282}
 --- !u!1 &348970866
 GameObject:
   m_ObjectHideFlags: 0
@@ -636,6 +637,7 @@ PrefabInstance:
     - {fileID: 1396522152254375562, guid: b2cd5e77e471edb408b2a1b923211a63, type: 3}
     - {fileID: 2849558557494869307, guid: b2cd5e77e471edb408b2a1b923211a63, type: 3}
     - {fileID: 2197722084409225055, guid: b2cd5e77e471edb408b2a1b923211a63, type: 3}
+    - {fileID: 6227537147519507583, guid: b2cd5e77e471edb408b2a1b923211a63, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

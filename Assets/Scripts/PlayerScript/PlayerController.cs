@@ -9,11 +9,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float verticalBound = 3.8f;
     [SerializeField] private float horizontalBound = 7.5f;
     public bool disableMovement;
+
+    private Rigidbody2D rb;
     void Start()
     {
         disableMovement = true;
         StartCoroutine(enableMovement());
         transform.position = new Vector3(0,0,0);
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -33,22 +36,15 @@ public class PlayerController : MonoBehaviour
         Vector3 direction = (mousePos - transform.position).normalized;
         direction.z = 0;
 
-        // Clamp position within bounds
         float clampedX = Mathf.Clamp(transform.position.x, -horizontalBound, horizontalBound);
         float clampedY = Mathf.Clamp(transform.position.y, -verticalBound, verticalBound);
-        transform.position = new Vector3(clampedX, clampedY, 0);
+        Vector3 targetPos = new Vector3(clampedX, clampedY, 0) + mouseSpeed * Time.fixedDeltaTime * direction;
 
-        // Move player
-        transform.Translate(direction * mouseSpeed * Time.fixedDeltaTime, Space.World);
-
-        //// 🔄 Rotate player based on horizontal direction
-        //float maxTiltAngle = 50f;
-        //float tilt = Mathf.Lerp(0, maxTiltAngle, Mathf.Abs(direction.x)) * Mathf.Sign(direction.x);
-        //transform.rotation = Quaternion.Euler(0, tilt, 0); // Negative to tilt visually left/right
+        rb.MovePosition(targetPos);
     }
     IEnumerator enableMovement()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(2f);
         disableMovement = false;
     }
 

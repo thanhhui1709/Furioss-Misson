@@ -27,8 +27,9 @@ MonoBehaviour:
     offset: 2.25
     delaySpawnPrefab: 0.5
     delayForTheNextWaveData: 5
-  - dropItems: []
-    dropedTime: 0
+  - dropItems:
+    - {fileID: 282112012492073636, guid: 83a45d9d250337448a14cfbbbbbcb19f, type: 3}
+    dropedTime: 4
     enemyPrefab: {fileID: 3118361467655501759, guid: 2ff827e4810386d419d17b61ec343986, type: 3}
     numberPerWave: 1
     offset: 0

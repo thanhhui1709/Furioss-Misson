@@ -9,11 +9,11 @@ public class Rocket : MonoBehaviour
     [SerializeField] private int damage;
     [SerializeField] private float explosionRadius;
     public GameObject explosionEffect;
+    public GameObject indicator;
     public AudioClip explosionSound;
     public AudioClip rocketSound;
     private Rigidbody2D rb;
-    private AudioSource audioSource;
-
+    private Vector2 startPos;
 
 
     private float cooldownTime;
@@ -23,36 +23,44 @@ public class Rocket : MonoBehaviour
         cooldownTime = lifetime;
      
         rb = GetComponent<Rigidbody2D>();
-        audioSource=GetComponent<AudioSource>();
+     
     }
     private void OnEnable()
     {
         cooldownTime = lifetime;
-     
+        startPos = transform.position;
         rb.linearVelocity = Vector2.zero;
-   
-        audioSource.PlayOneShot(rocketSound, 0.5f);
-    }
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        cooldownTime -= Time.fixedDeltaTime;
-   
-        
-            Moving();
-        
-    
-
-
-
-
-        if (cooldownTime <= 0)
+       if(rocketSound != null)
         {
-            Explosion();
-            return;
+            ObjectPoolManager.PlayAudio(rocketSound, 1.5f, this.gameObject);
+        }
+        if (indicator != null)
+        {
+            IndicateExplosionPos();
         }
     }
+
+        // Update is called once per frame
+        void FixedUpdate()
+        {
+            cooldownTime -= Time.fixedDeltaTime;
+
+
+            Moving();
+
+
+
+
+
+
+            if (cooldownTime <= 0)
+            {
+                Explosion();
+                return;
+            }
+        }
+    
     private void Explosion()
     {
 
@@ -64,24 +72,30 @@ public class Rocket : MonoBehaviour
                 // Assuming the enemy has a method to take damage
                 collider.GetComponent<PlayerHealth>().TakeDamage(damage);
                
-                audioSource.PlayOneShot(explosionSound,1.5f);
+              
 
             }
         }
+        ObjectPoolManager.PlayAudio(explosionSound, 1.5f, this.gameObject);
         ObjectPoolManager.SpawnObject(explosionEffect, transform.position, Quaternion.identity, ObjectPoolManager.PoolType.Particle);
 
-        StartCoroutine(DelayedReturn());
+        ObjectPoolManager.ReturnObject(gameObject);
 
     }
-    private IEnumerator DelayedReturn()
-    {
-        yield return new WaitForSeconds(0.3f); 
-        ObjectPoolManager.ReturnObject(gameObject);
-    }
+   
     private void Moving()
     {
         rb.linearVelocity = transform.up * speed;
       
+    }
+    public Vector2 CalculateExplosionPos()
+    {
+        Vector2 explosionPos = startPos + (Vector2)transform.up * speed * lifetime;
+        return explosionPos;
+    }
+    public void IndicateExplosionPos()
+    {
+        ObjectPoolManager.SpawnObject(indicator, CalculateExplosionPos(), Quaternion.identity, ObjectPoolManager.PoolType.Particle);
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -89,5 +103,13 @@ public class Rocket : MonoBehaviour
         {
             Explosion();
         }
+    }
+    
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, explosionRadius);
+        Gizmos.DrawLine(transform.position, CalculateExplosionPos());
+        Gizmos.DrawWireSphere(CalculateExplosionPos(),explosionRadius);
     }
 }
