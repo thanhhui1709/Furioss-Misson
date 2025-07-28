@@ -3,17 +3,21 @@ using UnityEngine;
 public class ShootLaser : AShootingController
 {
     public float offset;
+    private bool _isFinished=false;
+    public override bool isFinished => _isFinished;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public override void Shoot(MonoBehaviour runner, Transform shooterTransform, Transform playerPos, GameObject projectilePrefab)
     {
         Vector2 dir = (shooterTransform.position - playerPos.position).normalized;
-        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg +90f ;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + 90f;
         shooterTransform.rotation = Quaternion.Euler(0, 0, angle);
         Vector3 spawnPos = shooterTransform.position + shooterTransform.up * offset;
 
-        GameObject laser=  ObjectPoolManager.SpawnObject(projectilePrefab, spawnPos, shooterTransform.rotation);
-      
-       
+        GameObject laser = ObjectPoolManager.SpawnObject(projectilePrefab, spawnPos, shooterTransform.rotation);
+
+        _isFinished = true;
+
     }
 }
+

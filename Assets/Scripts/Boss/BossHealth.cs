@@ -26,13 +26,14 @@ public class BossHealth : MonoBehaviour
 
     public void Initialize(Slider externalHealthBar, Image externalHealthFill)
     {
+        bossController = GetComponent<BossController>();
+        maxHealth = bossController.bossPhases[0].maxHealth; // assuming the first phase has the max health
         healthBar = externalHealthBar;
         healthFill = externalHealthFill;
         healthBar.gameObject.SetActive(true);
         currentHealth = maxHealth;
         UpdateHealthBar();
         camera = GameObject.FindAnyObjectByType<Camera>();
-        bossController = GetComponent<BossController>();
 
     }
 
@@ -41,18 +42,21 @@ public class BossHealth : MonoBehaviour
         if (!isVulnerable)
         {
             Debug.Log("Boss is invulnerable, cannot take damage.");
-
             return;
-
-
         }
-        if (attackIDs.Contains(attackID)) return; // prevent duplicate damage from same attack ID
-        attackIDs.Enqueue(attackID);
-        if (attackIDs.Count > MaxAttackIDs)
+        if (attackIDs.Contains(attackID))
         {
-            attackIDs.Clear(); 
+            return; // prevent duplicate damage from same attack ID
         }
+        if (attackIDs.Count > 0)
+        {
+            attackIDs.Dequeue();
+        }
+        attackIDs.Enqueue(attackID);
+
+
         currentHealth -= damage;
+
         UpdateHealthBar();
         if (currentHealth <= 0)
         {
@@ -63,11 +67,16 @@ public class BossHealth : MonoBehaviour
     }
     private void Die()
     {
+        healthFill.enabled = false;
         DestroyAllRelevantGameObject();
         if (bossController.checkFinalPhase())
         {
-            GameEvent.instance.TriggerStageClearEvent();
-            Destroy(transform.root.gameObject);
+            ObjectPoolManager.PlayAudio(explosionSound, 1f);
+            ObjectPoolManager.SpawnObject(explosion, transform.position, Quaternion.identity, ObjectPoolManager.PoolType.Particle);
+            camera.GetComponent<CameraController>().Shake();
+            GameManager.instance.OnBossDefeated(); // Notify game manager that the boss is defeated
+            gameObject.SetActive(false);
+
 
             return;
         }
@@ -76,10 +85,8 @@ public class BossHealth : MonoBehaviour
             bossController.StopAllCoroutines();
             StartCoroutine(ChangePhase());
         }
-        ObjectPoolManager.SpawnObject(explosion, transform.position, Quaternion.identity, ObjectPoolManager.PoolType.Particle);
-        ObjectPoolManager.PlayAudio(explosionSound, 1f);
-        camera.GetComponent<CameraController>().Shake();
-        healthFill.enabled = false;
+
+
 
 
     }
@@ -120,8 +127,11 @@ public class BossHealth : MonoBehaviour
     }
     IEnumerator ChangePhase()
     {
+        int currentPhaseIndex = bossController.GetCurrentPhaseIndex();
+        maxHealth = bossController.bossPhases[currentPhaseIndex + 1].maxHealth;
         yield return StartCoroutine(ResetHealthAfterPhase());
         bossController.ReSpawn();
+
     }
 
 

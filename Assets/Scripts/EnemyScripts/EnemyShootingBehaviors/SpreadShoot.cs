@@ -6,6 +6,10 @@ public class SpreadShoot : AShootingController
     public float spreadAngle;
     public float offset;
     public bool shootInReverseDirection=false;
+
+    private bool _isFinished = false;
+    public override bool isFinished => _isFinished;
+
     public override void Shoot(MonoBehaviour runner, Transform shooterTransform, Transform playerPos, GameObject projectilePrefab)
     {
         for (int i = -1; i <= 1; i++)
@@ -20,5 +24,6 @@ public class SpreadShoot : AShootingController
             GameObject projectile = ObjectPoolManager.SpawnObject(projectilePrefab, shooterTransform.position+spawnPosition, rotation, ObjectPoolManager.PoolType.EnemyProjectile);
 
         }
+        _isFinished = true; // Mark the shooting as finished after all shots are fired
     }
 }

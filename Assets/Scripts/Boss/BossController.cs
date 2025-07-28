@@ -18,11 +18,12 @@ public class BossController : MonoBehaviour
     [System.Serializable]
     public class Phase
     {
+        public int maxHealth = 1000;
         public List<BossBehavior> behaviors;
         public float minSequenceBehaviorCooldown;
         public float maxSequenceBehaviorCooldown;
         public float activeTime = 4f;
-    }  
+    }
     public List<Phase> bossPhases;
     public float timeBetweenPhases = 5f;
     [SerializeField] private float spawnDistance;
@@ -53,13 +54,19 @@ public class BossController : MonoBehaviour
         yield return new WaitForSeconds(currentPhase.activeTime);
         while (true)
         {
-            foreach(var behavior in currentPhase.behaviors)
+            foreach (var behavior in currentPhase.behaviors)
             {
                 currentBehavior = behavior;
 
                 yield return StartCoroutine(ExecuteSingeBehavior(behavior));
+                if (behavior.shootPattern != null && behavior.projectile != null)
+                {
+
+                    yield return new WaitUntil(() => behavior.shootPattern.isFinished);
+                }
+                yield return new WaitForSeconds(Random.Range(behavior.minRestTime, behavior.maxRestTime));
             }
-            yield return new WaitForSeconds(Random.Range( currentPhase. minSequenceBehaviorCooldown, currentPhase.maxSequenceBehaviorCooldown));
+            yield return new WaitForSeconds(Random.Range(currentPhase.minSequenceBehaviorCooldown, currentPhase.maxSequenceBehaviorCooldown));
 
 
             // Wait before starting next behavior loop
@@ -67,13 +74,26 @@ public class BossController : MonoBehaviour
     }
     IEnumerator ExecuteSingeBehavior(BossBehavior behavior)
     {
+        if (behavior.shootPattern != null && behavior.projectile != null)
+        {
+            AShootingController shootingController = Instantiate(behavior.shootPattern);
+            behavior.shootPattern = shootingController;
+        }
         if (behavior.movement != null)
         {
+            behavior.movement = Instantiate(behavior.movement);
             behavior.movement.Initialize(transform);
+            //shoot when movement is initialized
+            if (behavior.delayBetweenMoveAndShot == 0 && behavior.shootPattern != null)
+            {
 
+                behavior.shootPattern.Shoot(this, transform, playerTransform, behavior.projectile);
+                Debug.Log(behavior.shootPattern.isFinished + " Shooting pattern is finished: " + behavior.shootPattern.name);
+            }
             while (!behavior.movement.isFinished)
             {
                 behavior.movement.UpdateMovement(transform, Time.deltaTime);
+
                 yield return null;
             }
 
@@ -83,20 +103,21 @@ public class BossController : MonoBehaviour
                 yield return new WaitForSeconds(behavior.delayBetweenMoveAndShot);
             }
         }
-
-
-
         // Shoot
-        if (behavior.shootPattern != null && behavior.projectile != null)
+        if (behavior.shootPattern != null)
         {
-            behavior.shootPattern.Shoot(this, transform, playerTransform, behavior.projectile);
+            if (behavior.projectile != null && !behavior.shootPattern.isFinished)
+            {
+
+                behavior.shootPattern.Shoot(this, transform, playerTransform, behavior.projectile);
+            }
         }
-        yield return new WaitForSeconds(Random.Range(behavior.minRestTime, behavior.maxRestTime));
+
 
     }
     void Update()
     {
-        if (!isDoneSpawned) { Spawn(); } 
+        if (!isDoneSpawned) { Spawn(); }
 
     }
     private bool Spawn()
@@ -127,10 +148,12 @@ public class BossController : MonoBehaviour
     }
     public void ReSpawn()
     {
-        isDoneSpawned = false;
-        transform.position = startPos;
         currentPhase = bossPhases[++currentPhaseIndex];
         StartCoroutine(ExecuteBehaviorLoop());
+    }
+    public int GetCurrentPhaseIndex()
+    {
+        return currentPhaseIndex;
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -147,7 +170,18 @@ public class BossController : MonoBehaviour
                     {
                         playerHealth.TakeDamage(maphitePattern.damage);
                         maphitePattern.hasDealDamage = true;
-                        Debug.Log("Boss collided with player and dealt damage: " + maphitePattern.damage);
+                  
+                    }
+
+                }
+                if (pattern is FollowPlayerPattern followPattern)
+                {
+                    PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
+                    if (playerHealth != null && !followPattern.hasDealDamage)
+                    {
+                        playerHealth.TakeDamage(followPattern.damage);
+                        followPattern.hasDealDamage = true;
+                       
                     }
 
                 }

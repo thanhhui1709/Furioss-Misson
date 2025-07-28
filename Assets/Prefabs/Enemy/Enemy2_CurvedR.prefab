@@ -227,7 +227,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -251,7 +251,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1022236118847634802}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -303,7 +303,8 @@ MonoBehaviour:
     maxTimePerShot: 7
     minTimeInitShot: 5
     maxTimeInitShot: 8
-    bodyDamage: 10
+    bodyDamage: 15
+    hasCollidedWithPlayer: 0
     shootSound: {fileID: 8300000, guid: 3f3780e6a6981cb48aec043e57751530, type: 3}
     shootingBehavior: {fileID: 11400000, guid: 32d018cb255b3b44084f065c17642e74, type: 2}
 --- !u!114 &-7239810865081742510

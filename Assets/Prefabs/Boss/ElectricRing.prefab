@@ -179,8 +179,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 115eb11dbb470f44281e586c3db93ec7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  expandSpeed: 16
-  maxRadius: 24
-  damage: 10
+  expandSpeed: 4.5
+  maxRadius: 6
+  damage: 30
   electricRingPrefab: {fileID: 7481304292482149382, guid: 02eba39d834d36e47b9f59cdc5b07b6f, type: 3}
   electricSound: {fileID: 8300000, guid: 251af33fd16cb4847b524bce4ffdc0ca, type: 3}

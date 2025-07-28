@@ -61,6 +61,7 @@ public class WorldEnded : MonoBehaviour
         UI.interactable = true;
         cooldownOverlay.fillAmount = 0f;
         isOnCooldown = false;
+        cooldownText.text = ""; // Clear cooldown text
     }
     public void ApplyEffect()
     {

@@ -9,6 +9,9 @@ public class ShootTowardPlayer : AShootingController
     private int numberOfShot=1;
     [SerializeField]
     private float shootDelay = 0.75f; // Delay between shots in seconds
+    private bool _isFinished = false;
+    public override bool isFinished => _isFinished;
+
     public override void Shoot(MonoBehaviour runner, Transform shooterTransform, Transform playerPos, GameObject projectilePrefab)
     {
         Vector2 dir = (playerPos.position - shooterTransform.position).normalized;
@@ -25,6 +28,7 @@ public class ShootTowardPlayer : AShootingController
             ObjectPoolManager.SpawnObject(projectilePrefab, shooterTransform.position, shooterTransform.rotation, ObjectPoolManager.PoolType.EnemyProjectile);
             yield return new WaitForSeconds(shootDelay);
         }
+        _isFinished = true; // Mark the shooting as finished after all shots are fired
     }
 
 

@@ -550,7 +550,7 @@ MonoBehaviour:
   healthBar: {fileID: 5970748043559789960}
   offset: {x: 0, y: 1, z: 0}
   displayTime: 1.5
-  exp: 100
+  exp: 900
   items: {fileID: 3678342260109770336}
   deathEffect: {fileID: 8562486586392712937, guid: 445f3ab87082dbb4ab63343e2332384e, type: 3}
   deathSound: {fileID: 8300000, guid: 31974b51c57379b4a8507dbac418b0a5, type: 3}

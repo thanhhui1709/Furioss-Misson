@@ -9,6 +9,10 @@ public class ShotOrientedLaser : AShootingController
     public float rotationSpeed = 120f; // Speed at which the shooter rotates towards the player
     public float duration=5f;
     public float holdDuration = 1f; // Time to hold the laser before it starts rotating
+
+    private bool _isFinished=false;
+    public override bool isFinished => _isFinished;
+
     public override void Shoot(MonoBehaviour runner, Transform shooterTransform, Transform playerPos, GameObject projectilePrefab)
     {
         RotateTowardPlayerInstant(shooterTransform, playerPos);
@@ -36,6 +40,7 @@ public class ShotOrientedLaser : AShootingController
             elapsedTime += Time.deltaTime;
             yield return null;
         }
+        _isFinished = true;
     }
     private void RotateTowardPlayer(Transform shooter,Transform player)
     {

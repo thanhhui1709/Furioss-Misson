@@ -14,6 +14,7 @@ public class EnemyController : MonoBehaviour
         public float minTimeInitShot = 7f;
         public float maxTimeInitShot = 10f;
         public int bodyDamage;
+        public bool hasCollidedWithPlayer = false;
         public AudioClip shootSound;
         public AShootingController shootingBehavior;
     }
@@ -35,10 +36,17 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
-
+        if (enemyStat.hasCollidedWithPlayer)
+        {
+            StartCoroutine(ResetCollisionCooldown(1f)); 
+        }
+    }
+    IEnumerator ResetCollisionCooldown(float cooldownTime)
+    {
+        yield return new WaitForSeconds(cooldownTime);
+        enemyStat.hasCollidedWithPlayer = false;
     }
 
- 
     private void Shooting()
     {
 
@@ -53,6 +61,19 @@ public class EnemyController : MonoBehaviour
 
     }
     public int GetBodyDamage() => enemyStat.bodyDamage;
-   
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            PlayerHealth player = collision.gameObject.GetComponent<PlayerHealth>();
+            if (player != null&& !enemyStat.hasCollidedWithPlayer)
+            {
+                player.TakeDamage(enemyStat.bodyDamage);
+                enemyStat.hasCollidedWithPlayer = true;
+
+            }
+        }
+    }
+
 
 }

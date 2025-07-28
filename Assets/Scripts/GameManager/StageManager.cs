@@ -14,6 +14,7 @@ public class StageManager : MonoBehaviour
 
     [Header("Boss")]
     public GameObject Boss;
+    public AudioClip bossThemeAudio;
     [SerializeField] private Slider bossHealthBar;
     [SerializeField] private Image bossHealthFill;
     [SerializeField] private float spawnBossCountdown;
@@ -135,8 +136,10 @@ public class StageManager : MonoBehaviour
     }
     private IEnumerator SpawnBoss()
     {
+        ThemeAudio.Instance.SetVolumeByTime(0,2f);
+        ThemeAudio.Instance.PlayThemeAudio(bossThemeAudio, 0.6f,3);
         yield return new WaitForSeconds(spawnBossCountdown);
-        GameObject boss = Instantiate(Boss, spawnPos, Quaternion.identity);
+        GameObject boss = Instantiate(Boss, spawnPos, Quaternion.Euler(0,0,180));
         BossHealth bossHealth = boss.GetComponent<BossHealth>();
         if (bossHealth != null)
         {

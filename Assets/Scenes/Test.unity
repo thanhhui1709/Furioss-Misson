@@ -2264,13 +2264,25 @@ PrefabInstance:
       propertyPath: m_BodyType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1396522152254375562, guid: b2cd5e77e471edb408b2a1b923211a63, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396522152254375562, guid: b2cd5e77e471edb408b2a1b923211a63, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2197722084409225055, guid: b2cd5e77e471edb408b2a1b923211a63, type: 3}
       propertyPath: guns.Array.data[0].damage
-      value: 50
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2197722084409225055, guid: b2cd5e77e471edb408b2a1b923211a63, type: 3}
       propertyPath: guns.Array.data[0].fireRate
-      value: 7
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2197722084409225055, guid: b2cd5e77e471edb408b2a1b923211a63, type: 3}
+      propertyPath: guns.Array.data[0].currentLevel
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2849558557494869307, guid: b2cd5e77e471edb408b2a1b923211a63, type: 3}
       propertyPath: hasShield
@@ -8503,6 +8515,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8488650802528446640, guid: 91c7c1cafc57ffc45a2e735274d69f0b, type: 3}
+      propertyPath: flySound
+      value: 
+      objectReference: {fileID: 8300000, guid: cee7a77a738798746a1512bef34b8529, type: 3}
     - target: {fileID: 8488650802528446640, guid: 91c7c1cafc57ffc45a2e735274d69f0b, type: 3}
       propertyPath: increaseSpeedTime
       value: 5

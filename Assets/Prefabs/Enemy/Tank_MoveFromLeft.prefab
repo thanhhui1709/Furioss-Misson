@@ -262,7 +262,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5920156113680888890}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -359,6 +359,8 @@ MonoBehaviour:
   projectilePrefab: {fileID: 2833501234260990444, guid: 278793c20c4fa764c9f7d8989e6a10fc, type: 3}
   shootSound: {fileID: 8300000, guid: c7378aba4d34b6340b532462f4e4ab7e, type: 3}
   damage: 40
+  bodyDamage: 50
+  bodyDamageCooldown: 1
   shootBehavior: {fileID: 11400000, guid: 32d018cb255b3b44084f065c17642e74, type: 2}
 --- !u!114 &4768589872327488542
 MonoBehaviour:
@@ -488,7 +490,7 @@ MonoBehaviour:
   healthBar: {fileID: 2192490801708848999}
   offset: {x: 0, y: 1, z: 0}
   displayTime: 1.5
-  exp: 100
+  exp: 700
   items: {fileID: 4768589872327488542}
   deathEffect: {fileID: 3512153588440623268, guid: 3fe7df3cf7d9dd740aeb06cc853de0e5, type: 3}
   deathSound: {fileID: 8300000, guid: ab9be3234f3dfe9489b32b3fbbb653f1, type: 3}

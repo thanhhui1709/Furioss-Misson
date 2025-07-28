@@ -27,5 +27,5 @@ MonoBehaviour:
     offset: 6
     delaySpawnPrefab: 1.5
     delayForTheNextWaveData: 0
-  delayForTheNextWave: 0
+  delayForTheNextWave: 4
   isDoneSpawned: 1

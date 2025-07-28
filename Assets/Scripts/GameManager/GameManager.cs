@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     public int currentSceneIndex;
     public int numberOfLive;
     public float respawnTime;
+    public AudioClip gameOverAudio;
+    public AudioClip winAudio;
     public static GameManager instance;
 
     public PlayerHealth PlayerHealth { get; set; }
@@ -38,6 +40,7 @@ public class GameManager : MonoBehaviour
     private void OnEnable()
     {
         GameEvent.instance.onStageClear.AddListener(ClearStage);
+        GameEvent.instance.onGameOver.AddListener(GameOver);
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
@@ -45,6 +48,7 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
         GameEvent.instance.onStageClear.RemoveListener(ClearStage);
+        GameEvent.instance.onGameOver.RemoveListener(GameOver);
     }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
@@ -55,12 +59,23 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-       
-       
+       ThemeAudio.Instance.StopThemeAudio();
+        if (gameOverAudio != null)
+        {
+            AudioSource.PlayClipAtPoint(gameOverAudio, Vector3.zero);
+        }
+        StartCoroutine(WaitBeforeLoadScene(5f, 0)); 
+
     }
     public void WinGame()
     {
-
+        StartCoroutine(WaitBeforeLoadScene(5f, 0));
+    }
+   
+    IEnumerator WaitBeforeLoadScene(float duration,int sceneIndex)
+    {
+        yield return new WaitForSeconds(duration);
+        SceneManager.LoadScene(sceneIndex);
     }
     public void SaveGame()
     {
@@ -70,12 +85,36 @@ public class GameManager : MonoBehaviour
     {
         SaveSystem.Load();
     }
-   
+    private IEnumerator WaitBeforeTriggerClearStage(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        GameEvent.instance.TriggerStageClearEvent();
+    }
+    public void OnBossDefeated()
+    {
+        ThemeAudio.Instance.StopThemeAudio();
+        StartCoroutine(WaitBeforeTriggerClearStage(4f));
+    }
     public void ClearStage()
     {
+        if (currentSceneIndex >= SceneManager.sceneCountInBuildSettings)
+        {
+
+            WinGame();
+            return;
+        }
+        ObjectPoolManager.PlayAudio(winAudio, 1f);
+        PlayerHealth.Health(9999); // Restore player health to max
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex+1;
         StageManager.ResetWaveAfterClearStage();
         SaveGame();
+
+        if(currentSceneIndex >= SceneManager.sceneCountInBuildSettings)
+        {
+          
+            WinGame();
+            return;
+        }
         StartCoroutine(GoToNextScene(SceneManager.GetActiveScene().buildIndex));   
     }
     IEnumerator GoToNextScene(int currentSceneIndex)

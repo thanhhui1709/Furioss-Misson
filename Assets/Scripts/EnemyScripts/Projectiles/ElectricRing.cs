@@ -54,4 +54,11 @@ public class ElectricRing : MonoBehaviour
         }
         ObjectPoolManager.SpawnObject(electricRingPrefab, transform.position, Quaternion.identity,ObjectPoolManager.PoolType.Particle);
     }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, maxRadius);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, currentScale);
+    }
 }

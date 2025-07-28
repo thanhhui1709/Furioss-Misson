@@ -19,6 +19,10 @@ public class MoveBackGround : MonoBehaviour
         {
             StartCoroutine(IncreaseBackgroundSpeed(increaseSpeedTime));
         });
+        GameEvent.instance.onStageClear.AddListener(() =>
+        {
+            StartCoroutine(IncreaseBackgroundSpeed(increaseSpeedTime));
+        });
         initialPos = transform.position;
                 
     }

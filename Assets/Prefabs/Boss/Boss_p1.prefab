@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_CategoryHash: 9.2032065e-10
-  m_labelHash: 7.4418706e-34
+  m_labelHash: 2.004626e-28
   m_SpriteKey: 0
   m_SpriteHash: 932769975
 --- !u!50 &2664042439144691977
@@ -131,7 +131,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2803871152613498149}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -257,23 +257,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossPhases:
-  - behaviors:
+  - maxHealth: 6000
+    behaviors:
     - movement: {fileID: 0}
       shootPattern: {fileID: 11400000, guid: e5b2de8ba12885344bc2bc89a78f7894, type: 2}
       projectile: {fileID: 8134414950709767302, guid: cbf8c007e84212a4481755c0fe4e09ff, type: 3}
       delayBetweenMoveAndShot: 0
-      minRestTime: 5
-      maxRestTime: 7
+      minRestTime: 2
+      maxRestTime: 3
     - movement: {fileID: 0}
       shootPattern: {fileID: 11400000, guid: 75158fd495e21704db2b90b628182c37, type: 2}
       projectile: {fileID: 8556948709906749142, guid: 63dfef8520f57634e8f48ad6a4b1adcc, type: 3}
       delayBetweenMoveAndShot: 0
-      minRestTime: 4
-      maxRestTime: 7
+      minRestTime: 2
+      maxRestTime: 4
     minSequenceBehaviorCooldown: 2
-    maxSequenceBehaviorCooldown: 5
-    activeTime: 4
-  - behaviors:
+    maxSequenceBehaviorCooldown: 4
+    activeTime: 2
+  - maxHealth: 10000
+    behaviors:
     - movement: {fileID: 11400000, guid: 6159e0c697273944596854556538c188, type: 2}
       shootPattern: {fileID: 0}
       projectile: {fileID: 0}
@@ -284,11 +286,11 @@ MonoBehaviour:
       shootPattern: {fileID: 11400000, guid: 41ac7d1d3f41339428eb4ce32b6eac54, type: 2}
       projectile: {fileID: 7004744156847189198, guid: 634b223968baeec48a2df0e88e32d749, type: 3}
       delayBetweenMoveAndShot: 0
-      minRestTime: 4
-      maxRestTime: 6
+      minRestTime: 1
+      maxRestTime: 3
     minSequenceBehaviorCooldown: 2
-    maxSequenceBehaviorCooldown: 5
-    activeTime: 4
+    maxSequenceBehaviorCooldown: 4
+    activeTime: 2
   timeBetweenPhases: 5
   spawnDistance: 12
   spawnSpeed: 12
@@ -337,5 +339,5 @@ MonoBehaviour:
     m_ColorSpace: -1
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  explosion: {fileID: 5085700184500873002, guid: 613495f7f3aa78c4aabe45252444b28b, type: 3}
+  explosion: {fileID: 5085700184500873002, guid: a0f44cbd6f25c774fb52df273adbe3b4, type: 3}
   explosionSound: {fileID: 8300000, guid: 888e14b5a1ab97c4882b7f89002e2317, type: 3}

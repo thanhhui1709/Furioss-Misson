@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: S_SwingL
   m_EditorClassIdentifier: 
   sequences:
-  - {fileID: 11400000, guid: 269efe41be93d5c409a4afc90edd9801, type: 2}
+  - {fileID: 11400000, guid: e3c3a1e05adbe7d498f6394892c41baf, type: 2}

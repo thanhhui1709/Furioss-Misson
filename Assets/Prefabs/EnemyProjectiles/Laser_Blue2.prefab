@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a015df019bc59e428f2321a5b2b9685, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 30
   dealDamageBetween: 0.25
   accumulateTime: 1
   accumulateSound: {fileID: 8300000, guid: 0a410b9da29bea4498060c003904e982, type: 3}

@@ -9,6 +9,10 @@ public class RainRocket : AShootingController
     public float delayBetweenShots=0.25f;
     public float xSpawnRange=17f;
     public float[] ySpawnRange = new float[] { 25f, 31f };
+     
+
+    private bool _isFinished = false;
+    public override bool isFinished => _isFinished;
 
     public override void Shoot(MonoBehaviour runner, Transform shooterTransform, Transform playerPos, GameObject projectilePrefab)
     {
@@ -30,6 +34,7 @@ public class RainRocket : AShootingController
             }
             yield return null;
         }
+        _isFinished = true;
 
     }
     private Vector2 GetRandomSpawnPos()

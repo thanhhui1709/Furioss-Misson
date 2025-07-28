@@ -232,6 +232,7 @@ MonoBehaviour:
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
   hasShield: 0
+  deathSound: {fileID: 8300000, guid: 52b41efb1f5f5a44fb4211218d7dedd1, type: 3}
   healthPlusWhenLevelUp: 10
   shieldIndicator: {fileID: 2995912549558838358}
   shieldDuration: 6
@@ -373,7 +374,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 0
   experience: 1
-  experienceToNextLevel: 100
   levelData: {fileID: 11400000, guid: 9fdcd6ecad6d4ca4d9a61dde4d255562, type: 2}
   levelText: {fileID: 0}
   experienceBar: {fileID: 0}

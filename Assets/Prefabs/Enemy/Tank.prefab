@@ -103,7 +103,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 541994470639020321}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -191,7 +191,8 @@ MonoBehaviour:
     maxTimePerShot: 7
     minTimeInitShot: 5
     maxTimeInitShot: 9
-    bodyDamage: 10
+    bodyDamage: 30
+    hasCollidedWithPlayer: 0
     shootSound: {fileID: 8300000, guid: e536eea434771a74d9a198c0e9761b34, type: 3}
     shootingBehavior: {fileID: 11400000, guid: 3033a71a943a6ef4db25e0a4d780bb9b, type: 2}
 --- !u!114 &2431146229689135585

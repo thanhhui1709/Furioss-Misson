@@ -15,4 +15,4 @@ MonoBehaviour:
   SwingRange: 38
   Speed: 20
   _offset: 2
-  StartPos: {x: -25, y: 6, z: 0}
+  StartPos: {x: -25, y: 4, z: 0}

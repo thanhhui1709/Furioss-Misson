@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f7f859f0adc6e84db454ed4fd202637, type: 3}
   m_Name: ElectricRing
   m_EditorClassIdentifier: 
-  numberOfRings: 10
+  numberOfRings: 14
   delayBetweenRings: 0.5
+  _isFinished: 0
