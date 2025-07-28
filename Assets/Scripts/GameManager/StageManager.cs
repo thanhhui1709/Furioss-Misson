@@ -87,7 +87,7 @@ public class StageManager : MonoBehaviour
         yield return new WaitForSeconds(wave.dropedTime);
         foreach (var item in wave.dropItems)
         {
-            GameObject dropItem = Instantiate(item, new Vector3(Random.Range(-20, 20), 15, 0), Quaternion.identity);
+            GameObject dropItem = Instantiate(item, new Vector3(Random.Range(-15, 15), 15, 0), Quaternion.identity);
 
         }
 
@@ -120,6 +120,7 @@ public class StageManager : MonoBehaviour
             yield return StartCoroutine(SpawnWave(currentWave)); // Wait until the wave is done
             yield return new WaitUntil(() => CheckWaveClear(currentWave));
             SetNextCurrentWave();
+            GameManager.instance.SaveGame();
             yield return new WaitForSeconds(currentWave.delayForTheNextWave);
         }
         if (CheckWaveClear(currentWave))

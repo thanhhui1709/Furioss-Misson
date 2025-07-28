@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using static PlayerHealth;
 using System.IO;
 using static PlayerWeapon;
@@ -6,6 +6,7 @@ using static StageManager;
 using static PlayerLevel;
 using static GameManager;
 using System.Threading.Tasks;
+using System;
 
 public class SaveSystem
 {
@@ -29,8 +30,9 @@ public class SaveSystem
     public static void Save()
     {
         HandleSaveData();
-        Debug.Log("Save data to: " + SaveFileName());
-        File.WriteAllText(SaveFileName(), JsonUtility.ToJson(_SaveData, true));
+        string json = JsonUtility.ToJson(_SaveData, true);
+        string encoded = Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(json));
+        File.WriteAllText(SaveFileName(), encoded);
     }
     private static void HandleSaveData()
     {
@@ -45,7 +47,11 @@ public class SaveSystem
         string fileName = SaveFileName();
         if (File.Exists(fileName))
         {
-            string json = File.ReadAllText(fileName);
+            string encoded = File.ReadAllText(SaveFileName());
+
+          
+            string json = System.Text.Encoding.UTF8.GetString(Convert.FromBase64String(encoded));
+
             _SaveData = JsonUtility.FromJson<SaveData>(json);
 
         }

@@ -8,6 +8,7 @@ public class StraightShoot : AShootingController
 {
     public int numberOfShot;
     public float delayBetweenShots;
+    public float offset;
 
     private bool _isFinished = false;
     public override bool isFinished => _isFinished;
@@ -21,9 +22,10 @@ public class StraightShoot : AShootingController
 
     IEnumerator ShootCoroutine(Transform shooterTransform, Transform playerPos, GameObject projectilePrefab)
     {
+        Vector3 spawnPos = shooterTransform.position + shooterTransform.up * offset;
         for (int i = 0; i < numberOfShot; i++)
         {
-            ObjectPoolManager.SpawnObject(projectilePrefab, shooterTransform.position, shooterTransform.rotation, ObjectPoolManager.PoolType.EnemyProjectile);
+            ObjectPoolManager.SpawnObject(projectilePrefab, spawnPos, shooterTransform.rotation, ObjectPoolManager.PoolType.EnemyProjectile);
             yield return new WaitForSeconds(delayBetweenShots);
         }
         _isFinished = true; // Mark the shooting as finished after all shots are fired

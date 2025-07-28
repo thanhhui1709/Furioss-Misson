@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberOfShot: 5
   delayBetweenShots: 0.4
+  offset: 5

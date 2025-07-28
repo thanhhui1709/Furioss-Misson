@@ -27,11 +27,18 @@ public class WorldEnded : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         playerWeapon = player.GetComponent<PlayerWeapon>();
     }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse1)&& !isOnCooldown)
+        {
+            ApplyEffect();
+        }
+    }
     IEnumerator ApplyEffectCoroutine()
     {
         //hide cooldown text
         cooldownText.text = "";
-        audioSource.PlayOneShot(clip);
+        ObjectPoolManager.PlayAudio(clip, 1f);
         playerWeapon.CurrentWeapon.lifeSteal = lifeSteal;
         playerWeapon.CurrentWeapon.fireRate *= (1+fireRateBoost);
         playerWeapon.CurrentWeapon.damage *= (1 + damageBoost);
@@ -65,6 +72,7 @@ public class WorldEnded : MonoBehaviour
     }
     public void ApplyEffect()
     {
+        if (!player.activeSelf) return;
         StartCoroutine(ApplyEffectCoroutine());
 
     }

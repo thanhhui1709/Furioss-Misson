@@ -13,5 +13,10 @@ MonoBehaviour:
   m_Name: Boss_FollowPlayer
   m_EditorClassIdentifier: 
   duration: 7
-  speed: 15
-  rotationSpeed: 360
+  speed: 18
+  rotationSpeed: 180
+  xBounds: 16
+  yBounds: 8
+  damage: 50
+  hasDealDamage: 0
+  damageCooldown: 1

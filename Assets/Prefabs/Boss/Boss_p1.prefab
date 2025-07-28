@@ -257,7 +257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossPhases:
-  - maxHealth: 6000
+  - maxHealth: 8000
     behaviors:
     - movement: {fileID: 0}
       shootPattern: {fileID: 11400000, guid: e5b2de8ba12885344bc2bc89a78f7894, type: 2}
@@ -274,7 +274,7 @@ MonoBehaviour:
     minSequenceBehaviorCooldown: 2
     maxSequenceBehaviorCooldown: 4
     activeTime: 2
-  - maxHealth: 10000
+  - maxHealth: 12000
     behaviors:
     - movement: {fileID: 11400000, guid: 6159e0c697273944596854556538c188, type: 2}
       shootPattern: {fileID: 0}

@@ -49,8 +49,8 @@ public class GroupProjectile : MonoBehaviour
     {
         float damage = playerWeapon.CurrentWeapon.damage;
         float lifeSteal = playerWeapon.CurrentWeapon.lifeSteal;
-        target.TakeDamage(damage, attackID);
-        if (lifeSteal > 0) ApplyLifeStealEffect(damage, lifeSteal);
+        target.TakeDamage(damage*0.8f, attackID);
+        if (lifeSteal > 0) ApplyLifeStealEffect(damage * 0.8f, lifeSteal);
     }
     public void DoDamage(OrientedRocket target)
     {

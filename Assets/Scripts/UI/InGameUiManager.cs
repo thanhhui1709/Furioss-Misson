@@ -7,25 +7,26 @@ public class InGameUiManager : MonoBehaviour
 {
     public static InGameUiManager instance;
     public Canvas UI;
-
+    public GameObject tutorial;
     public Image levelFill;
   
     private void OnEnable()
     {
         StartCoroutine(WaitAndSubscribe());
-    
-       
+        StartCoroutine(DisplayTutorialAfterTime(4f)); 
+
+
     }
      
     private void OnDisable()
     {
-        GameEvent.instance.onStageClear.RemoveListener(DisplayClearStage);
+       
         GameEvent.instance.onGameOver.RemoveListener(DisplayGameOver);
     }
     private IEnumerator WaitAndSubscribe()
     {
         yield return new WaitUntil(() => GameManager.instance != null && GameEvent.instance != null);
-        GameEvent.instance.onStageClear.AddListener(DisplayClearStage);
+     
         GameEvent.instance.onGameOver.AddListener(DisplayGameOver);
     }
 
@@ -74,21 +75,22 @@ public class InGameUiManager : MonoBehaviour
         }
 
     }
+    IEnumerator DisplayTutorialAfterTime(float time)
+    {
+        yield return new WaitForSeconds(time);
+        DisplayTutorial();
+    }
+    public void DisplayTutorial()
+    {
+        if (tutorial == null) return;
+        tutorial.gameObject.SetActive(!tutorial.activeSelf);
+        Time.timeScale = tutorial.activeSelf ? 0 : 1; // Pause the game when tutorial is active
+    }
     public void ExitToMenu()
     {
         GameManager.instance.SaveGame();
         SceneManager.LoadScene(0);
         Time.timeScale = 1; // Reset time scale to normal when exiting to menu
     }
-    public void DisplayClearStage()
-    {
-        Transform UITransform = UI.transform.Find("UI");
-        if (UITransform != null)
-        {
-            Transform textTransform = UITransform.GetComponentInChildren<Transform>(true).Find("ClearStageText");
-            GameObject text = textTransform.gameObject;
-            bool isActive = text.activeSelf;
-            text.SetActive(!isActive);
-        }
-    }
+  
 }

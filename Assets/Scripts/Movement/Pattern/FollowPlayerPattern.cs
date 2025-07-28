@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 [CreateAssetMenu(menuName = "ScriptableObjects/MovementPattern/FollowPlayer")]
 public class FollowPlayerPattern : IMovementPattern
@@ -60,9 +60,9 @@ public class FollowPlayerPattern : IMovementPattern
     private void RotateToPlayer(Transform transform, Transform playerTransform)
     {
         Vector2 direction = (playerTransform.position - transform.position).normalized;
-        Quaternion angle = Quaternion.LookRotation(Vector3.forward, direction);
-        rb.rotation = Quaternion.RotateTowards(transform.rotation, angle, rotationSpeed * Time.deltaTime).eulerAngles.z;
-
+        float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f; // trừ 90 nếu dùng up làm forward
+        float newAngle = Mathf.MoveTowardsAngle(rb.rotation, targetAngle, rotationSpeed * Time.deltaTime);
+        rb.rotation = newAngle;
     }
     private void MoveTowardPlayer(Transform transform, float elapsedTime)
     {

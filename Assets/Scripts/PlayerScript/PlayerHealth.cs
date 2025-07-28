@@ -22,6 +22,7 @@ public class PlayerHealth : MonoBehaviour
     private CameraController camera;
     private Queue<int> attackIDs = new Queue<int>();
     private SpriteRenderer sprite;
+    private Color originColor;
     //
     [Header("Respawn Stats")]
     public GameObject shieldIndicator;
@@ -35,12 +36,14 @@ public class PlayerHealth : MonoBehaviour
         UpdateHealthBar();
         camera = GameObject.FindAnyObjectByType<Camera>().GetComponent<CameraController>();
         sprite = GetComponent<SpriteRenderer>();
+        originColor = sprite.color;
 
 
 
     }
     private void OnEnable()
     {
+        sprite.color = originColor;
         currentHealth = maxHealth;
         UpdateHealthBar();
         healthFill.enabled = true;
@@ -158,7 +161,7 @@ public class PlayerHealth : MonoBehaviour
     }
     IEnumerator TwinklingEffect(float duration)
     {
-        Color originalColor = sprite.color; // Store the original color
+      
         float elapsedTime = 0f;
         while (elapsedTime < duration)
         {
@@ -170,7 +173,7 @@ public class PlayerHealth : MonoBehaviour
             sprite.color = color; // Set the new color
             yield return null;
         }
-        sprite.color = originalColor; // Reset to original color
+        sprite.color = originColor; // Reset to original color
     }
 
 

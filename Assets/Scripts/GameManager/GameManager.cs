@@ -59,20 +59,20 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-       ThemeAudio.Instance.StopThemeAudio();
+        ThemeAudio.Instance.StopThemeAudio();
         if (gameOverAudio != null)
         {
             AudioSource.PlayClipAtPoint(gameOverAudio, Vector3.zero);
         }
-        StartCoroutine(WaitBeforeLoadScene(5f, 0)); 
+        StartCoroutine(WaitBeforeLoadScene(5f, 0));
 
     }
     public void WinGame()
     {
         StartCoroutine(WaitBeforeLoadScene(5f, 0));
     }
-   
-    IEnumerator WaitBeforeLoadScene(float duration,int sceneIndex)
+
+    IEnumerator WaitBeforeLoadScene(float duration, int sceneIndex)
     {
         yield return new WaitForSeconds(duration);
         SceneManager.LoadScene(sceneIndex);
@@ -105,44 +105,45 @@ public class GameManager : MonoBehaviour
         }
         ObjectPoolManager.PlayAudio(winAudio, 1f);
         PlayerHealth.Health(9999); // Restore player health to max
-        currentSceneIndex = SceneManager.GetActiveScene().buildIndex+1;
+        currentSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
         StageManager.ResetWaveAfterClearStage();
         SaveGame();
 
-        if(currentSceneIndex >= SceneManager.sceneCountInBuildSettings)
+        if (currentSceneIndex >= SceneManager.sceneCountInBuildSettings)
         {
-          
+
             WinGame();
             return;
         }
-        StartCoroutine(GoToNextScene(SceneManager.GetActiveScene().buildIndex));   
+        StartCoroutine(GoToNextScene(SceneManager.GetActiveScene().buildIndex));
     }
     IEnumerator GoToNextScene(int currentSceneIndex)
     {
         yield return new WaitForSeconds(5f);
         LoadGame();
-       
+
     }
     public void HandleRespawn()
     {
         StartCoroutine(ReSpawn());
-     
+
     }
     IEnumerator ReSpawn()
     {
         yield return new WaitForSeconds(respawnTime);
         GameObject[] allObjects = Resources.FindObjectsOfTypeAll<GameObject>();
         GameObject player = allObjects.FirstOrDefault(x => x.name.Equals("Player"));
-        if (player != null) { 
-          player.SetActive(true);
-          PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
+        if (player != null)
+        {
+            player.SetActive(true);
+            PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
             playerHealth.ApplyShieldEffect();
         }
-      
+
 
     }
     public void SaveSceneData(ref SceneData sceneData)
-    {    
+    {
         sceneData.sceneIndex = currentSceneIndex;
         sceneData.numberOfLives = numberOfLive;
     }

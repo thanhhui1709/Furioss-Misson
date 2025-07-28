@@ -209,8 +209,8 @@ MonoBehaviour:
       shootPattern: {fileID: 11400000, guid: 07140d5c1ba7a1c4ab5a6c596003f8ad, type: 2}
       projectile: {fileID: 7353483712703108750, guid: a9ef96cf16c3bdb46ae8d20fbcd12e3b, type: 3}
       delayBetweenMoveAndShot: 0
-      minRestTime: 2
-      maxRestTime: 4
+      minRestTime: 4
+      maxRestTime: 5
     - movement: {fileID: 11400000, guid: 12fb2ded324b27d42ad5faa01ec59c24, type: 2}
       shootPattern: {fileID: 11400000, guid: 1959a863c13453a459a41f0ba64e6614, type: 2}
       projectile: {fileID: 8021138323933753476, guid: 5642c69bd9ef5734f807c39e05cb467c, type: 3}
